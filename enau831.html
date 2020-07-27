@@ -9,8 +9,15 @@
     <meta name="description" content="portfolio website" />
   </head>
   <body>
+    <div class="tabs">
+      <button class="tab_button" id="B0" onclick="switch_tab(0)" >Home</button>
+      <button class="tab_button" id="B1" onclick="switch_tab(1)" >Products</button>
+      <button class="tab_button" id="B2" onclick="switch_tab(2)" >News</button>
+      <button class="tab_button" id="B3" onclick="switch_tab(3)" >Comments</button>
+      <button class="tab_button" id="B4" onclick="switch_tab(4)" >Location</button>
+    </div>
     <div class="middle">
-      <div class="Section" id="Home">
+      <div class="Section" id="T0">
         <h1>
           Home
         </h1>
@@ -21,7 +28,7 @@
           
         </div>
       </div>
-      <div class="Section" id="Products">
+      <div class="Section" id="T1">
         <h1>
           Products
         </h1>
@@ -50,7 +57,7 @@
     </div>
     
     
-    <div class="Section" id="News">
+    <div class="Section" id="T2">
       <h1>
         News Feed
       </h1>
@@ -64,7 +71,7 @@
       </div>
     </div>
     
-    <div class="Section" id="Comments">
+    <div class="Section" id="T3">
       <h1>
         Guest book
       </h1>
@@ -83,10 +90,8 @@
         <button class="enter">Submit</button>
       </div>
     </div>
-  </div class="middle">
-  <div class="right">
     
-    <aside class="Section" id="Location">
+    <div class="Section" id="T4">
       <h1>
         Location
       </h1>
@@ -100,11 +105,12 @@
         E:store@cheese.com
       </div>
       <br>
-    </aside>
-  </div>
+    </div>
+  </div class="middle">
 </body>
 <script src="enau831.js"></script>
 <script>
+  switch_tab(0)
   get_start()
 /*
   post_register("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/register")

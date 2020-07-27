@@ -1,8 +1,3 @@
-function run() {
-  xhttp.open("GET", "ajax_info.txt", true);
-  xhttp.send();
-  document.getElementById("here").innerHTML = "HHHH";
-}
 function get_start() {
   var data = [];
   var xmlHttp = new XMLHttpRequest();
@@ -39,4 +34,12 @@ function get_start() {
   for (i in data) {
     console.log(data[i]);
   }
+}
+function switch_tab(tab) {
+  for (var i = 0; i < 5; i++) {
+    document.getElementById(`B${i}`).style = "";
+    document.getElementById(`T${i}`).style = "display: None;";
+  }
+  document.getElementById(`B${tab}`).style = "background-color: darkgrey;";
+  document.getElementById(`T${tab}`).style = "display: True;";
 }
