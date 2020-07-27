@@ -1,8 +1,8 @@
 * {
   display: flex;
-  border-color: hotpink;
+  /*: hotpink;
   border-width: 1px;
-  border-style: solid;
+  border-style: solid;*/
 }
 body {
   color: rgb(41, 41, 41);
@@ -33,6 +33,7 @@ body {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 .box {
   border-style: solid;
@@ -43,7 +44,7 @@ body {
   padding-bottom: 7mm;
   margin: 1mm;
   margin-bottom: 5mm;
-  border-top-width: 0.5 px;
+  border-top-width: 1 px;
   border-bottom-width: 5px;
   border-right-width: 5px;
   width: auto;
@@ -72,4 +73,32 @@ tbody {
 th,
 td {
   width: 24%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgray;
+}
+th {
+  background-color: grey;
+  color: white;
+}
+.search {
+  margin: 1%;
+  border-top-width: 1 px;
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+  width: 20%;
+  border-color: darkgray;
+  border-style: solid;
+}
+
+@media only screen and (max-width: 850px) {
+  .middle {
+    width: 100%;
+  }
+  .right {
+    width: 100%;
+  }
+  .search {
+    width: 50%;
+  }
 }

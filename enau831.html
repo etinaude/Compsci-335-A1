@@ -4,48 +4,52 @@
     <title>335 A1</title>
     <link rel="icon" type="image/svg" href="logo.svg" />
     <link rel="stylesheet" href="enau831.css" />
-    <script src="enau831.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Etienne Naude" />
     <meta name="description" content="portfolio website" />
   </head>
   <body>
     <div class="middle">
-    <div class="Section" id="Home">
-      <h1>
-        Home
-      </h1>
-      <h2>
-        A great company...bullshit inserted here
-      </h2>
-    </div>
-    <div class="Section" id="Products">
-      <h1>
-        Products
-      </h1>
-      <input class="search" id="search" placeholder="search"></input>
-      <br>
-      <table class="results" id="results">
-          <th>ID</th>
-          <th>Quant</th>
+      <div class="Section" id="Home">
+        <h1>
+          Home
+        </h1>
+        <h2>
+          A great company...bullshit inserted here
+        </h2>
+        <div id="here">
+          
+        </div>
+      </div>
+      <div class="Section" id="Products">
+        <h1>
+          Products
+        </h1>
+        <form action="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/htmlcomments" method="get">
+          <input class="search" id="search" placeholder="search"></input>
+        </form>
+        <br>
+        <table class="results" id="results">
+          <th>Origin</th>
           <th>Item</th>
+          <th>Type</th>
           <th>Price</th>
-        <tr>
-          <td>1</td>
-          <td>2</td>
+          <tr>
+          <td>France</td>
+          <td>Edam</td>
           <td>Cheese</td>
           <td>$2.50</td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>Cheese</td>
-          <td>$2.50</td>
+          <td>NZ</td>
+          <td>Full fat</td>
+          <td>Milk</td>
+          <td>$3.70</td>
         </tr>
       </table>
     </div>
-
-
+    
+    
     <div class="Section" id="News">
       <h1>
         News Feed
@@ -59,8 +63,8 @@
         cool news
       </div>
     </div>
-
-    <div class="Section" id="Geust">
+    
+    <div class="Section" id="Comments">
       <h1>
         Guest book
       </h1>
@@ -81,7 +85,7 @@
     </div>
   </div class="middle">
   <div class="right">
-
+    
     <aside class="Section" id="Location">
       <h1>
         Location
@@ -90,9 +94,22 @@
         <img class="map" src="./map.png"></img>
         <br>
         102 pinehill Drive, West Marsh
+        <br>
+        P:0220 123 456
+        <br>
+        E:store@cheese.com
       </div>
       <br>
     </aside>
   </div>
-  </body>
+</body>
+<script src="enau831.js"></script>
+<script>
+  get_start()
+/*
+  post_register("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/register")
+  get_search("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/search?term={TERM}",term)
+  get_item_img("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id={ID}",id)
+  post_comment("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name={NAME}",name)
+  */</script>
 </html>
