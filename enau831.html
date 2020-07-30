@@ -2,19 +2,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>335 A1</title>
-    <link rel="icon" type="image/svg" href="logo.svg" />
+    <link rel="icon" type="image/svg" href="http://redsox.uoa.auckland.ac.nz/ds/logo.svg" />
     <link rel="stylesheet" href="enau831.css" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Etienne Naude" />
     <meta name="description" content="portfolio website" />
   </head>
   <body>
+    <img style="width: 10%; align-self: center;" src="http://redsox.uoa.auckland.ac.nz/ds/logo.svg"></img>
     <div class="tabs">
-      <button class="tab_button" id="B0" onclick="switch_tab(0)" >Home</button>
-      <button class="tab_button" id="B1" onclick="switch_tab(1)" >Products</button>
-      <button class="tab_button" id="B2" onclick="switch_tab(2)" >News</button>
-      <button class="tab_button" id="B3" onclick="switch_tab(3)" >Comments</button>
-      <button class="tab_button" id="B4" onclick="switch_tab(4)" >Location</button>
+      <button class="tab_button" id="B0" onclick="switch_tab(0)">Home     </button>
+      <button class="tab_button" id="B1" onclick="switch_tab(1)">Products </button>
+      <button class="tab_button" id="B2" onclick="switch_tab(2)">News     </button>
+      <button class="tab_button" id="B3" onclick="switch_tab(3)">Comments </button>
+      <button class="tab_button" id="B4" onclick="switch_tab(4)">Location </button>
     </div>
     <div class="middle">
       <div class="Section" id="T0">
@@ -22,7 +23,7 @@
           Home
         </h1>
         <h2>
-          A great company...bullshit inserted here
+          Top Quality Cheeses at Bottom Prices
         </h2>
         <div id="here">
           
@@ -32,29 +33,11 @@
         <h1>
           Products
         </h1>
-        <form action="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/htmlcomments" method="get">
-          <input class="search" id="search" placeholder="search"></input>
-        </form>
+        <input class="search" id="search" placeholder="search..."></input>
+        <button class="s_enter" onclick="get_search(document.getElementById('search').value)" >Search</button>
         <br>
         <table class="results" id="results">
-          <th>ID</th>
-          <th>Origin</th>
-          <th>Price</th>
-          <th>Item</th>
-          <th>Type</th>
-          <tr>
-          <td>France</td>
-          <td>Edam</td>
-          <td>Cheese</td>
-          <td>$2.50</td>
-        </tr>
-        <tr>
-          <td>NZ</td>
-          <td>Full fat</td>
-          <td>Milk</td>
-          <td>$3.70</td>
-        </tr>
-      </table>
+        </table>
     </div>
     
     
@@ -62,34 +45,22 @@
       <h1>
         News Feed
       </h1>
-      <div class="box">
-        <h3>story 1</h3>
-        bad news
-      </div>
-      <div class="box">
-        <h3>story 2</h3>
-        cool news
+      <div class="news" id="news">
       </div>
     </div>
     
     <div class="Section" id="T3">
       <h1>
-        Guest book
+        Guest Book
       </h1>
-      <div class="box">
-        <h3>review 1</h3>
-        such wow
+      <div class="submit">
+        <textarea placeholder="please leave a review" class="search"></textarea>
+        <br>
+        <button class="search">Submit</button>
       </div>
-      <div class="box">
-        <h3>review 2</h3>
-        much good
+      <div class="comment_cont" id="comment_cont">
       </div>
       <br />
-      <div class="submit">
-        <textarea placeholder="please leave a review" class="input"></textarea>
-        <br>
-        <button class="enter">Submit</button>
-      </div>
     </div>
     
     <div class="Section" id="T4">
@@ -115,7 +86,6 @@
   get_start()
 /*
   post_register("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/register")
-  get_search("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/search?term={TERM}",term)
   get_item_img("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id={ID}",id)
   post_comment("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name={NAME}",name)
   */</script>

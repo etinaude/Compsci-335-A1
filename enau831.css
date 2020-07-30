@@ -36,16 +36,16 @@ body {
   flex-direction: column;
   height: 100%;
 }
-.box {
+.box,
+.comment {
   border-style: solid;
-  border-color: darkgray;
+  border-color: darkgrey;
   border-width: 1px;
   padding-top: 2mm;
   padding-left: 5mm;
   padding-bottom: 7mm;
   margin: 1mm;
   margin-bottom: 5mm;
-  border-top-width: 1 px;
   border-bottom-width: 5px;
   border-right-width: 5px;
   width: auto;
@@ -71,35 +71,42 @@ td {
   width: 10%;
   border-style: solid;
   border-width: 1px;
-  border-color: lightgray;
+  border-color: darkgrey;
 }
 th {
   background-color: grey;
   color: white;
 }
-.search {
-  margin: 1%;
-  border-top-width: 1 px;
-  border-bottom-width: 5px;
-  border-right-width: 5px;
+.search,
+.s_enter {
+  margin: 0.2%;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
   width: 20%;
   -wrap: wrap;
-  border-color: darkgray;
+  border-color: darkgrey;
   border-style: solid;
+  font-weight: bold;
+  color: rgb(109, 109, 109);
 }
-
+.s_enter {
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+}
+.news {
+  flex-direction: column;
+}
 .tab_button {
   margin: 5px;
   padding: 2%;
-  padding-top: 20px;
-  border-top-width: 1 px;
   border-bottom-width: 5px;
   border-right-width: 5px;
-  border-color: darkgray;
-  width: 120px;
+  border-color: darkgrey;
+  width: 400%;
   text-align: center;
   align-items: center;
   font-weight: bold;
+  font-size: medium;
 }
 .tabs {
   flex-direction: row;
@@ -117,6 +124,19 @@ th {
   width: 60%;
 }
 
+.comment_cont {
+  flex-direction: column;
+}
+.map-box {
+  width: 80%;
+}
+h2 {
+  padding-left: 50px;
+}
+.news-img {
+  width: 20%;
+}
+
 @media only screen and (max-width: 850px) {
   .middle {
     width: 100%;
@@ -129,5 +149,8 @@ th {
   }
   .T0 {
     display: none;
+  }
+  .tab_button {
+    font-size: x-small;
   }
 }
