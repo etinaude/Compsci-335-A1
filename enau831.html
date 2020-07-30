@@ -9,6 +9,8 @@
     <meta name="description" content="portfolio website" />
   </head>
   <body>
+    <div id="product_image" onclick="close_img()"></div>
+    <div class="main">
     <img style="width: 10%; align-self: center;" src="http://redsox.uoa.auckland.ac.nz/ds/logo.svg"></img>
     <div class="tabs">
       <button class="tab_button" id="B0" onclick="switch_tab(0)">Home     </button>
@@ -33,14 +35,13 @@
         <h1>
           Products
         </h1>
+        please click an item to display its image
         <input class="search" id="search" placeholder="search..."></input>
         <button class="s_enter" onclick="get_search(document.getElementById('search').value)" >Search</button>
         <br>
         <table class="results" id="results">
         </table>
     </div>
-    
-    
     <div class="Section" id="T2">
       <h1>
         News Feed
@@ -55,8 +56,7 @@
       </h1>
       <div class="submit">
         <textarea placeholder="please leave a review" class="search"></textarea>
-        <br>
-        <button class="search">Submit</button>
+        <button onclick="submit_comment()" class="s_enter">Submit</button>
       </div>
       <div class="comment_cont" id="comment_cont">
       </div>
@@ -68,7 +68,7 @@
         Location
       </h1>
       <div class="box map-box">
-        <img class="map" src="./map.png"></img>
+        <img class="map" src=" http://redsox.uoa.auckland.ac.nz/ds/map.png"></img>
         <br>
         102 pinehill Drive, West Marsh
         <br>
@@ -79,6 +79,7 @@
       <br>
     </div>
   </div class="middle">
+</div>
 </body>
 <script src="enau831.js"></script>
 <script>

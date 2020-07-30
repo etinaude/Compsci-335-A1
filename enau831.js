@@ -8,7 +8,7 @@ function format_table(data) {
     <th class="T4" >Type</th>
     <tr>
     `;
-
+  console.log(data);
   var items = [];
   for (var i = 0; i < data.length; i++) {
     items[i] = [
@@ -18,7 +18,7 @@ function format_table(data) {
       data[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue,
       data[i].getElementsByTagName("Type")[0].childNodes[0].nodeValue,
     ];
-    str += `<tr>`;
+    str += `<tr class="line" id="${items[i][0]}" onclick="product_image(${items[i][0]})">`;
     for (var j = 0; j < 5; j++) {
       str += `<td class="T${j}">
           ${items[i][j]}
@@ -28,7 +28,19 @@ function format_table(data) {
     document.getElementById("results").innerHTML = str;
   }
 }
-
+function show_image(data) {}
+function product_image(image) {
+  console.log(image);
+  document.getElementById("product_image").innerHTML = `
+  <img class="product_image" onclick="close_img()" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${image}">
+  </img>
+  `;
+  document.getElementById("product_image").style.display = "block";
+}
+function close_img() {
+  console.log("HI");
+  document.getElementById("product_image").style.display = "none";
+}
 function format_comments(data) {
   //data.replace("</p>", "");
   data = data.split("<p>");
@@ -42,6 +54,21 @@ function format_comments(data) {
   }
   document.getElementById("comment_cont").innerHTML = str;
 }
+function submit_comment() {
+  fetch(
+    "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name=anonymous",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: "PLEASE WORK",
+    }
+  ).then(() => {
+    console.log("posted");
+  });
+}
+
 function format_news(data) {
   var info = [[], []];
   for (var i = 0; i < data.length; i++) {
@@ -81,6 +108,7 @@ function get_start() {
   xmlHttp.open("GET", theURL, false);
   xmlHttp.send(null);
   data[0] = xmlHttp.responseText;
+
   //#endregion
   //#region items
   theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/items";
@@ -105,7 +133,6 @@ function get_start() {
         s += `<div class="box">
         <h4>${info[i].titleField}</h4>
         <div class="data">${info[i].pubDateField}</div>
-        <br>
         <br>
         ${info[i].descriptionField}
         <img class="news-img" src=${info[i].enclosureField.urlField}></img>

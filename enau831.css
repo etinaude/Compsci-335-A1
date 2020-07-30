@@ -6,6 +6,13 @@
 }
 body {
   color: rgb(41, 41, 41);
+  flex-direction: column;
+  width: 100%;
+  padding: 0%;
+  align-self: center;
+}
+.main {
+  color: rgb(41, 41, 41);
   padding-left: 2%;
   flex-direction: column;
   width: 80%;
@@ -17,11 +24,19 @@ body {
   margin: 1mm;
   flex-direction: column;
 }
+tbody {
+  flex-direction: column;
+}
 .input,
 .enter {
   width: 20%;
   height: 7%;
   padding: 1%;
+}
+.close_btn {
+  font-size: xx-large;
+  padding: 65%;
+  padding-top: 10%;
 }
 .enter {
   text-align: center;
@@ -62,9 +77,6 @@ table {
 }
 script {
   display: none;
-}
-tbody {
-  flex-direction: column;
 }
 th,
 td {
@@ -107,6 +119,7 @@ th {
   align-items: center;
   font-weight: bold;
   font-size: medium;
+  cursor: pointer;
 }
 .tabs {
   flex-direction: row;
@@ -119,7 +132,9 @@ th {
 .T4 {
   width: 10%;
 }
-
+.data {
+  font-size: small;
+}
 .T3 {
   width: 60%;
 }
@@ -137,6 +152,32 @@ h2 {
   width: 20%;
 }
 
+.product_image {
+  width: 40%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  position: fixed;
+  padding: 30%;
+  padding-top: 10%;
+  padding-bottom: 200%;
+  background-color: #10101040;
+  cursor: pointer;
+}
+
+.line:hover {
+  background-color: darkgrey;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+th {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 850px) {
   .middle {
     width: 100%;
@@ -152,5 +193,13 @@ h2 {
   }
   .tab_button {
     font-size: x-small;
+  }
+  .product_image {
+    padding-top: 50%;
+    width: 60%;
+    padding-left: 20%;
+  }
+  td {
+    overflow: hidden;
   }
 }
