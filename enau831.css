@@ -18,6 +18,19 @@ body {
   width: 80%;
   align-self: center;
 }
+.contact {
+  flex-direction: column;
+}
+.linked {
+  font-weight: bold;
+}
+.linked:visited {
+  color: black;
+}
+.hours {
+  font-size: larger;
+}
+
 .submit {
   padding-top: 2mm;
   padding-bottom: 7mm;

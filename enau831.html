@@ -27,6 +27,17 @@
         <h2>
           Top Quality Cheeses at Bottom Prices
         </h2>
+        <br>
+        <br>
+        <div class="hours">
+        <b>opening hours:</b>
+        <br>
+        weekdays: 8am-6pm
+        <br>
+        weekends: 10am-4pm
+        <br>
+        public holidays: closed
+        </div>
         <div id="here">
           
         </div>
@@ -36,8 +47,7 @@
           Products
         </h1>
         please click an item to display its image
-        <input class="search" id="search" placeholder="search..."></input>
-        <button class="s_enter" onclick="get_search(document.getElementById('search').value)" >Search</button>
+        <input class="search" id="search" onkeyup="get_search()" placeholder="search..."></input>
         <br>
         <table class="results" id="results">
         </table>
@@ -55,7 +65,7 @@
         Guest Book
       </h1>
       <div class="submit">
-        <textarea placeholder="please leave a review" class="search"></textarea>
+        <textarea id="comment_input"  placeholder="please leave a review" class="search"></textarea>
         <button onclick="submit_comment()" class="s_enter">Submit</button>
       </div>
       <div class="comment_cont" id="comment_cont">
@@ -68,13 +78,8 @@
         Location
       </h1>
       <div class="box map-box">
-        <img class="map" src=" http://redsox.uoa.auckland.ac.nz/ds/map.png"></img>
-        <br>
-        102 pinehill Drive, West Marsh
-        <br>
-        P:0220 123 456
-        <br>
-        E:store@cheese.com
+        <img class="map" src="http://redsox.uoa.auckland.ac.nz/ds/map.png"></img>
+        <div class="contact" id="contact"></div>
       </div>
       <br>
     </div>

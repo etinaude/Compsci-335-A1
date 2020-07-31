@@ -8,7 +8,6 @@ function format_table(data) {
     <th class="T4" >Type</th>
     <tr>
     `;
-  console.log(data);
   var items = [];
   for (var i = 0; i < data.length; i++) {
     items[i] = [
@@ -30,7 +29,6 @@ function format_table(data) {
 }
 function show_image(data) {}
 function product_image(image) {
-  console.log(image);
   document.getElementById("product_image").innerHTML = `
   <img class="product_image" onclick="close_img()" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${image}">
   </img>
@@ -38,7 +36,6 @@ function product_image(image) {
   document.getElementById("product_image").style.display = "block";
 }
 function close_img() {
-  console.log("HI");
   document.getElementById("product_image").style.display = "none";
 }
 function format_comments(data) {
@@ -55,14 +52,20 @@ function format_comments(data) {
   document.getElementById("comment_cont").innerHTML = str;
 }
 function submit_comment() {
+  var name = "";
+  document.getElementById("comment_cont").innerHTML = `
+  <p class="comment"><em>${
+    document.getElementById("comment_input").value
+  }</em> — <b>${name}</b></p>
+  ${document.getElementById("comment_cont").innerHTML}`;
   fetch(
-    "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name=anonymous",
+    `http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name=${name}`,
     {
-      method: "POST",
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
       },
-      body: "PLEASE WORK",
+      body: JSON.stringify(`${document.getElementById("comment_input").value}`),
     }
   ).then(() => {
     console.log("posted");
@@ -86,19 +89,6 @@ function format_news(data) {
     info[i][4] = data[i].innerHTML.split("</titlefield>");
   }
 }
-/*
-0: descriptionfield
-1: enclosurefield
-2: guidfield
-3: linkfield
-4: pubdatefield
-5: titlefield
-
-
-
-
-
-*/
 
 function get_start() {
   var data = [];
@@ -126,21 +116,21 @@ function get_start() {
   })
     .then((response) => response.json())
     .then((data) => (info = data))
-    .then(() => console.log(info))
     .then(() => {
       var s = "";
       for (var i = 0; i < info.length; i++) {
-        s += `<div class="box">
+        s += `<div href="https://www.francebleu.fr/vie-quotidienne/balades-randonnees/velo-et-fromages-des-itineraires-gourmands-desormais-disponibles-dans-un-guide-1594893284" class="box">
         <h4>${info[i].titleField}</h4>
         <div class="data">${info[i].pubDateField}</div>
         <br>
         ${info[i].descriptionField}
         <img class="news-img" src=${info[i].enclosureField.urlField}></img>
+        <a class="linked" href="https://www.francebleu.fr/vie-quotidienne/balades-randonnees/velo-et-fromages-des-itineraires-gourmands-desormais-disponibles-dans-un-guide-1594893284">
+        more info>></a>
         </div>`;
       }
       document.getElementById("news").innerHTML = s;
     });
-  console.log(info);
 
   //#region user
   theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/user";
@@ -150,10 +140,29 @@ function get_start() {
   //#endregion
 
   //#region vcard
-  theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/vcard";
-  xmlHttp.open("GET", theURL, false);
+  xmlHttp.open(
+    "GET",
+    "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/vcard",
+    false
+  );
   xmlHttp.send(null);
   data[4] = xmlHttp.responseText;
+  data[4] = data[4].split("PHOTO")[0];
+  var vcard = [];
+  document.getElementById("contact").innerHTML = `
+  <br>
+  <a href="tel:${data[4].split("VOICE:")[1].split("ADR")[0]}"> P: ${
+    data[4].split("VOICE:")[1].split("ADR")[0]
+  }</a>
+  <br>
+  <a href="mailto:${data[4].split("EMAIL:")[1]}">E: ${
+    data[4].split("EMAIL:")[1]
+  }</a>
+  <br>
+  ${data[4].split("ADR;WORK;PREF:;;")[1].split("EMAIL")[0]}
+
+  `;
+
   //#endregion
 
   //#region version
@@ -174,7 +183,8 @@ function switch_tab(tab) {
   document.getElementById(`B${tab}`).style = "background-color: darkgrey;";
   document.getElementById(`T${tab}`).style = "display: True;";
 }
-function get_search(TERM) {
+function get_search() {
+  TERM = document.getElementById("search").value;
   var xmlHttp = new XMLHttpRequest();
   theURL = `http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/search?term=${TERM}`;
   xmlHttp.open("GET", theURL, false);
