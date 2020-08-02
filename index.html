@@ -9,72 +9,6 @@
     <meta name="description" content="portfolio website" />
   </head>
   <body>
-    <div id="product_image" onclick="close_img()"></div>
-    <div class="main">
-    <img style="width: 10%; align-self: center;" src="http://redsox.uoa.auckland.ac.nz/ds/logo.svg"></img>
-    <div class="tabs">
-      <button class="tab_button" id="B0" onclick="switch_tab(0)">Home     </button>
-      <button class="tab_button" id="B1" onclick="switch_tab(1)">Products </button>
-      <button class="tab_button" id="B2" onclick="switch_tab(2)">News     </button>
-      <button class="tab_button" id="B3" onclick="switch_tab(3)">Comments </button>
-      <button class="tab_button" id="B4" onclick="switch_tab(4)">Contact Us </button>
-    </div>
-    <div class="middle">
-      <div class="Section" id="T0">
-        <div class="title_info">
-          <h1>
-            Home
-          </h1>
-          <h2>
-            Top Quality Cheeses <br>at Bottom Prices
-          </h2>
-          <br>
-          <br>
-          <div class="hours">
-            <b>Opening hours:</b>
-            <br>
-            Weekdays: 8am-6pm
-            <br>
-            Weekends: 10am-4pm
-            <br>
-            Public holidays: closed
-          </div>
-        </div>
-        <div id="here">
-          
-        </div>
-      </div>
-      <div class="Section" id="T1">
-        <h1>
-          Products
-        </h1>
-        <h2>please click an item to display its image</h2>
-        <input class="search" id="search" onkeyup="get_search()" placeholder="search..."></input>
-        <br>
-        <table class="results" id="results">
-        </table>
-    </div>
-    <div class="Section" id="T2">
-      <h1>
-        News Feed
-      </h1>
-      <div class="news" id="news">
-      </div>
-    </div>
-    
-    <div class="Section" id="T3">
-      <h1>
-        Guest Book
-      </h1>
-      <div class="submit">
-        <textarea id="comment_input"  placeholder="please leave a review" class="search"></textarea>
-        <button onclick="submit_comment()" class="s_enter">Submit</button>
-      </div>
-      <div class="comment_cont" id="comment_cont">
-      </div>
-      <br />
-    </div>
-    
     <div class="Section" id="T4">
       <h1>
         Contact Us
@@ -82,9 +16,15 @@
       <div class="box map-box">
         <img class="map" src="http://redsox.uoa.auckland.ac.nz/ds/map.png"></img>
         <div class="contact" id="contact"></div>
-        <a download="" href="./vcard" style="">
+        <a id="download" href="./vcard">
           ⬇ Add to contacts
-          </a>
+        </a>
+        <a id="none" href="./vcard">
+          ⬇ Add to contacts
+        </a>
+        <a id="none" href="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/vcard">
+          ⬇ Add to contacts
+        </a>
       </div>
       <br>
     </div>

@@ -173,10 +173,11 @@ function get_start() {
   ${data[4].split("ADR;WORK;PREF:;;")[1].split("EMAIL")[0]}
   <br>
   <br>
-  <a download="" href="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/vcard" style="">
-  ⬇ Add to contacts
-  </a>
   `;
+  document
+    .getElementById("download")
+    .attr("href", `data:txt/vcf;base64,${data[4]}`)
+    .attr("download", "file-" + "VCARD" + ".vcf");
 
   //#endregion
 
