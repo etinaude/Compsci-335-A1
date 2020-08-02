@@ -26,6 +26,10 @@ function format_table(data) {
     str += `</tr>`;
     document.getElementById("results").innerHTML = str;
   }
+  document.getElementById("here").innerHTML = `
+          <img class="main_image" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${items[0][0]}">
+          <img class="main_image" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${items[1][0]}">
+        `;
 }
 function show_image(data) {}
 function product_image(image) {
@@ -52,7 +56,7 @@ function format_comments(data) {
   document.getElementById("comment_cont").innerHTML = str;
 }
 function submit_comment() {
-  var name = "";
+  var name = "inconspicuous name";
   document.getElementById("comment_cont").innerHTML = `
   <p class="comment"><em>${
     document.getElementById("comment_input").value
@@ -119,14 +123,21 @@ function get_start() {
     .then(() => {
       var s = "";
       for (var i = 0; i < info.length; i++) {
-        s += `<div href="https://www.francebleu.fr/vie-quotidienne/balades-randonnees/velo-et-fromages-des-itineraires-gourmands-desormais-disponibles-dans-un-guide-1594893284" class="box">
+        s += `<div href="https://www.francebleu.fr/vie-quotidienne/balades-randonnees/velo-et-fromages-des-itineraires-gourmands-desormais-disponibles-dans-un-guide-1594893284" class="box row">
+        <img class="news-img" src=${info[i].enclosureField.urlField}></img>
+        <div class="col">
         <h4>${info[i].titleField}</h4>
         <div class="data">${info[i].pubDateField}</div>
         <br>
         ${info[i].descriptionField}
-        <img class="news-img" src=${info[i].enclosureField.urlField}></img>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <a class="linked" href="https://www.francebleu.fr/vie-quotidienne/balades-randonnees/velo-et-fromages-des-itineraires-gourmands-desormais-disponibles-dans-un-guide-1594893284">
-        more info>></a>
+        more info >></a>
+        </div>
         </div>`;
       }
       document.getElementById("news").innerHTML = s;
@@ -174,6 +185,9 @@ function get_start() {
 
   format_table(data[1].getElementsByTagName("Item"));
   format_comments(data[0]);
+  document.getElementById("here").innerHTML = `
+          <img class="product_image" onclick="close_img()" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${image}">
+        `;
 }
 function switch_tab(tab) {
   for (var i = 0; i < 5; i++) {
