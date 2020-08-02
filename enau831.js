@@ -174,10 +174,6 @@ function get_start() {
   <br>
   <br>
   `;
-  document
-    .getElementById("download")
-    .attr("href", `data:txt/vcf;base64,${data[4]}`)
-    .attr("download", "file-" + "VCARD" + ".vcf");
 
   //#endregion
 
