@@ -158,19 +158,29 @@ function get_start() {
   );
   xmlHttp.send(null);
   data[4] = xmlHttp.responseText;
-  data[4] = data[4].split("PHOTO")[0];
+  data[4] = data[4].split(/\r?\n/);
   var vcard = [];
+  for (var i = 0; i < data[4].length; i++) {
+    if (data[4][i].includes("TEL")) {
+      vcard[0] = data[4][i].split("VOICE:")[1];
+    } else if (data[4][i].includes("ADR;WORK;PREF:;;")) {
+      vcard[2] = data[4][i].split("ADR;WORK;PREF:;;")[1];
+      vcard[2] = vcard[2].replace(";", "<br>");
+      vcard[2] = vcard[2].replace(";", "<br>");
+      vcard[2] = vcard[2].replace(";", "<br>");
+    } else if (data[4][i].includes("EMAIL:")) {
+      vcard[1] = data[4][i].split("EMAIL:")[1];
+    }
+  }
+  console.log(vcard);
+
   document.getElementById("contact").innerHTML = `
   <br>
-  <a href="tel:${data[4].split("VOICE:")[1].split("ADR")[0]}"> P: ${
-    data[4].split("VOICE:")[1].split("ADR")[0]
-  }</a>
+  <a href="tel:${vcard[0]}"> P: ${vcard[0]}</a>
   <br>
-  <a href="mailto:${data[4].split("EMAIL:")[1]}">E: ${
-    data[4].split("EMAIL:")[1]
-  }</a>
+  <a href="mailto:${vcard[1]}">E: ${vcard[1]}</a>
   <br>
-  ${data[4].split("ADR;WORK;PREF:;;")[1].split("EMAIL")[0]}
+  ${vcard[2]}
   <br>
   <br>
   `;
@@ -186,9 +196,6 @@ function get_start() {
 
   format_table(data[1].getElementsByTagName("Item"));
   format_comments(data[0]);
-  document.getElementById("here").innerHTML = `
-          <img class="product_image" onclick="close_img()" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${image}">
-        `;
 }
 function switch_tab(tab) {
   for (var i = 0; i < 5; i++) {
