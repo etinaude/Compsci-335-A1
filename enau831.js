@@ -158,6 +158,7 @@ function get_start() {
   );
   xmlHttp.send(null);
   data[4] = xmlHttp.responseText;
+  console.log(data[4]);
   data[4] = data[4].split(/\r?\n/);
   var vcard = [];
   for (var i = 0; i < data[4].length; i++) {
