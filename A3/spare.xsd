@@ -23,23 +23,9 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="type">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Cheese"/>
-            <xs:enumeration value="Milk"/>
-            <xs:enumeration value="Butter"/>
-            <xs:enumeration value="Cream"/>
-            <xs:enumeration value="Yogurt"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-
-
-
-
     <xs:complexType name="types">
         <xs:sequence>
-            <xs:element name="Type" type="type" maxOccurs="unbounded" minOccurs="1"/>
+            <xs:element name="type" type="xs:string" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -51,8 +37,8 @@
             <xs:element name="Title" type="xs:string"/>
             <xs:element name="Types" type="types"/>
         </xs:sequence>
-        <xs:attribute name="id" type="xs:int"/>
-        <xs:attribute name="origin" type="origin" default="NZ"/>
+        <xs:attribute name="ItemId" type="xs:int"/>
+        <xs:attribute name="Origin" type="origin" default="NZ"/>
     </xs:complexType>
 
     <xs:complexType name="ArrayOfItem">

@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+    <xs:simpleType name="origin">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NZ"/>
+            <xs:enumeration value="Italy"/>
+            <xs:enumeration value="France"/>
+            <xs:enumeration value="England"/>
+            <xs:enumeration value="Sweden"/>
+            <xs:enumeration value="Spain"/>
+            <xs:enumeration value="Netherlands"/>
+            <xs:enumeration value="Iceland"/>
+            <xs:enumeration value="Switzerland"/>
+            <xs:enumeration value="Portugal"/>
+            <xs:enumeration value="Cyprus"/>
+            <xs:enumeration value="Bulgaria"/>
+            <xs:enumeration value="Denmark"/>
+            <xs:enumeration value="India"/>
+            <xs:enumeration value="Greece"/>
+            <xs:enumeration value="Hungary"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:complexType name="ItemInside">
         <xs:sequence>
             <xs:element name="ItemId" type="xs:int"/>
-            <xs:element name="Origin" type="xs:string"/>
+            <xs:element name="Origin" type="origin"/>
             <xs:element name="Price" type="xs:decimal"/>
             <xs:element name="Title" type="xs:string"/>
             <xs:element name="Type" type="xs:string"/>
@@ -13,7 +34,7 @@
 
     <xs:complexType name="ArrayOfItem">
         <xs:sequence>
-            <xs:element name="Item" type="ItemInside"/>
+            <xs:element name="Item" type="ItemInside" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
