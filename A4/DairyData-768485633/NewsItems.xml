@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+   <channel>
+      <title>News</title>
+      <description>Keep up to date with the latest news at the Dunedin Dairy.</description>
+      <language>en-nz</language>
+      <link>https://dividni.com/</link>
+      <copyright>Copyright owners</copyright>
+      <item>
+         <title>Vélo et Fromages, des itinéraires gourmands désormais disponibles dans un guide</title>
+         <description>Lancés en avril 2019, les itinéraires "Vélo et Fromages" - des parcours thématiques à vélo à la découverte des spécialités fromagères - sont aujourd'hui déjà installés dans 45 départements et ne cessent de s'étendre.</description>
+         <enclosure type="image/webp" length="0" url="https://cdn.radiofrance.fr/s3/cruiser-production/2020/07/bfc6e163-c56f-4a82-ab75-efe4138482ac/860_1ere-couv-pf-fromages-velo-vf.webp" />
+         <link>https://www.francebleu.fr/vie-quotidienne/balades-randonnees/velo-et-fromages-des-itineraires-gourmands-desormais-disponibles-dans-un-guide-1594893284</link>
+         <guid>3adfc1d28aeeefc332be3fab7116f126</guid>
+         <pubDate>Thu, 16 Jul 2020 13:04:12 +1300</pubDate>
+      </item>
+      <item>
+         <title>Cheese Might Start Becoming More Expensive Than Ever Before Because Of The Food Supply Chain</title>
+         <description>The ongoing pandemic has impacted the food chain in quite a few ways, which has led, at different points, to purchasing limits and shortages on grocery items like meat and dairy. The effects are so apparent that cheese prices will likely be raising in the coming weeks.</description>
+         <enclosure type="image/jpeg" length="0" url="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/waiter-displaying-a-beautiful-cheese-tray-at-a-royalty-free-image-1592934259.jpg" />
+         <link>https://www.delish.com/food-news/a32947736/cheese-prices-rising/</link>
+         <guid>3adfc1d28aeeefc332be3fab7116f126</guid>
+         <pubDate>Tue, 23 Jun 2020 05:31:16 +1300</pubDate>
+      </item>
+      <item>
+         <title>Stilton sales plunge 30% amid pandemic</title>
+         <description>The UK's only trademarked cheese risks disappearing after sales of Stilton plunged by 30%. The cheese has Protected Designation of Origin status and can only be labelled Stilton if produced in Leicestershire, Nottinghamshire and Derbyshire. Sales have declined since the UK went into lockdown and export markets closed. The Stilton Cheese Makers Association (SCMA) hopes the British public will support it through the pandemic.</description>
+         <enclosure type="image/jpeg" length="0" url="https://ichef.bbci.co.uk/news/320/cpsprodpb/72F9/production/_86533492_86533491.jpg" />
+         <link>https://www.bbc.com/news/uk-england-leicestershire-52697510</link>
+         <guid>eb4fc1d28aeeefc332be3fab7116f126</guid>
+         <pubDate>Mon, 18 May 2020 06:54:11 +1300</pubDate>
+      </item>
+      <item>
+         <title>8 best vegan cheeses to impress your dairy-free guests with</title>
+         <description>With the popularity of veganism showing no sign of slowing down, the demand for cruelty-free alternatives to our favourite foods just keeps on increasing. Plant-based versions of meat, fish, milk and yoghurt are brilliant these days but, historically, vegan cheese has lagged behind in quality – leaving those who don’t do dairy forlornly hankering after some fantastic fromage.</description>
+         <enclosure type="image/jpeg" length="0" url="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/11/13/14/indybest-best-vegan-cheese-christmas-1.jpg" />
+         <link>https://www.independent.co.uk/extras/indybest/food-drink/best-vegan-cheese-pizza-melting-melts-hard-burgers-slices-substitute-a9201456.html</link>
+         <guid>870b0b3efca8ab271c87c3a8201c7cec</guid>
+         <pubDate>Wed, 13 Nov 2019 15:31:26 +1300</pubDate>
+      </item>
+      <item>
+         <title>Orange vs. White Cheddar Cheese: What's The Difference, Anyway?</title>
+         <description>A large chunk of our cheese eating is made up of cheddar cheese, which has been a favorite for decades. Cheddar is a versatile cheese that comes in many varieties, and one of the most noticeable differences from one cheddar to another is color ― some are white, while others are orange. Cheese eaters may have a preference for white vs. orange cheddar, but what exactly is the difference between the two?</description>
+         <enclosure type="image/jpeg" length="0" url="https://img.huffingtonpost.com/asset/5d93ae992100006901512fbb.jpeg" />
+         <link>https://www.huffpost.com/entry/orange-white-cheddar-cheese_l_5d939215e4b0ac3cddaff67c</link>
+         <guid>fc332be3fab3adfc1d28aeee7126116f</guid>
+         <pubDate>Wed, 16 Oct 2019 05:45:06 +1300</pubDate>
+      </item>
+   </channel>
+</rss>
