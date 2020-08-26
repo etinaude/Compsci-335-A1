@@ -6,6 +6,7 @@ function format_table(data) {
     <th class="T2" >Price</th>
     <th class="T3" >Item</th>
     <th class="T4" >Type</th>
+    <th class="T5" >Buy</th>
     <tr>
     `;
   var items = [];
@@ -17,13 +18,14 @@ function format_table(data) {
       data[i].getElementsByTagName("Title")[0].childNodes[0].nodeValue,
       data[i].getElementsByTagName("Type")[0].childNodes[0].nodeValue,
     ];
-    str += `<tr class="line" id="${items[i][0]}" onclick="product_image(${items[i][0]})">`;
+    str += `<tr class="line" id="${items[i][0]}">`;
     for (var j = 0; j < 5; j++) {
-      str += `<td class="T${j}">
+      str += `<td class="T${j} class="line" onclick="product_image(${items[i][0]})"">
           ${items[i][j]}
-          </td>`;
+          </td>
+          `;
     }
-    str += `</tr>`;
+    str += `<td class="buy" onclick="buy_product(${items[i][0]})">BUY NOW</td></tr>`;
     document.getElementById("results").innerHTML = str;
   }
   document.getElementById("here").innerHTML = `
@@ -75,6 +77,27 @@ function submit_comment() {
     console.log("posted");
   });
 }
+//#region [rgba(255,0,0,0.2)]
+function buy_product(id) {
+  fetch(`http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/buy?id=${id}`, {
+    method: "GET", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(function (data) {
+    console.log(data);
+  });
+}
+
+function register_user() {
+  fetch("http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/user", {
+    method: "GET",
+    credentials: "include",
+    mode: "no-cors",
+  }).then((data) => console.log(data));
+}
+//jbon007passwd
+//#endregion
 
 function format_news(data) {
   var info = [[], []];
@@ -158,7 +181,7 @@ function get_start() {
   );
   xmlHttp.send(null);
   data[4] = xmlHttp.responseText;
-  console.log(data[4]);
+  //console.log(data[4]);
   data[4] = data[4].split(/\r?\n/);
   var vcard = [];
   for (var i = 0; i < data[4].length; i++) {
@@ -173,7 +196,7 @@ function get_start() {
       vcard[1] = data[4][i].split("EMAIL:")[1];
     }
   }
-  console.log(vcard);
+  //console.log(vcard);
 
   document.getElementById("contact").innerHTML = `
   <br>

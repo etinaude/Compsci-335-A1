@@ -244,9 +244,18 @@ th {
   flex-direction: row;
   width: 80%;
 }
-col {
+.col {
   flex-direction: column;
 }
+.buy {
+  text-align: center;
+  color: #8a7e19;
+  text-decoration-line: underline;
+}
+#id {
+  flex-direction: column;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   padding-right: 10px;
