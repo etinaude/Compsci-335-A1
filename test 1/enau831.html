@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<header>
+  <meta charset="UTF-8" />
+  <title>335 test 1</title>
+  <link
+    rel="icon"
+    type="image/svg"
+    href="https://www.cs.auckland.ac.nz/courses/compsci335s2c/lectures/mano/qz/MathLogo.svg"
+  />
+  <link rel="stylesheet" href="enau831.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="author" content="Etienne Naude" />
+</header>
+<body>
+  <div class="tabs">
+    <button class="tab_button" id="B0" onclick="switchHome()">Home</button>
+    <button class="tab_button" id="B1" onclick="switchStaff()">staff</button>
+  </div>
+  <div class="section" id="home">
+    <div id="logo">
+      <img
+        src="https://www.cs.auckland.ac.nz/courses/compsci335s2c/lectures/mano/qz/MathLogo.svg"
+        alt="Department logo"
+        width="500"
+        height="600"
+      />
+    </div>
+    <h1>
+      Our department is one of the most diverse within the University, with our
+      courses connecting a broad range of disciplines and faculties.
+    </h1>
+  </div>
+  <div class="section" id="staff">
+    <div>
+      <input
+        class="search"
+        id="search"
+        onkeyup="searchStaff()"
+        placeholder="search..."
+      />
+    </div>
+    <br />
+    <table id="results"></table>
+  </div>
+  <div id="modal" onclick="closeModal()">
+    <div id="modalContent" onclick="closeModal()"></div>
+  </div>
+</body>
+<script src="enau831.js"></script>
