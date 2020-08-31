@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--Headings, links and meta-->
 <header>
   <meta charset="UTF-8" />
   <title>335 test 1</title>
@@ -8,15 +9,20 @@
     href="https://www.cs.auckland.ac.nz/courses/compsci335s2c/lectures/mano/qz/MathLogo.svg"
   />
   <link rel="stylesheet" href="enau831.css" />
+  <script src="enau831.js" defer></script>
+
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="author" content="Etienne Naude" />
 </header>
 <body>
+  <!--Buttons to Switch tabs-->
   <div id="tabs">
     <button class="tab_button" id="B0" onclick="switchHome()">Home</button>
     <button class="tab_button" id="B1" onclick="switchStaff()">staff</button>
   </div>
+  <!--Home Section-->
   <div class="section" id="home">
+    <!--Home logo-->
     <div id="logo">
       <img
         src="https://www.cs.auckland.ac.nz/courses/compsci335s2c/lectures/mano/qz/MathLogo.svg"
@@ -24,17 +30,21 @@
         id="logoImg"
       />
     </div>
+    <!--Info text-->
     <h1 id="homeText">
       Our department is one of the most diverse within the University, with our
       courses connecting a broad range of disciplines and faculties.
     </h1>
   </div>
+  <!--Staff Section-->
   <div class="section" id="staff">
+    <!--Instructions-->
     <h2>please select who you'd like more information about.</h2>
+    <!--Table (filled in with js)-->
     <table id="results"></table>
   </div>
+  <!--Pop up Info Modal-->
   <div id="modal" onclick="closeModal()">
     <div id="modalContent"></div>
   </div>
 </body>
-<script src="enau831.js"></script>

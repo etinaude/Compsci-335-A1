@@ -1,27 +1,25 @@
+/* default display flex */
 * {
-  display: flex;
-}
-.section {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  padding-left: 10%;
-}
-.results {
   display: flex;
 }
 script,
 header,
-#modal {
+#modal,
+#space {
   display: none;
 }
 body {
   flex-direction: column;
   width: 100%;
 }
-button {
-  margin: 5px;
+
+.section {
+  flex-direction: column;
+  width: 80%;
+  padding-left: 10%;
 }
+
+/* format table */
 tbody {
   flex-direction: column;
 }
@@ -47,6 +45,23 @@ td,
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
+
+/* color rows */
+.even {
+  background-color: #eeeeee;
+}
+.odd {
+  background-color: #dddddd;
+}
+
+#endHead {
+  border-top-right-radius: 10px;
+}
+#startHead {
+  border-top-left-radius: 10px;
+}
+
+/* format modal and info */
 #modal {
   background-color: #10101050;
   width: 100%;
@@ -73,20 +88,13 @@ td,
   margin-right: 5%;
   width: 70%;
 }
-.even {
-  background-color: #eeeeee;
-}
-.odd {
-  background-color: #dddddd;
-}
-#endHead {
-  border-top-right-radius: 10px;
-}
-#startHead {
-  border-top-left-radius: 10px;
+#profile {
+  border-radius: 5px;
 }
 
+/* tab buttons */
 button {
+  margin: 5px;
   border: none;
   padding: 1%;
   border-radius: 2px;
@@ -101,6 +109,8 @@ button:hover {
 #tabs {
   margin: 2%;
 }
+
+/* home page style */
 #home {
   flex-direction: row;
 }
@@ -117,15 +127,10 @@ button:hover {
   padding-top: 10%;
   padding-right: 15%;
 }
-#profile {
-  border-radius: 5px;
-}
 
-#space {
-  display: none;
-}
-
+/* for smaller screens */
 @media only screen and (max-width: 900px) {
+  /* home page small style */
   #home {
     flex-direction: column;
   }
@@ -141,6 +146,7 @@ button:hover {
     padding-right: 2%;
   }
 
+  /*modal small styles */
   #modal {
     background-color: #10101050;
     width: 100%;
@@ -172,6 +178,8 @@ button:hover {
   #space {
     display: flex;
   }
+
+  /* small table style */
   .T3,
   .T4 {
     display: none;
@@ -181,6 +189,8 @@ button:hover {
   .T2 {
     width: 30%;
   }
+
+  /*button smaller style */
   button {
     padding: 6%;
     width: 40%;
