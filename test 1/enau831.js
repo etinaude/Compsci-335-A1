@@ -8,6 +8,34 @@ function switchStaff() {
   document.getElementById("staff").style.display = "flex";
 }
 
+function getVcard(upi) {
+  var URL = `https%3A%2F%2Funidirectory.auckland.ac.nz%2Fpeople%2Fvcard%2F${upi}`;
+  var xmlHttp = new XMLHttpRequest();
+
+  xmlHttp.open(
+    "GET",
+    `https://dividni.com/cors/CorsProxyService.svc/proxy?url=${URL}`,
+    false
+  );
+  xmlHttp.send(null);
+  var vcard = xmlHttp.responseText;
+  var num = "No Number";
+  var address = "No Address";
+  vcard = vcard.split(/\r?\n/);
+  vcard.forEach((element) => {
+    if (element.indexOf("TEL") !== -1) {
+      num = element.split("VOICE:")[1];
+    } else if (element.indexOf("ADR") !== -1) {
+      address = "";
+      let temp = element.split("WORK:;;")[1].split(",");
+      temp.forEach((item) => {
+        address += `${item}<br />`;
+      });
+    }
+  });
+  return [num, address];
+}
+
 //take information and display it in a pop up modal
 function details(upi, id, first, last, email) {
   //check if image exists
@@ -27,10 +55,13 @@ function details(upi, id, first, last, email) {
             />`;
   }
   //make info string
+  var vcard = getVcard(upi);
   var info = `<div id="info">
             <h3>${first} ${last}</h3>
             <p>Email:   <a href="mailto:${email}"><div id="space"></div>${email}</a></p>
             <p>UPI:   ${upi}</p>
+            <p>Phone: ${vcard[0]}</p>
+            <p>Address:<br/> ${vcard[1]}</p>
             <br />
             <a href="https://unidirectory.auckland.ac.nz/people/vcard/${upi}" download>🠗 Add Contact</a>
             </div>`;
