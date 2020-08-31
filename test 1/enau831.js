@@ -6,25 +6,31 @@ function switchStaff() {
   document.getElementById("home").style.display = "none";
   document.getElementById("staff").style.display = "flex";
 }
-function details(upi, id) {
+
+function details(upi, id, first, last, email) {
   if (id == "undefined") {
     image = `<img
-    src="https://unidirectory.auckland.ac.nz/static/g5Km3OjLZuWCA8w7PdOyS4j603aTN0QC7X2gk6kRhEs.png"
-    alt="Person image"
-    width="500"
-    height="600"
-      />`;
+                src="https://unidirectory.auckland.ac.nz/static/g5Km3OjLZuWCA8w7PdOyS4j603aTN0QC7X2gk6kRhEs.png"
+                alt="Person image"
+                id = "profile"
+            />`;
     console.error("no image");
-    return;
+  } else {
+    var url = `https://unidirectory.auckland.ac.nz/people/imageraw/${upi}/${id}/biggest`;
+    image = `<img
+                src="${url}"
+                alt="Person image"
+                id = "profile"
+            />`;
   }
-  //https://unidirectory.auckland.ac.nz/static/g5Km3OjLZuWCA8w7PdOyS4j603aTN0QC7X2gk6kRhEs.png
-  var url = `https://unidirectory.auckland.ac.nz/people/imageraw/${upi}/${id}/biggest`;
-  image = `<img
-  src="${url}"
-  alt="Person image"
-  width="500"
-  height="600"
-    />`;
+  var info = `<div id="info">
+            <h3>${first} ${last}</h3>
+            <p>Email:   <a href="mailto:${email}">${email}</a></p>
+            <p>UPI:   ${upi}</p>
+            <br />
+            <a href="https://unidirectory.auckland.ac.nz/people/vcard/${upi}" download>Add Contact</a>
+            </div>`;
+  document.getElementById("modalContent").innerHTML = `${info} ${image}`;
   document.getElementById("modal").style.display = "block";
 }
 function closeModal() {
@@ -34,16 +40,24 @@ function closeModal() {
 function formatData(data) {
   str = `
       <tr class="row">
-      <th class="T0">First name</th>
+      <th  id="startHead" class="T0">First name</th>
       <th class="T1" >Last name</th>
       <th class="T2" >UPI</th>
-      <th class="T3" >Email</th>
+      <th id="endHead" class="T3" >Email</th>
       <tr>
       <tbody>
       `;
+  count = 0;
   data.forEach((element) => {
-    console.log(`"${element["profileUrl"][0]}","${element["imageId"]}"`);
-    str += `<tr onclick="details('${element["profileUrl"][0]}','${element["imageId"]}')">
+    console.log(element);
+    var num = 0;
+    if (count % 2) {
+      num = "even";
+    } else {
+      num = "odd";
+    }
+    count++;
+    str += `<tr class="${num}" onclick="details('${element["profileUrl"][0]}','${element["imageId"]}', '${element["legalFirstName"]}' ,'${element["legalLastName"]}','${element["emailAddresses"][0]}')">
         <td class="T0">${element["legalFirstName"]}</td>
         <td class="T1">${element["legalLastName"]}</td>
         <td class="T2">${element["profileUrl"][0]}</td>
@@ -67,19 +81,5 @@ function searchStaff() {
     .then((data) => formatData(data["list"]));
 }
 
-/*
-
-function get_search() {
-  TERM = document.getElementById("search").value;
-  var xmlHttp = new XMLHttpRequest();
-  theURL = `http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/search?term=${TERM}`;
-  xmlHttp.open("GET", theURL, false);
-  xmlHttp.send(null);
-  var data = xmlHttp.responseXML;
-  format_table(data.getElementsByTagName("Item"));
-}
-
-
-*/
-switchStaff();
 searchStaff();
+switchHome();
