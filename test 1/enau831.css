@@ -10,15 +10,14 @@
 .results {
   display: flex;
 }
-script {
+script,
+header,
+#modal {
   display: none;
 }
 body {
   flex-direction: column;
   width: 100%;
-}
-header {
-  display: none;
 }
 button {
   margin: 5px;
@@ -38,6 +37,7 @@ td,
   width: 25%;
   border-style: none;
   padding-left: 1%;
+  overflow: hidden;
 }
 .T2 {
   width: 15%;
@@ -48,7 +48,6 @@ td,
   border-top-right-radius: 5px;
 }
 #modal {
-  display: none;
   background-color: #10101050;
   width: 100%;
   height: 100%;
@@ -67,7 +66,7 @@ td,
   padding: 3%;
   padding-top: 8%;
   padding-bottom: 10%;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 #info {
   flex-direction: column;
@@ -94,6 +93,7 @@ button {
   background-color: #eeeeee;
   width: 70px;
   text-align: center;
+  font-weight: bold;
 }
 button:hover {
   background-color: #cccccc;
@@ -106,8 +106,86 @@ button:hover {
 }
 #logo {
   padding-right: 5%;
+  display: flexbox;
+  width: 200%;
+}
+#logoImg {
+  display: block;
+  width: 100%;
 }
 #homeText {
   padding-top: 10%;
   padding-right: 15%;
+}
+#profile {
+  border-radius: 5px;
+}
+
+#space {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  #home {
+    flex-direction: column;
+  }
+  #logo {
+    padding-right: 5%;
+  }
+  #logoImg {
+    display: block;
+    width: 50%;
+  }
+  #homeText {
+    padding-top: 10%;
+    padding-right: 2%;
+  }
+
+  #modal {
+    background-color: #10101050;
+    width: 100%;
+    height: 100%;
+    padding-top: 5%;
+    padding-left: 5%;
+    z-index: 1;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+  }
+
+  #modalContent {
+    width: 85%;
+    padding: 3%;
+    padding-top: 8%;
+    padding-bottom: 10%;
+    border-radius: 10px;
+  }
+  #info {
+    flex-direction: column;
+    margin-right: 5%;
+    width: 50%;
+  }
+  #profile {
+    width: 40%;
+    height: 50%;
+  }
+  #space {
+    display: flex;
+  }
+  .T3,
+  .T4 {
+    display: none;
+  }
+  .T0,
+  .T1,
+  .T2 {
+    width: 30%;
+  }
+  button {
+    padding: 6%;
+    width: 40%;
+    text-justify: distribute;
+    text-align: center;
+    font-weight: bolder;
+  }
 }

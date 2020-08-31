@@ -25,10 +25,10 @@ function details(upi, id, first, last, email) {
   }
   var info = `<div id="info">
             <h3>${first} ${last}</h3>
-            <p>Email:   <a href="mailto:${email}">${email}</a></p>
+            <p>Email:   <a href="mailto:${email}"><div id="space"></div>${email}</a></p>
             <p>UPI:   ${upi}</p>
             <br />
-            <a href="https://unidirectory.auckland.ac.nz/people/vcard/${upi}" download>Add Contact</a>
+            <a href="https://unidirectory.auckland.ac.nz/people/vcard/${upi}" download>🠗 Add Contact</a>
             </div>`;
   document.getElementById("modalContent").innerHTML = `${info} ${image}`;
   document.getElementById("modal").style.display = "block";
@@ -69,7 +69,6 @@ function formatData(data) {
 }
 
 function searchStaff() {
-  TERM = document.getElementById("search").value;
   var URL =
     "https%3A%2F%2Funidirectory.auckland.ac.nz%2Frest%2Fsearch%3ForgFilter%3DMATHS";
   //var URL =

@@ -21,9 +21,7 @@
       <img
         src="https://www.cs.auckland.ac.nz/courses/compsci335s2c/lectures/mano/qz/MathLogo.svg"
         alt="Department logo"
-        width="500"
-        height="600"
-        id="logo"
+        id="logoImg"
       />
     </div>
     <h1 id="homeText">
@@ -32,19 +30,11 @@
     </h1>
   </div>
   <div class="section" id="staff">
-    <div>
-      <input
-        class="search"
-        id="search"
-        onkeyup="searchStaff()"
-        placeholder="search..."
-      />
-    </div>
-    <br />
+    <h2>please select who you'd like more information about.</h2>
     <table id="results"></table>
   </div>
   <div id="modal" onclick="closeModal()">
-    <div id="modalContent" onclick="closeModal()"></div>
+    <div id="modalContent"></div>
   </div>
 </body>
 <script src="enau831.js"></script>
