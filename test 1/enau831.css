@@ -90,6 +90,8 @@ td,
 }
 #profile {
   border-radius: 5px;
+  width: 60%;
+  height: 90%;
 }
 
 /* tab buttons */

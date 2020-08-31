@@ -9,30 +9,38 @@ function switchStaff() {
 }
 
 function getVcard(upi) {
+  //get more detail contact info from Vcard
   var URL = `https%3A%2F%2Funidirectory.auckland.ac.nz%2Fpeople%2Fvcard%2F${upi}`;
   var xmlHttp = new XMLHttpRequest();
-
+  //call via xmlHTTP to get raw html
   xmlHttp.open(
     "GET",
     `https://dividni.com/cors/CorsProxyService.svc/proxy?url=${URL}`,
     false
   );
   xmlHttp.send(null);
-  var vcard = xmlHttp.responseText;
+  //split by line
+  var vcard = xmlHttp.responseText.split(/\r?\n/);
+
+  //generate backup strings if no phone or address is found
   var num = "No Number";
   var address = "No Address";
-  vcard = vcard.split(/\r?\n/);
+
+  //loop through lines and find relevant info
   vcard.forEach((element) => {
     if (element.indexOf("TEL") !== -1) {
       num = element.split("VOICE:")[1];
     } else if (element.indexOf("ADR") !== -1) {
       address = "";
+
+      //split address into lines
       let temp = element.split("WORK:;;")[1].split(",");
       temp.forEach((item) => {
         address += `${item}<br />`;
       });
     }
   });
+  //return phone number and address
   return [num, address];
 }
 
@@ -60,7 +68,7 @@ function details(upi, id, first, last, email) {
             <h3>${first} ${last}</h3>
             <p>Email:   <a href="mailto:${email}"><div id="space"></div>${email}</a></p>
             <p>UPI:   ${upi}</p>
-            <p>Phone: ${vcard[0]}</p>
+            <p>Phone: <a href="Tel:${vcard[0]}"> ${vcard[0]}</a></p>
             <p>Address:<br/> ${vcard[1]}</p>
             <br />
             <a href="https://unidirectory.auckland.ac.nz/people/vcard/${upi}" download>🠗 Add Contact</a>
