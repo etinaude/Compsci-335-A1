@@ -129,6 +129,9 @@ function searchStaff() {
 
 //create course information HTML
 function formatCourse(data) {
+  var max = 0;
+  var text = ``;
+  data.sort((a, b) => (a.catalogNbr > b.catalogNbr ? 1 : -1));
   data.forEach((element) => {
     var describe = "This course unfortunately has no available description.";
     var preR = "Please ask the science student center for the prerequisites";
@@ -138,16 +141,19 @@ function formatCourse(data) {
     if (element.rqrmntDescr && element.rqrmntDescr != ".") {
       preR = element.rqrmntDescr;
     }
-    document.getElementById(
-      "courses"
-    ).innerHTML += `<div onclick="getTimetable(${element.catalogNbr})" class="course">
-                              <h2>${element.subject}${element.catalogNbr}:=  ${element.titleLong}</h2>        
+    if (element.catalogNbr[0] > max) {
+      max = element.catalogNbr[0];
+      text += `<h1>Stage ${max}</h1>`;
+    }
+    text += `<div onclick="getTimetable(${element.catalogNbr})" class="course">
+                              <h2>${element.subject} ${element.catalogNbr}:=  ${element.titleLong}</h2>        
                               <p class="requirements">${preR}</p>
                               <p class="description">${describe}</p>
                               <p class="more">Timetable ></p>
                             </div>
                             `;
   });
+  document.getElementById("courses").innerHTML = text;
 }
 
 //create time table info and display it
