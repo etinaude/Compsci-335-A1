@@ -148,8 +148,8 @@ button:hover {
 .description {
   flex-direction: column;
 }
-#graph {
-  width: 100%;
+svg {
+  width: 65%;
 }
 /* for smaller screens */
 @media only screen and (max-width: 900px) {
@@ -215,10 +215,12 @@ button:hover {
 
   /*button smaller style */
   button {
-    padding: 6%;
-    width: 40%;
-    text-justify: distribute;
-    text-align: center;
+    padding: 2%;
+    width: 30%;
     font-weight: bolder;
+  }
+
+  svg {
+    width: 100%;
   }
 }

@@ -184,7 +184,8 @@ function getTimetable(catalogNbr) {
 
 function formatInfo(data) {
   document.getElementById("infographics").innerHTML = "";
-  var logo = `<svg id="graph" width="600" height="340">
+  var logo = `<svg id="graph"xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 600 340">
   <style>
     .text { font: bold 30px sans-serif; }
   </style>
