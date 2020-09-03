@@ -52,7 +52,6 @@ function details(upi, id, first, last, email) {
                 alt="Person image"
                 id = "profile"
             />`;
-    console.error("no image");
   } else {
     var url = `https://unidirectory.auckland.ac.nz/people/imageraw/${upi}/${id}/biggest`;
     image = `<img
@@ -97,7 +96,6 @@ function formatData(data) {
   count = 0;
   //loop through data
   data.forEach((element) => {
-    //console.log(element);
     //alternate colors
     var num = 0;
     if (count % 2) {
@@ -132,7 +130,6 @@ function searchStaff() {
 //create course information HTML
 function formatCourse(data) {
   data.forEach((element) => {
-    //console.log(element);
     var describe = "This course unfortunately has no available description.";
     var preR = "Please ask the science student center for the prerequisites";
     if (element.description && element.description != ".") {
@@ -144,7 +141,7 @@ function formatCourse(data) {
     document.getElementById(
       "courses"
     ).innerHTML += `<div onclick="getTimetable(${element.catalogNbr})" class="course">
-                              <h2>${element.subject}${element.catalogNbr}:=  ${element.title}</h2>        
+                              <h2>${element.subject}${element.catalogNbr}:=  ${element.titleLong}</h2>        
                               <p class="requirements">${preR}</p>
                               <p class="description">${describe}</p>
                               <p class="more">Timetable ></p>
@@ -155,7 +152,11 @@ function formatCourse(data) {
 
 //create time table info and display it
 function formatTimetable(data) {
-  var info = "";
+  var info = `
+  <div id="c">
+  <h2 id="timehead">Timetable</h2>
+  <div class="modalRow"><div class="collumn">`;
+  var count = 0;
   data.forEach((element) => {
     i = element.meetingPatterns;
     if (i.length > 0) {
@@ -164,21 +165,36 @@ function formatTimetable(data) {
       info += `${i[0].location}\t\t${i[0].daysOfWeek}: ${start.substring(
         0,
         5
-      )} - ${end.substring(0, 5)}\n`;
+      )} - ${end.substring(0, 5)}<br />`;
     }
+    if (
+      count * 2 == data.length ||
+      (count * 2 + 1 == data.length && data.length > 50)
+    ) {
+      info += `</div><div class="collumn">`;
+    }
+    console.log(data.length);
+    count++;
   });
-  if (info) {
-    alert(info);
+  if (
+    info !=
+    `
+  <div id="c">
+  <h2 id="timehead">Timetable</h2>
+  <div class="modalRow"><div class="collumn">`
+  ) {
+    document.getElementById(
+      "modalContent"
+    ).innerHTML = `${info}</div></div><br /><br /><h1></h1><h1></h1></div>`;
   } else {
-    alert(
-      "There is no timetable available for this course, please ask the science student center for more information."
-    );
+    document.getElementById("modalContent").innerHTML =
+      "There is no timetable available for this course, please ask the science student center for more information.";
   }
+  document.getElementById("modal").style.display = "flex";
 }
 
 //get the data for the time table from the API
 function getTimetable(catalogNbr) {
-  console.log(catalogNbr);
   var URL = `https://api.test.auckland.ac.nz/service/classes/v1/classes?year=2020&subject=MATHS&size=500&catalogNbr=${catalogNbr}`;
   fetch(`${URL}`)
     .then((response) => response.json())
@@ -223,7 +239,6 @@ function formatInfo(data) {
 
   var i = 0;
   data.forEach((element) => {
-    console.log(element);
     logo += `<text x="0" y="${i * 50 + 25}" class="text">${i + 1}:</text>`;
     for (var j = 0; 10 * j < element; j++) {
       //if its the last element clip it else display the whole element
@@ -234,7 +249,6 @@ function formatInfo(data) {
         logo += `<use xlink:href="#mathLogo" id="logo${j}${i}" x="${
           50 * j + 50
         }" y="${50 * i}" style="clip-path: url(#clip${i});"/>`;
-        console.log("mod", element % 10);
       } else {
         logo += `<use xlink:href="#mathLogo" id="logo${j}${i}" x="${
           50 * j + 50
@@ -269,4 +283,4 @@ function searchCourses() {
 searchStaff();
 searchCourses();
 getInfographics();
-switchTab("home");
+switchTab("courses");
