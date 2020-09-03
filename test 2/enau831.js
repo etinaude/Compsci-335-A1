@@ -129,6 +129,7 @@ function searchStaff() {
     .then((data) => formatData(data["list"]));
 }
 
+//create course information HTML
 function formatCourse(data) {
   data.forEach((element) => {
     //console.log(element);
@@ -152,6 +153,7 @@ function formatCourse(data) {
   });
 }
 
+//create time table info and display it
 function formatTimetable(data) {
   var info = "";
   data.forEach((element) => {
@@ -174,6 +176,7 @@ function formatTimetable(data) {
   }
 }
 
+//get the data for the time table from the API
 function getTimetable(catalogNbr) {
   console.log(catalogNbr);
   var URL = `https://api.test.auckland.ac.nz/service/classes/v1/classes?year=2020&subject=MATHS&size=500&catalogNbr=${catalogNbr}`;
@@ -182,8 +185,10 @@ function getTimetable(catalogNbr) {
     .then((data) => formatTimetable(data["data"]));
 }
 
+//formatting and displaying the infographics graph
 function formatInfo(data) {
   document.getElementById("infographics").innerHTML = "";
+  //create base SVG
   var logo = `<svg id="graph"xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 600 340">
   <style>
@@ -221,6 +226,7 @@ function formatInfo(data) {
     console.log(element);
     logo += `<text x="0" y="${i * 50 + 25}" class="text">${i + 1}:</text>`;
     for (var j = 0; 10 * j < element; j++) {
+      //if its the last element clip it else display the whole element
       if (10 * (j + 1) > element) {
         logo += `<clipPath id="clip${i}">
         <rect width="${4 * (element % 10)}" height="50" x="0" y ="0"/>
@@ -237,10 +243,12 @@ function formatInfo(data) {
     }
     i++;
   });
+  //render graph and info
   document.getElementById("infographics").innerHTML = `<br />${logo}
-  <use clip-path="url(#clip)" xlink:href="logo11" fill="red" /></svg><br />data:<br /><b>[${data}]</b>`;
+  </svg><br />data:<br /><b>[${data}]</b>`;
 }
 
+//get graph data from the API
 function getInfographics() {
   var URL = `https://cws.auckland.ac.nz/qz20/Quiz2020ChartService.svc/g`;
   fetch(`${URL}`)
@@ -248,7 +256,7 @@ function getInfographics() {
     .then((data) => formatInfo(data));
 }
 
-//get api through proxy
+//get courses data through API
 function searchCourses() {
   // percent formatted url
   var URL =
@@ -261,4 +269,4 @@ function searchCourses() {
 searchStaff();
 searchCourses();
 getInfographics();
-switchTab("infographics");
+switchTab("home");
