@@ -153,7 +153,7 @@ function formatCourse(data) {
                             </div>
                             `;
   });
-  document.getElementById("courses").innerHTML = text;
+  document.getElementById("courses").innerHTML += text;
 }
 
 //create time table info and display it
@@ -277,7 +277,9 @@ function formatInfo(data) {
     i++;
   });
   //render graph and info
-  document.getElementById("infographics").innerHTML = `<br />${logo}
+  document.getElementById(
+    "infographics"
+  ).innerHTML = `<h1>Infographics</h1><br />${logo}
   </svg><br />data:<br /><b>[${data}]</b>`;
 }
 
