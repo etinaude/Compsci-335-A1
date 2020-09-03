@@ -131,15 +131,120 @@ function searchStaff() {
 
 function formatCourse(data) {
   data.forEach((element) => {
-    console.log(element);
-    document.getElementById("courses").innerHTML += `<div class="course">
-                              <h2>${element.title}</h2>        
-                              <p class="courseID">${element.subject}${element.catalogNbr}</p>
-                              <p class="requirements">${element.rqrmntDescr}</p>
-                              <p class="description">${element.description}</p>
+    //console.log(element);
+    var describe = "This course unfortunately has no available description.";
+    var preR = "Please ask the science student center for the prerequisites";
+    if (element.description && element.description != ".") {
+      describe = element.description;
+    }
+    if (element.rqrmntDescr && element.rqrmntDescr != ".") {
+      preR = element.rqrmntDescr;
+    }
+    document.getElementById(
+      "courses"
+    ).innerHTML += `<div onclick="getTimetable(${element.catalogNbr})" class="course">
+                              <h2>${element.subject}${element.catalogNbr}:=  ${element.title}</h2>        
+                              <p class="requirements">${preR}</p>
+                              <p class="description">${describe}</p>
+                              <p class="more">Timetable ></p>
                             </div>
                             `;
   });
+}
+
+function formatTimetable(data) {
+  var info = "";
+  data.forEach((element) => {
+    i = element.meetingPatterns;
+    if (i.length > 0) {
+      let start = `${i[0].startTime}`;
+      let end = `${i[0].endTime}`;
+      info += `${i[0].location}\t\t${i[0].daysOfWeek}: ${start.substring(
+        0,
+        5
+      )} - ${end.substring(0, 5)}\n`;
+    }
+  });
+  if (info) {
+    alert(info);
+  } else {
+    alert(
+      "There is no timetable available for this course, please ask the science student center for more information."
+    );
+  }
+}
+
+function getTimetable(catalogNbr) {
+  console.log(catalogNbr);
+  var URL = `https://api.test.auckland.ac.nz/service/classes/v1/classes?year=2020&subject=MATHS&size=500&catalogNbr=${catalogNbr}`;
+  fetch(`${URL}`)
+    .then((response) => response.json())
+    .then((data) => formatTimetable(data["data"]));
+}
+
+function formatInfo(data) {
+  document.getElementById("infographics").innerHTML = "";
+  var logo = `<svg id="graph" width="600" height="340">
+  <style>
+    .text { font: bold 30px sans-serif; }
+  </style>
+
+
+  <symbol id="mathLogo">
+  <path
+  stroke-linecap="round"
+  stroke="black"
+  stroke-width="4"
+  fill-opacity="0"
+  d="M 6.0 29.0 A 16.55 16.8 0 1 1 34.3 28.5"
+  />
+  <circle
+    cx="20.0"
+    cy="20.0"
+    r="10.0"
+    stroke="black"
+    stroke-width="4.0"
+    fill-opacity="0"
+  />
+  <circle cx="20.0" cy="20.0" r="2.0" fill="black" fill-opacity="1" />
+  <circle cx="20.5" cy="19.5" r=".8" fill="white" fill-opacity="1" />
+  <circle cx="34.2" cy="5.8" r="2.0" fill="black" fill-opacity="1" />
+  <circle cx="5.8" cy="5.8" r="2.0" fill="black" fill-opacity="1" />
+  <line x1="5.8" y1="5.8" x2="8.0" y2="8.0" stroke="black" stroke-width="4.0" />
+  <line x1="34.5" y1="5.5" x2="32.3" y2="7.7" stroke="black" stroke-width="4.0" />
+  <line x1="20.0" y1="4.0" x2="20.0" y2="9.0" stroke="black" stroke-width="4.0" />
+  </symbol >`;
+
+  var i = 0;
+  data.forEach((element) => {
+    console.log(element);
+    logo += `<text x="0" y="${i * 50 + 25}" class="text">${i + 1}:</text>`;
+    for (var j = 0; 10 * j < element; j++) {
+      if (10 * (j + 1) > element) {
+        logo += `<clipPath id="clip${i}">
+        <rect width="${4 * (element % 10)}" height="50" x="0" y ="0"/>
+      </clipPath>`;
+        logo += `<use xlink:href="#mathLogo" id="logo${j}${i}" x="${
+          50 * j + 50
+        }" y="${50 * i}" style="clip-path: url(#clip${i});"/>`;
+        console.log("mod", element % 10);
+      } else {
+        logo += `<use xlink:href="#mathLogo" id="logo${j}${i}" x="${
+          50 * j + 50
+        }" y="${50 * i}" />`;
+      }
+    }
+    i++;
+  });
+  document.getElementById("infographics").innerHTML = `<br />${logo}
+  <use clip-path="url(#clip)" xlink:href="logo11" fill="red" /></svg><br />data:<br /><b>[${data}]</b>`;
+}
+
+function getInfographics() {
+  var URL = `https://cws.auckland.ac.nz/qz20/Quiz2020ChartService.svc/g`;
+  fetch(`${URL}`)
+    .then((response) => response.json())
+    .then((data) => formatInfo(data));
 }
 
 //get api through proxy
@@ -147,11 +252,12 @@ function searchCourses() {
   // percent formatted url
   var URL =
     "https://api.test.auckland.ac.nz/service/courses/v2/courses?subject=MATHS&year=2020&size=500";
-  fetch(`https://dividni.com/cors/CorsProxyService.svc/proxy?url=${URL}`)
+  fetch(`${URL}`)
     .then((response) => response.json())
     .then((data) => formatCourse(data["data"]));
 }
 
 searchStaff();
 searchCourses();
-switchTab("home");
+getInfographics();
+switchTab("infographics");

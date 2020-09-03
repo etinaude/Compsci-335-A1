@@ -101,7 +101,7 @@ button {
   padding: 1%;
   border-radius: 2px;
   background-color: #eeeeee;
-  width: 70px;
+  width: 120px;
   text-align: center;
   font-weight: bold;
 }
@@ -129,7 +129,28 @@ button:hover {
   padding-top: 10%;
   padding-right: 15%;
 }
-
+.course {
+  flex-direction: column;
+  background-color: #eee;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.requirements {
+  font-weight: bold;
+}
+.more {
+  font-weight: bold;
+  text-decoration-line: underline;
+  color: #22c;
+}
+.description {
+  flex-direction: column;
+}
+#graph {
+  width: 100%;
+}
 /* for smaller screens */
 @media only screen and (max-width: 900px) {
   /* home page small style */
