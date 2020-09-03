@@ -152,9 +152,10 @@ function formatCourse(data) {
 
 //create time table info and display it
 function formatTimetable(data) {
+  //this version uses a modal display for the timetable
   var info = `
   <div id="c">
-  <h2 id="timehead">Timetable</h2>
+  <h2>Timetable</h2>
   <div class="modalRow"><div class="collumn">`;
   var count = 0;
   data.forEach((element) => {
@@ -162,11 +163,21 @@ function formatTimetable(data) {
     if (i.length > 0) {
       let start = `${i[0].startTime}`;
       let end = `${i[0].endTime}`;
-      info += `${i[0].location}\t\t${i[0].daysOfWeek}: ${start.substring(
-        0,
-        5
-      )} - ${end.substring(0, 5)}<br />`;
+      //remove duplicates
+      if (
+        !info.includes(
+          `${i[0].location}\t\t${i[0].daysOfWeek}: ${start.substring(
+            0,
+            5
+          )} - ${end.substring(0, 5)}<br />`
+        )
+      )
+        info += `${i[0].location}\t\t${i[0].daysOfWeek}: ${start.substring(
+          0,
+          5
+        )} - ${end.substring(0, 5)}<br />`;
     }
+    //if there is lots of content split the data into 2 collumns
     if (
       count * 2 == data.length ||
       (count * 2 + 1 == data.length && data.length > 50)
@@ -184,9 +195,11 @@ function formatTimetable(data) {
   <div class="modalRow"><div class="collumn">`
   ) {
     document.getElementById(
+      //add spacing and closing tags
       "modalContent"
     ).innerHTML = `${info}</div></div><br /><br /><h1></h1><h1></h1></div>`;
   } else {
+    //if timetable was found create a help message
     document.getElementById("modalContent").innerHTML =
       "There is no timetable available for this course, please ask the science student center for more information.";
   }
