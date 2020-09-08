@@ -95,6 +95,7 @@ function register_user() {
     credentials: "include",
     mode: "no-cors",
   }).then((data) => console.log(data));
+  document.getElementById("login").display = "none";
 }
 //jbon007passwd
 //#endregion
