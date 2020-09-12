@@ -77,19 +77,39 @@ function submit_comment() {
     console.log("posted");
   });
 }
-//#region [rgba(255,0,0,0.2)]
+//#region [rgba(255,0,0,0.1)]
 function buy_product(id) {
-  fetch(`http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/buy?id=${id}`, {
-    method: "GET", // *GET, POST, PUT, DELETE, etc.
+  var xhr = new XMLHttpRequest();
+  xhr.open(
+    "GET",
+    `https://dividni.com/cors/CorsProxyService.svc/proxy?url=https%3A%2F%2Fredsox.uoa.auckland.ac.nz%2Fdsa%2FService.svc%2Fbuy%3Fid%3D${id}`,
+    true,
+    "jbon007",
+    "jbon007passwd"
+  );
+  xhr.withCredentials = true;
+  xhr.send();
+
+  /*fetch(`http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/buy?id=${id}`, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
+    mode: "no-cors",
   }).then(function (data) {
     console.log(data);
-  });
+  });*/
 }
 
 function register_user() {
+  fetch("http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/user", {
+    method: "GET",
+    credentials: "include",
+    mode: "no-cors",
+  }).then((data) => console.log(data));
+  document.getElementById("Register").display = "none";
+}
+function login_user() {
   fetch("http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/user", {
     method: "GET",
     credentials: "include",

@@ -255,7 +255,8 @@ th {
 #id {
   flex-direction: column;
 }
-#login {
+#login,
+#register {
   width: 10%;
   font-weight: bold;
   padding: 0.5%;
