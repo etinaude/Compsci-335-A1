@@ -44,20 +44,22 @@ function graph(pts) {
   }
   for (let i = 0; i < pts.length; i++) {
     if (i < pts.length - 1) {
-      //new
+      //new then total
       graph += `<line 
-                x1="${50 + (i * width) / pts.length}" 
-                y1="${10 + height - height * (pts[i][2] / Nmax)}" 
-                x2="${50 + ((i + 1) * width) / pts.length}" 
-                y2="${10 + height - height * (pts[i + 1][2] / Nmax)}" 
-                style="stroke:rgb(10,10,60);stroke-width:2" />`;
-      //totals
-      graph += `<line 
-                x1="${50 + (i * width) / pts.length}" 
-                y1="${10 + height - height * (pts[i][1] / max)}" 
-                x2="${50 + ((i + 1) * width) / pts.length}" 
-                y2="${10 + height - height * (pts[i + 1][1] / max)}" 
-                style="stroke:rgb(50,50,200);stroke-width:2" />`;
+                  x1="${50 + (i * width) / pts.length}" 
+                  y1="${10 + height - height * (pts[i][2] / Nmax)}" 
+                  x2="${50 + ((i + 1) * width) / pts.length}" 
+                  y2="${10 + height - height * (pts[i + 1][2] / Nmax)}" 
+                  style="stroke:rgb(10,10,60);stroke-width:2" 
+                />
+                
+                <line 
+                  x1="${50 + (i * width) / pts.length}" 
+                  y1="${10 + height - height * (pts[i][1] / max)}" 
+                  x2="${50 + ((i + 1) * width) / pts.length}" 
+                  y2="${10 + height - height * (pts[i + 1][1] / max)}" 
+                  style="stroke:rgb(50,50,200);stroke-width:2" 
+                />`;
     }
     if (!(i % 10)) {
       graph += `

@@ -38,8 +38,8 @@ body {
 }
 #data {
   width: 20%;
-  height: 10%;
-  overflow: scroll;
+  height: 1024px;
+  overflow-y: auto;
 }
 .graph {
   width: 100%;
