@@ -205,7 +205,6 @@ function get_search() {
   format_table(data.getElementsByTagName("Item"));
 }
 //#endregion
-
 function buy_product(id) {
   var xhr = new XMLHttpRequest();
   xhr.open(
