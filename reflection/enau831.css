@@ -20,18 +20,30 @@ head {
 table,
 tbody {
   flex-direction: column;
-  width: 50%;
+}
+table {
+  width: 100%;
 }
 td,
 th {
-  width: 200%;
+  width: 100%;
+  border-style: solid;
+  border-width: 0.5px;
 }
 body {
   color: var(--text);
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
-  padding: 0%;
   align-self: center;
+}
+#data {
+  width: 20%;
+  height: 10%;
+  overflow: scroll;
+}
+#graph {
+  width: 70%;
+  height: 100%;
 }
 @media only screen and (max-width: 850px) {
 }
