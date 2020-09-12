@@ -1,8 +1,18 @@
+function graph(pts) {}
+
 function format(info) {
   data = info.timelineitems[0];
   //console.log(data.countrytimelinedata[0]);
   console.log(data["2/28/20"]);
-
+  var count = 0;
+  var points = [];
+  var str = `<table>
+  <tr>
+    <th>Date</th>
+    <th>Total</th>
+    <th>New</th>
+  </tr>
+  <tbody>`;
   for (const property in data) {
     date = property;
     new_cases = data[property]["new_daily_cases"];
@@ -17,7 +27,22 @@ function format(info) {
       total_deaths,
       total_recoveries
     );
+    if (count <= 30) {
+      points += [date, total];
+      if (count == 30) {
+        graph(points);
+      }
+      count++;
+    }
+    if (date != "stat") {
+      str += `<tr>
+                <td>${date}</td>
+                <td>${total_cases}</td>
+                <td>${new_cases}</td>
+              </tr>`;
+    }
   }
+  document.getElementById("data").innerHTML += `${str}</tbody></table>`;
 }
 
 let response = fetch(
