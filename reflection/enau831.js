@@ -5,57 +5,90 @@ function graph(pts) {
   var graph = `<svg class="graph"xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 ${width + 100} ${height + 100} ">
   />`;
-  var max = [0, 0];
+  var max = 0;
+  var Nmax = 0;
   pts.forEach((e) => {
-    if (max[0] < e[1]) {
-      max[0] = e[1];
+    if (max < e[1]) {
+      max = e[1];
     }
-    if (max[1] < e[2]) {
-      max[1] = e[2];
+    if (Nmax < e[2]) {
+      Nmax = e[2];
     }
   });
-  var text_pos = 510;
+  var count = 0;
+  for (let i = 0; i < height; i += height / 11) {
+    graph += `<line 
+    x1="${50}" 
+              y1="${10 + i}" 
+              x2="${width + 50}" 
+              y2="${10 + i}" 
+              style="stroke:rgb(220,220,255);stroke-width:1" />
+              
+              <text 
+              x="${30}" 
+              y="${i + 15}"
+              font-size="10px"
+              style="fill:rgb(10,10,60);"
+              >
+              ${Math.round(Nmax - (Nmax * count) / 11)}
+              </text>
+              <text 
+              x="${width + 60}" 
+              y="${i + 15}"
+              font-size="10px"
+              style="fill:rgb(50,50,200);"
+              >
+              ${Math.round(max - (max * count) / 11)}
+              </text>`;
+    count++;
+  }
   for (let i = 0; i < pts.length; i++) {
     if (i < pts.length - 1) {
+      //new
       graph += `<line 
                 x1="${50 + (i * width) / pts.length}" 
-                y1="${height - 10 - height * (pts[i][2] / max[1])}" 
+                y1="${10 + height - height * (pts[i][2] / Nmax)}" 
                 x2="${50 + ((i + 1) * width) / pts.length}" 
-                y2="${height - 10 - height * (pts[i + 1][2] / max[1])}" 
-                style="stroke:rgb(255,0,0);stroke-width:2" />`;
+                y2="${10 + height - height * (pts[i + 1][2] / Nmax)}" 
+                style="stroke:rgb(10,10,60);stroke-width:2" />`;
+      //totals
       graph += `<line 
                 x1="${50 + (i * width) / pts.length}" 
-                y1="${height - 10 - height * (pts[i][1] / max[0])}" 
+                y1="${10 + height - height * (pts[i][1] / max)}" 
                 x2="${50 + ((i + 1) * width) / pts.length}" 
-                y2="${height - 10 - height * (pts[i + 1][1] / max[0])}" 
-                style="stroke:rgb(0,255,0);stroke-width:2" />`;
+                y2="${10 + height - height * (pts[i + 1][1] / max)}" 
+                style="stroke:rgb(50,50,200);stroke-width:2" />`;
     }
     if (!(i % 10)) {
       graph += `
               <text 
                 x="${50 + (i * width) / pts.length}" 
-                y="${height}"
-                transform="rotate(90 ${
-                  50 + (i * width) / pts.length
-                } ${height})"
-                font-size="10px"
-              >
-                  ${pts[i][0]}
-              </text>`;
-      graph += `
-              <text 
-                x="${50 + (i * width) / pts.length}" 
-                y="${height}"
-                transform="rotate(90 ${
-                  50 + (i * width) / pts.length
-                } ${height})"
+                y="${height + 30}"
+                transform="rotate(90 ${50 + (i * width) / pts.length} ${
+        height + 30
+      })"
                 font-size="10px"
               >
                   ${pts[i][0]}
               </text>`;
     }
   }
-
+  graph += `<text 
+              x="${width / 2 + 50}" 
+              y="${height + 80}"
+              font-size="20px"
+              style="fill:rgb(50,50,200);"
+              >
+                Total Cases
+            </text>
+            <text 
+              x="${width / 2 - 60}" 
+              y="${height + 80}"
+              font-size="20px"
+              style="fill:rgb(10,10,60);"
+              >
+                New Cases
+            </text>`;
   document.getElementById("graph").innerHTML = `${graph}</svg>`;
 }
 
