@@ -96,15 +96,14 @@ function graph(pts) {
 
 function format(info) {
   data = info.timelineitems[0];
-  //console.log(data.countrytimelinedata[0]);
-  //console.log(data["2/28/20"]);
   var count = 0;
   var pts = [];
+  var today;
   var str = `<table>
   <tr>
-    <th>Date</th>
-    <th>Total</th>
-    <th>New</th>
+  <th>Date</th>
+  <th>Total</th>
+  <th>New</th>
   </tr>
   <tbody>`;
   for (property in data) {
@@ -120,17 +119,26 @@ function format(info) {
       total_cases,
       total_deaths,
       total_recoveries
-    );*/
+      );*/
     if (date != "stat") {
       pts.push([date, total_cases, new_cases]);
       str += `<tr>
-                <td>${date}</td>
-                <td>${total_cases}</td>
-                <td>${new_cases}</td>
-              </tr>`;
+      <td>${date}</td>
+      <td>${total_cases}</td>
+      <td>${new_cases}</td>
+      </tr>`;
+      today = ` <h2>Today</h2>
+                Date:${date}<br>
+                New Cases:${new_cases}<br>
+                New Deaths:${new_daily_deaths}<br>
+                Total Cases:${total_cases}<br>
+                Total Deaths:${total_deaths}<br>
+                Total Recoveries:${total_recoveries}<br>
+                `;
     }
   }
   graph(pts);
+  document.getElementById("today").innerHTML += `${today}`;
   document.getElementById("data").innerHTML += `${str}</tbody></table>`;
 }
 
