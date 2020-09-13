@@ -228,8 +228,9 @@ function buy_product(id) {
       if(this.responseText.includes("Fault")){
         Uname = "";
         Upass = "";
+        document.getElementById("message").innerHTML = "An Error Occured, please try reenter your username and password"
       }else if(this.responseText.includes("your custom")){
-        console.log(this.responseXML.getElementsByTagName("string")[0].innerHTML) 
+        document.getElementById("message").innerHTML = this.responseXML.getElementsByTagName("string")[0].innerHTML;
       }
     }
   });
