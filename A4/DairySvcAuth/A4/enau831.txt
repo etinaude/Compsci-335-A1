@@ -10,7 +10,13 @@ N06
 C0-Located User
 
 C01
+    SQLite
 C02
+    There are 3 tables
+        Comments
+        Credentials
+        Items
 C03
+    The second user is "ashton"
 C04
 C05
