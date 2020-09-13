@@ -1,3 +1,11 @@
+/*
+var Surl = "http://redsox.uoa.auckland.ac.nz/dsa";
+var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
+//*/
+var Surl = "http://127.0.0.1:8189";
+var Uurl = "localhost:8188";
+//*/
+
 //#region [rgba(255,255,0,0.03)] OLD
 function format_table(data) {
   str = `
@@ -30,14 +38,14 @@ function format_table(data) {
     document.getElementById("results").innerHTML = str;
   }
   document.getElementById("here").innerHTML = `
-          <img class="main_image" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${items[0][0]}">
-          <img class="main_image" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${items[1][0]}">
+          <img class="main_image" src="${Uurl}/DairyService.svc/itemimg?id=${items[0][0]}">
+          <img class="main_image" src="${Uurl}/DairyService.svc/itemimg?id=${items[1][0]}">
         `;
 }
 function show_image(data) {}
 function product_image(image) {
   document.getElementById("product_image").innerHTML = `
-  <img class="product_image" onclick="close_img()" src="http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/itemimg?id=${image}">
+  <img class="product_image" onclick="close_img()" src="${Uurl}/DairyService.svc/itemimg?id=${image}">
   </img>
   `;
   document.getElementById("product_image").style.display = "block";
@@ -65,16 +73,13 @@ function submit_comment() {
     document.getElementById("comment_input").value
   }</em> — <b>${name}</b></p>
   ${document.getElementById("comment_cont").innerHTML}`;
-  fetch(
-    `http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name=${name}`,
-    {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(`${document.getElementById("comment_input").value}`),
-    }
-  ).then(() => {
+  fetch(`${Uurl}/DairyService.svc/comment?name=${name}`, {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(`${document.getElementById("comment_input").value}`),
+  }).then(() => {
     console.log("posted");
   });
 }
@@ -100,17 +105,17 @@ function format_news(data) {
 function get_start() {
   var data = [];
   var xmlHttp = new XMLHttpRequest();
-  theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/htmlcomments";
+  theURL = `${Uurl}/DairyService.svc/htmlcomments`;
   xmlHttp.open("GET", theURL, false);
   xmlHttp.send(null);
   data[0] = xmlHttp.responseText;
-  theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/items";
+  theURL = `${Uurl}/DairyService.svc/items`;
   xmlHttp.open("GET", theURL, false);
   xmlHttp.send(null);
   data[1] = xmlHttp.responseXML;
 
   var info = [];
-  fetch("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/news", {
+  fetch(`${Uurl}/DairyService.svc/news`, {
     headers: new Headers({
       Accept: "application/json",
     }),
@@ -140,15 +145,11 @@ function get_start() {
       document.getElementById("news").innerHTML = s;
     });
 
-  theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/user";
+  theURL = `${Uurl}/DairyService.svc/user`;
   xmlHttp.open("GET", theURL, false);
   xmlHttp.send(null);
   data[3] = xmlHttp.responseText;
-  xmlHttp.open(
-    "GET",
-    "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/vcard",
-    false
-  );
+  xmlHttp.open("GET", `${Uurl}/DairyService.svc/vcard`, false);
   xmlHttp.send(null);
   data[4] = xmlHttp.responseText;
   //console.log(data[4]);
@@ -179,7 +180,7 @@ function get_start() {
   <br>
   `;
 
-  theURL = "http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/version";
+  theURL = `${Uurl}/DairyService.svc/version`;
   xmlHttp.open("GET", theURL, false);
   xmlHttp.send(null);
   data[5] = xmlHttp.responseText;
@@ -198,7 +199,7 @@ function switch_tab(tab) {
 function get_search() {
   TERM = document.getElementById("search").value;
   var xmlHttp = new XMLHttpRequest();
-  theURL = `http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/search?term=${TERM}`;
+  theURL = `${Uurl}/DairyService.svc/search?term=${TERM}`;
   xmlHttp.open("GET", theURL, false);
   xmlHttp.send(null);
   var data = xmlHttp.responseXML;
@@ -209,15 +210,15 @@ function buy_product(id) {
   var xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
-    `https://dividni.com/cors/CorsProxyService.svc/proxy?url=https%3A%2F%2Fredsox.uoa.auckland.ac.nz%2Fdsa%2FService.svc%2Fbuy%3Fid%3D${id}`,
+    `${Surl}/Service.svc/buy?id=${id}`,
     true,
     "jbon007",
     "jbon007passwd"
   );
   xhr.withCredentials = true;
   xhr.send();
-
-  /*fetch(`http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/buy?id=${id}`, {
+  /*
+  fetch(`${Surl}/Service.svc/buy?id=${id}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -229,15 +230,15 @@ function buy_product(id) {
 }
 
 function register_user() {
-  fetch("http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/register", {
+  fetch(`${Uurl}/DairyService.svc/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       Address: "123 lane",
-      Name: "Steve",
-      Password: "SSTTEEVVEE",
+      Name: "ehyi",
+      Password: "ehyi",
     }),
   }).then((data) => console.log(data));
   //document.getElementById("Register").display = "none";
@@ -246,7 +247,7 @@ function register_user() {
 /*
 
 fetch(
-    `http://redsox.uoa.auckland.ac.nz/ds/DairyService.svc/comment?name=${name}`,
+    `${Uurl}/DairyService.svc/comment?name=${name}`,
     {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
@@ -261,10 +262,10 @@ fetch(
 */
 
 function login_user() {
-  fetch("http://redsox.uoa.auckland.ac.nz/dsa/Service.svc/user", {
+  fetch(`${Surl}/Service.svc/user`, {
     method: "GET",
     credentials: "include",
-    mode: "no-cors",
+    //mode: "no-cors",
   }).then((data) => console.log(data));
   //document.getElementById("login").display = "none";
 }
