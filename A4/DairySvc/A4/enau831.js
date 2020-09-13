@@ -1,12 +1,10 @@
 /*
 & "C:\Program Files\IIS Express\IISExpress.exe" /port:8189 /path:C:\Users\etina\Documents\GitHub\Compsci-335-A1\A4\DairySvcAuth  
-var Surl = "http://redsox.uoa.auckland.ac.nz/dsa";
-//*/
 var Surl = "";
-//var Uurl = "localhost:8188";
-var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
-var Uname=""
-var Upass=""
+//*/
+var Surl = "http://redsox.uoa.auckland.ac.nz/dsa";
+var Uurl = "";
+//var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
 //*/
 
 //#region [rgba(255,255,0,0.03)] OLD
@@ -215,12 +213,21 @@ function buy_product(id) {
     "GET",
     `${Surl}/Service.svc/buy?id=${id}`,
     true,
-    Uname,
-    Upass
+    "jbon007",
+    "jbon007passwd"
   );
-  xhr.withCredentials = true;
+  //xhr.withCredentials = true;
   xhr.send();
-  console.log(xhr.responseText);
+  /*
+  fetch(`${Surl}/Service.svc/buy?id=${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    mode: "no-cors",
+  }).then(function (data) {
+    console.log(data);
+  });*/
 }
 
 function register_user() {
@@ -256,12 +263,12 @@ fetch(
 */
 
 function login_user() {
-  document.getElementById("part2").style.display = "flex"
-}
-function Login(){
-  Uname = document.getElementById("Uname").value;
-  Upass = document.getElementById("Upass").value;
-  console.log(Uname,Upass);
+  fetch(`${Surl}/Service.svc/user`, {
+    method: "GET",
+    credentials: "include",
+    //mode: "no-cors",
+  }).then((data) => console.log(data));
+  //document.getElementById("login").display = "none";
 }
 
 switch_tab(0);

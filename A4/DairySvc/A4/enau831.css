@@ -235,10 +235,6 @@ th {
 #T0 {
   flex-direction: row;
 }
-#part2 {
-  display: none;
-  background-color: red;
-}
 .title_info {
   flex-direction: column;
   font-size: larger;
