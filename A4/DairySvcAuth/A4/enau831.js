@@ -1,9 +1,9 @@
 /*
 var Surl = "http://redsox.uoa.auckland.ac.nz/dsa";
-var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
 //*/
-var Surl = "http://127.0.0.1:8189";
-var Uurl = "localhost:8188";
+var Surl = "";
+//var Uurl = "localhost:8188";
+var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
 //*/
 
 //#region [rgba(255,255,0,0.03)] OLD
@@ -215,7 +215,7 @@ function buy_product(id) {
     "jbon007",
     "jbon007passwd"
   );
-  xhr.withCredentials = true;
+  //xhr.withCredentials = true;
   xhr.send();
   /*
   fetch(`${Surl}/Service.svc/buy?id=${id}`, {
@@ -269,3 +269,6 @@ function login_user() {
   }).then((data) => console.log(data));
   //document.getElementById("login").display = "none";
 }
+
+switch_tab(0);
+get_start();
