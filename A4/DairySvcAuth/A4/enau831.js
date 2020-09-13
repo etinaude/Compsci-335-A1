@@ -210,6 +210,10 @@ function get_search() {
 }
 //#endregion
 function buy_product(id) {
+  if(!Uname||!Upass){
+    Uname = prompt("username:")
+    Upass = prompt("password:")
+  }
   var xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
@@ -219,8 +223,26 @@ function buy_product(id) {
     Upass
   );
   xhr.withCredentials = true;
+  xhr.addEventListener("readystatechange", function() {
+    if(this.readyState === 4) {
+      if(this.responseText.includes("Fault")){
+        Uname = "";
+        Upass = "";
+      }else if(this.responseText.includes("your custom")){
+        console.log(this.responseXML.getElementsByTagName("string")[0].innerHTML) 
+      }
+    }
+  });
   xhr.send();
-  console.log(xhr.responseText);
+  /*
+
+
+  xhr.addEventListener("readystatechange", function() {
+    if(this.readyState === 4) {
+      console.log(this.responseText);
+    }
+  });
+  */
 }
 
 function register_user() {

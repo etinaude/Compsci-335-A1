@@ -35,14 +35,10 @@ var Uurl = "";
 var Uname = "name";
 var comment = 
 `
-<script>
-function kill(){
-document.getElementById("B0").display = "none";
-}
-</script>
-<h1 onload="kill()">
-hi
-</h1>`;
+</em>
+yyyyyyyyyyyyyyyyyyyyyaaaaaaaaaaaaaaaaaaaaaayyyyyyyyyyyyy
+<b onload=alert("Wufff!")>click me!</b>
+`;
 var list = [{
     "Address":`${comment}`,
     "Name":`${comment}`,
