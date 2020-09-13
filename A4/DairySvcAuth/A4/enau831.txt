@@ -23,6 +23,7 @@ N03
 
     <script defer>document.getElementById("B0").display = "none";</script>
 N04
+
 N05
     Send someone a link which causes them to perform an action, in this case inject XSS
 N06
@@ -39,4 +40,6 @@ C02
 C03
     The second user is "ashton"
 C04
+
 C05
+    localhost:8188/DairyService.svc/itemimg?id="../ImagesLarge/teerepa"
