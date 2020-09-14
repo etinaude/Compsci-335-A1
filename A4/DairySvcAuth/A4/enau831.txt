@@ -1,12 +1,7 @@
 Networked User
 
 N01
-    POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
-    Host: localhost
-    Content-Type: text/plain
-    Content-Length: 92
 
-    <img src="https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753">
 N02
     POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
     Host: localhost
@@ -14,21 +9,32 @@ N02
     Content-Length: 11
 
     <h1>hi</h1>
-
 N03
+    POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
+    Host: localhost
+    Content-Type: text/plain
+    Content-Length: 92
+
+    <img src="https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753">
+
+N04
+    I used innerHTML so script is not executed
+
     POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
     Host: localhost
     Content-Type: text/plain
     Content-Length: 70
 
     <script defer>document.getElementById("B0").display = "none";</script>
-N04
 
 N05
-    Send someone a link which causes them to perform an action, in this case inject XSS
+    Send someone a link which when clicked causes them to perform an action, in this case run a script
+
 N06
 
-C0-Located User
+
+
+Co-Located User
 
 C01
     SQLite
