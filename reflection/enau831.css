@@ -37,9 +37,11 @@ body {
   align-self: center;
 }
 #data {
-  height: 75vh;
+  height: 70vh;
   overflow-y: auto;
-  width: 100%;
+  width: 95%;
+  border-style: groove;
+  border-radius: 5px;
 }
 #stats {
   width: 20%;
@@ -67,4 +69,24 @@ body {
 }
 
 @media only screen and (max-width: 850px) {
+  body {
+    flex-direction: column;
+  }
+  #today,
+  #stats {
+    width: 100%;
+    align-items: center;
+  }
+  #today,
+  #data {
+    width: 70%;
+  }
+  #data {
+    border-style: groove;
+  }
+  .graph,
+  #displays {
+    width: 100%;
+    height: 80vh;
+  }
 }

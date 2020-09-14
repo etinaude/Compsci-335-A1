@@ -113,13 +113,6 @@ function format(info) {
     total_cases = data[property]["total_cases"];
     total_recoveries = data[property]["total_recoveries"];
     total_deaths = data[property]["total_deaths"];
-    /*console.log(
-      new_cases,
-      new_daily_deaths,
-      total_cases,
-      total_deaths,
-      total_recoveries
-      );*/
     if (date != "stat") {
       pts.push([date, total_cases, new_cases]);
       str += `<tr>
@@ -155,3 +148,7 @@ let response = fetch(
   .then((data) => {
     format(data);
   });
+document.getElementById("data").scrollHeight = document.getElementById(
+  "today"
+).clientHeight;
+console.log(document.getElementById("data").clientHeight);
