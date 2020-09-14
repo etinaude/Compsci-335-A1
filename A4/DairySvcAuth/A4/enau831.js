@@ -3,8 +3,8 @@
 var Surl = "http://redsox.uoa.auckland.ac.nz/dsa";
 //*/
 var Surl = "";
-//var Uurl = "localhost:8188";
-var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
+var Uurl = "http://localhost:8188";
+//var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
 var Uname = "";
 var Upass = "";
 var l = false;
