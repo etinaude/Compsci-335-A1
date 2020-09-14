@@ -1,0 +1,15 @@
+I decided to create a line graph as it would be easiest to read and overlay multiple data sets on top of.
+originally I displayed new cases and total cases by their absolute sizes but I found that this made new cases so small it was un readable.
+so instead I scaled them from 0 to the max of their respective data sets.
+
+I decided to not display all the data in teh table since the user probably doesn't care much about it, instead I only included total cases and new cases.
+
+However I did include all the information in the today section so the user is able to have a more detailed daily view.
+
+since the graph has two data sets with two drastically different ranges, I split the y-axis in two.
+
+
+What I've learnt.
+I've learnt lots about different web layouts and I have learnt how to create custom SVG images based of data.
+
+This web app could be used as a basic COVID tracker, but since we don't have any location data it we aren't able to get great in sites.
