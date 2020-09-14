@@ -235,7 +235,7 @@ th {
 #T0 {
   flex-direction: row;
 }
-#part2 {
+#part2, #address,#logout {
   display: none;
 }
 .title_info {

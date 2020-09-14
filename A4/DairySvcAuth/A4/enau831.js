@@ -5,8 +5,9 @@ var Surl = "http://redsox.uoa.auckland.ac.nz/dsa";
 var Surl = "";
 //var Uurl = "localhost:8188";
 var Uurl = "http://redsox.uoa.auckland.ac.nz/ds";
-var Uname=""
-var Upass=""
+var Uname = "";
+var Upass = "";
+var l = false;
 //*/
 
 //#region [rgba(255,255,0,0.03)] OLD
@@ -210,40 +211,30 @@ function get_search() {
 }
 //#endregion
 function buy_product(id) {
-  if(!Uname||!Upass){
-    Uname = prompt("username:")
-    Upass = prompt("password:")
+  if (!Uname || !Upass) {
+    Uname = prompt("username:");
+    Upass = prompt("password:");
   }
   var xhr = new XMLHttpRequest();
-  xhr.open(
-    "GET",
-    `${Surl}/Service.svc/buy?id=${id}`,
-    true,
-    Uname,
-    Upass
-  );
+  xhr.open("GET", `${Surl}/Service.svc/buy?id=${id}`, true, Uname, Upass);
   xhr.withCredentials = true;
-  xhr.addEventListener("readystatechange", function() {
-    if(this.readyState === 4) {
-      if(this.responseText.includes("Fault")){
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      if (this.responseText.includes("Fault")) {
         Uname = "";
         Upass = "";
-        document.getElementById("message").innerHTML = "An Error Occured, please try reenter your username and password"
-      }else if(this.responseText.includes("your custom")){
-        document.getElementById("message").innerHTML = this.responseXML.getElementsByTagName("string")[0].innerHTML;
+        document.getElementById("message").innerHTML =
+          "An Error Occured, please try reenter your username and password";
+      } else if (this.responseText.includes("your custom")) {
+        document.getElementById(
+          "message"
+        ).innerHTML = this.responseXML.getElementsByTagName(
+          "string"
+        )[0].innerHTML;
       }
     }
   });
   xhr.send();
-  /*
-
-
-  xhr.addEventListener("readystatechange", function() {
-    if(this.readyState === 4) {
-      console.log(this.responseText);
-    }
-  });
-  */
 }
 
 function register_user() {
@@ -253,38 +244,68 @@ function register_user() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      Address: "123 lane",
-      Name: "ehyi",
-      Password: "ehyi",
+      Address: document.getElementById("address").value,
+      Name: document.getElementById("Uname").value,
+      Password: document.getElementById("Upass").value,
     }),
   }).then((data) => console.log(data));
   //document.getElementById("Register").display = "none";
 }
-
-/*
-
-fetch(
-    `${Uurl}/DairyService.svc/comment?name=${name}`,
-    {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(`${document.getElementById("comment_input").value}`),
-    }
-  ).then(() => {
-    console.log("posted");
-  });
-
-*/
+function register_btn() {
+  document.getElementById("address").style.display = "flex";
+  document.getElementById("part2").style.display = "flex";
+  l = false;
+}
 
 function login_user() {
-  document.getElementById("part2").style.display = "flex"
+  document.getElementById("address").style.display = "none";
+  document.getElementById("part2").style.display = "flex";
+  l = true;
 }
-function Login(){
-  Uname = document.getElementById("Uname").value;
-  Upass = document.getElementById("Upass").value;
-  console.log(Uname,Upass);
+
+function logout() {
+  (Uname = ""),
+    (Upass = ""),
+    (document.getElementById("login").style.display = "flex");
+  document.getElementById("register").style.display = "flex";
+  document.getElementById("logout").style.display = "none";
+  document.getElementById("status").innerHTML = ``;
+}
+
+function Login() {
+  if (l) {
+    console.log("l");
+    Uname = document.getElementById("Uname").value;
+    Upass = document.getElementById("Upass").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", `${Surl}/Service.svc/buy?id=248309242`, true, Uname, Upass);
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        if (this.responseText.includes("Fault")) {
+          Uname = "";
+          Upass = "";
+          console.log("sorry an error occured please try again");
+          document.getElementById("Emessage").innerHTML =
+            "sorry an error occured please try again";
+        } else if (this.responseText.includes("your custom")) {
+          console.log(this.responseText);
+          document.getElementById("login").style.display = "none";
+          document.getElementById("register").style.display = "none";
+          document.getElementById("part2").style.display = "none";
+          document.getElementById("logout").style.display = "flex";
+          document.getElementById(
+            "status"
+          ).innerHTML = `logged in as: ${Uname}`;
+          document.getElementById("Emessage").innerHTML = "";
+        }
+      }
+    });
+    xhr.send();
+  } else {
+    console.log("r");
+    register_user();
+  }
 }
 
 switch_tab(0);

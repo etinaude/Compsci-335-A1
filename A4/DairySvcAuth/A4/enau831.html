@@ -13,6 +13,7 @@
     <div id="product_image" onclick="close_img()"></div>
     <div class="main">
     <img style="width: 10%; align-self: center;" src="http://redsox.uoa.auckland.ac.nz/ds/logo.svg"></img>
+    <div id="status"></div>
     <div class="tabs">
       <button class="tab_button" id="B0" onclick="switch_tab(0)">Home     </button>
       <button class="tab_button" id="B1" onclick="switch_tab(1)">Products </button>
@@ -98,11 +99,15 @@
       <h1>
         Login/Register
       </h1>
-      <input type="submit" value="Register" id="register" onclick="register_user()">
+      <input type="submit" value="Register" id="register" onclick="register_btn()">
       <input type="submit" value="Login" id="login" onclick="login_user()">
+      <input type="submit" value="Logout" id="logout" onclick="logout()">
+      <div id="Emessage"></div><br/>
       <div id="part2">
         <input class="search" id="Uname" placeholder="User Name"></input>
         <input type="password" class="search" id="Upass" placeholder="Password"></input>
+        <input class="search" id="address" placeholder="Address"></input>
+
         <button onclick="Login()">Enter</button>
       </div>
     </div>
