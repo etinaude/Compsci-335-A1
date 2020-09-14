@@ -23,9 +23,9 @@ N04
     POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
     Host: localhost
     Content-Type: text/plain
-    Content-Length: 70
+    Content-Length: 39
 
-    <script defer>document.getElementById("B0").display = "none";</script>
+    <h1 onmouseover=alert("Hello")>aaa</h1>
 
 N05
     Send someone a link which when clicked causes them to perform an action, in this case run a script

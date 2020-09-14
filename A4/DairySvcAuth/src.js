@@ -1,34 +1,12 @@
-var Surl = "";
-var Uname = "name";
-//var comment = `hi"); DROP TABLE Comments; --`;
-var list = []
-list2=["a"]
-
-
-
-var xhr = new XMLHttpRequest();
-xhr.open(
-  "GET",
-  `${Surl}/Service.svc/id`,
-  true,
-  "jbon007",
-  "jbon007passwd"
-);
-//xhr.withCredentials = true;
-xhr.addEventListener("readystatechange", function() {
-        console.log(this.responseText)
-        console.log(this.status);
+console.log("run");
+fetch(`http://localhost:8188/DairyService.svc/comment?name=a`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(`<h1 onmouseover=alert("Hello")>aaa</h1>`),
 });
-xhr.send();
-
-
-
 /*
-fetch(`${Uurl}/DairyService.svc/news`, {
-  headers: new Headers({
-    Accept: "application/json",
-  }),
-});
 breakB =false
 console.log("here")
 list.forEach(element => {
