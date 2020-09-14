@@ -8,7 +8,7 @@ namespace intro
         static void Main(string[] args)
         {   
             int total =0;
-            string[] text = Console.ReadLine().Split(" ");
+            string[] text = Console.ReadLine().Trim().Split(" ");
             int[] array =new int[text.Length];
             int [] no = new int [text.Length];
             for (int i = 0; i < text.Length; i++)
