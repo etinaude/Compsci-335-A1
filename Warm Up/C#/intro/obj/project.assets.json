@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "lib/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/lib.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "lib/1.0.0": {
+      "type": "project",
+      "path": "../lib/lib.csproj",
+      "msbuildProject": "../lib/lib.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "lib >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\etina\\.nuget\\packages\\": {}
@@ -30,7 +49,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\Warm Up\\C#\\lib\\lib.csproj": {
+              "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\Warm Up\\C#\\lib\\lib.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

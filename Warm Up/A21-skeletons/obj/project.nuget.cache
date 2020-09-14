@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "/RzT5epMUs3N2IIeEgjzWYmKEfbD7vKSwrn0pulO3oYiIfsley6jzFPPUs1760078sYC04L29Wgne7F7j0ru0A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\Warm Up\\A21-skeletons\\a21-student-fs.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\etina\\.nuget\\packages\\fsharp.core\\4.7.2\\fsharp.core.4.7.2.nupkg.sha512"
+  ],
+  "logs": []
+}

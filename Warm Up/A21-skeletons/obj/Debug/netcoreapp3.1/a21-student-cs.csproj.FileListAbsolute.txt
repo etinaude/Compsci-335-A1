@@ -1,0 +1,13 @@
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\bin\Debug\netcoreapp3.1\a21-student-cs.exe
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\bin\Debug\netcoreapp3.1\a21-student-cs.deps.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\bin\Debug\netcoreapp3.1\a21-student-cs.runtimeconfig.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\bin\Debug\netcoreapp3.1\a21-student-cs.runtimeconfig.dev.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\bin\Debug\netcoreapp3.1\a21-student-cs.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\bin\Debug\netcoreapp3.1\a21-student-cs.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.csprojAssemblyReference.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.AssemblyInfoInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.AssemblyInfo.cs
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.csproj.CoreCompileInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\A21-skeletons\obj\Debug\netcoreapp3.1\a21-student-cs.genruntimeconfig.cache

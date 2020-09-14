@@ -1,0 +1,16 @@
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\intro.exe
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\intro.deps.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\intro.runtimeconfig.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\intro.runtimeconfig.dev.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\intro.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\intro.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\lib.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\bin\Debug\netcoreapp3.1\lib.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.csprojAssemblyReference.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.AssemblyInfoInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.AssemblyInfo.cs
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.csproj.CoreCompileInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.csproj.CopyComplete
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\Warm Up\C#\intro\obj\Debug\netcoreapp3.1\intro.genruntimeconfig.cache
