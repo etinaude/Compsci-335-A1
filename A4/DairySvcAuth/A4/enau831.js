@@ -249,6 +249,8 @@ function register_user() {
       Password: document.getElementById("Upass").value,
     }),
   }).then((data) => console.log(data));
+  // document.getElementById("Emessage").innerHTML =
+  //  "sorry an error occured please try again";
   //document.getElementById("Register").display = "none";
 }
 function register_btn() {
@@ -273,22 +275,31 @@ function logout() {
 }
 
 function Login() {
+  if (
+    !document.getElementById("Uname").value ||
+    !document.getElementById("Upass").value
+  ) {
+    document.getElementById("Emessage").innerHTML = "please enter your details";
+    return;
+  }
   if (l) {
     console.log("l");
     Uname = document.getElementById("Uname").value;
     Upass = document.getElementById("Upass").value;
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", `${Surl}/Service.svc/buy?id=248309242`, true, Uname, Upass);
+    xhr.open("GET", `${Surl}/Service.svc/user`, true, Uname, Upass);
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         if (this.responseText.includes("Fault")) {
           Uname = "";
           Upass = "";
+          document.getElementById("Upass").value = "";
+          document.getElementById("Uname").value = "";
           console.log("sorry an error occured please try again");
           document.getElementById("Emessage").innerHTML =
             "sorry an error occured please try again";
-        } else if (this.responseText.includes("your custom")) {
+        } else {
           console.log(this.responseText);
           document.getElementById("login").style.display = "none";
           document.getElementById("register").style.display = "none";

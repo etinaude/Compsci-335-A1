@@ -235,9 +235,7 @@ th {
 #T0 {
   flex-direction: row;
 }
-#part2, #address,#logout {
-  display: none;
-}
+
 .title_info {
   flex-direction: column;
   font-size: larger;
@@ -259,13 +257,24 @@ th {
   flex-direction: column;
 }
 #login,
-#register {
+#register,
+#logout {
   width: 10%;
   font-weight: bold;
   padding: 0.5%;
   text-align: center;
   margin-bottom: 2%;
   display: flex;
+}
+#status,
+#Emessage {
+  color: var(--acsent);
+  font-weight: bold;
+}
+#part2,
+#address,
+#logout {
+  display: none;
 }
 
 ::-webkit-scrollbar {
