@@ -268,7 +268,7 @@ th {
 }
 #status,
 #Emessage {
-  color: var(--acsent);
+  color: red;
   font-weight: bold;
 }
 #part2,

@@ -212,8 +212,8 @@ function get_search() {
 //#endregion
 function buy_product(id) {
   if (!Uname || !Upass) {
-    Uname = prompt("username:");
-    Upass = prompt("password:");
+    switch_tab("5");
+    return;
   }
   var xhr = new XMLHttpRequest();
   xhr.open("GET", `${Surl}/Service.svc/buy?id=${id}`, true, Uname, Upass);
@@ -221,10 +221,7 @@ function buy_product(id) {
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
       if (this.responseText.includes("Fault")) {
-        Uname = "";
-        Upass = "";
-        document.getElementById("message").innerHTML =
-          "An Error Occured, please try reenter your username and password";
+        document.getElementById("message").innerHTML = this.responseText;
       } else if (this.responseText.includes("your custom")) {
         document.getElementById(
           "message"
@@ -248,10 +245,17 @@ function register_user() {
       Name: document.getElementById("Uname").value,
       Password: document.getElementById("Upass").value,
     }),
-  }).then((data) => console.log(data));
-  // document.getElementById("Emessage").innerHTML =
-  //  "sorry an error occured please try again";
-  //document.getElementById("Register").display = "none";
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      document.getElementById("Emessage").innerHTML = data;
+      if (data.includes("registered")) {
+        document.getElementById("Emessage").style.color = "#8a7e19";
+      } else {
+        document.getElementById("Emessage").style.color = "red";
+      }
+      document.getElementById("Emessage").style.display = "flex";
+    });
 }
 function register_btn() {
   document.getElementById("address").style.display = "flex";
@@ -271,7 +275,8 @@ function logout() {
     (document.getElementById("login").style.display = "flex");
   document.getElementById("register").style.display = "flex";
   document.getElementById("logout").style.display = "none";
-  document.getElementById("status").innerHTML = ``;
+  document.getElementById("status").innerHTML = `Logged Out`;
+  document.getElementById("status").style.color = "red";
 }
 
 function Login() {
@@ -297,6 +302,7 @@ function Login() {
           document.getElementById("Upass").value = "";
           document.getElementById("Uname").value = "";
           console.log("sorry an error occured please try again");
+          document.getElementById("Emessage").style.color = "red";
           document.getElementById("Emessage").innerHTML =
             "sorry an error occured please try again";
         } else {
@@ -305,10 +311,13 @@ function Login() {
           document.getElementById("register").style.display = "none";
           document.getElementById("part2").style.display = "none";
           document.getElementById("logout").style.display = "flex";
+          document.getElementById("Emessage").style.color = "#8a7e19";
+          document.getElementById("Emessage").innerHTML = "Logged in";
+          document.getElementById("Emessage").style.display = "flex";
           document.getElementById(
             "status"
           ).innerHTML = `logged in as: ${Uname}`;
-          document.getElementById("Emessage").innerHTML = "";
+          document.getElementById("status").style.color = "#8a7e19";
         }
       }
     });
