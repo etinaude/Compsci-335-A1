@@ -1,6 +1,8 @@
 Networked User
 
 N01
+    GET http://localhost:8188/DairyService.svc/search?term='; DROP TABLE Items; -- HTTP/1.1
+    Host: localhost
 
 N02
     POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
@@ -46,6 +48,6 @@ C02
 C03
     The second user is "ashton"
 C04
-
+    resource
 C05
     localhost:8188/DairyService.svc/itemimg?id="../ImagesLarge/teerepa"
