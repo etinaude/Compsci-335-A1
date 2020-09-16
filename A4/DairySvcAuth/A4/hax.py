@@ -1,5 +1,6 @@
 import requests 
-URL = "localhost:8189/Service.svc/buy?id=248309245"
+from requests.auth import HTTPBasicAuth
+URL = "http://jbon007:jbon007passwd@localhost:8189/Service.svc/buy?id=248309246"
   
 # location given here 
 location = "delhi technological university"
@@ -8,6 +9,7 @@ location = "delhi technological university"
 PARAMS = {'address':location} 
   
 # sending get request and saving the response as response object 
-r = requests.get(url = URL, params = "") 
+#r = requests.get(url = URL, auth=HTTPBasicAuth("jbon007","jbon007passwd")) 
+r = requests.get(url = URL) 
 #data = r.json() 
 print(r)
