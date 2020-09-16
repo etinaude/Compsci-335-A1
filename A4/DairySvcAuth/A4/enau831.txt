@@ -3,7 +3,6 @@ Networked User
 N01
     GET http://localhost:8188/DairyService.svc/search?term='; DROP TABLE Items; -- HTTP/1.1
     Host: localhost
-
 N02
     POST localhost:8188/DairyService.svc/comment?name=a HTTP/1.1
     Host: localhost
@@ -18,7 +17,6 @@ N03
     Content-Length: 92
 
     <img src="https://static.toiimg.com/thumb/72975551.cms?width=680&height=512&imgsize=881753">
-
 N04
     I used innerHTML so script is not executed
 
@@ -28,12 +26,12 @@ N04
     Content-Length: 39
 
     <h1 onmouseover=alert("Hello")>aaa</h1>
-
 N05
     Send someone a link which when clicked causes them to perform an action, in this case run a script
-
 N06
-
+    GET http://jbon007:jbon007passwd@localhost:8189/Service.svc/buy?id=248309242
+    Host: localhost
+    this just made them but cheese
 
 
 Co-Located User

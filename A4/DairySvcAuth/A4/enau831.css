@@ -271,6 +271,11 @@ th {
   color: red;
   font-weight: bold;
 }
+
+#message {
+  color: #726918;
+}
+
 #part2,
 #address,
 #logout {
