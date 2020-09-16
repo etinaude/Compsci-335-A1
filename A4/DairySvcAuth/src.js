@@ -6,23 +6,24 @@ console.log("run");
   },
 }).then(console.log("done"));*/
 //using (SQLiteCommand command = new SQLiteCommand("SELECT * FROM Items WHERE Id = @id"))
-list = [1];
+list = ["a", "b", "jbon007passwd"];
 breakB = false;
 console.log("here");
 list.forEach((element) => {
   var xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
-    `http://localhost:8189/Service.svc/buy?id=248309252;%20DROP%20TABLE%20Items`,
+    `http://localhost:8189/Service.svc/id`,
     true,
     "jbon007",
-    "jbon007passwd"
+    element
   );
   xhr.withCredentials = true;
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
       console.log(this.responseText);
-      /*if (this.responseText.includes("Fault ")) {
+      if (this.responseText.includes("Fault ")) {
+        console.error(".");
       } else {
         if (
           this.responseText.includes(
@@ -34,7 +35,6 @@ list.forEach((element) => {
           breakB = true;
         }
       }
-    }*/
     }
   });
   xhr.send();
