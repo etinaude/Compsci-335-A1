@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace intro
 {
@@ -7,25 +9,24 @@ namespace intro
     {
         static void Main(string[] args)
         {   
-            int total =0;
-            string[] text = Console.ReadLine().Trim().Split(" ");
-            int[] array =new int[text.Length];
-            int [] no = new int [text.Length];
-            for (int i = 0; i < text.Length; i++)
+            TextReader tIn = Console.In;
+            try
             {
-                array[i] = int.Parse(text[i]);
+                String[] text = tIn.ReadToEnd().Trim().Split();
+                var spaces = from i in text where ! (i.Trim()=="") select i.Trim();
+                var even = from item in spaces where int.Parse(item)%2==0 select int.Parse(item)/2;
+                var odd = from item in spaces where int.Parse(item)%2==1 select int.Parse(item);
+                even = even.Union(odd);
+                Console.WriteLine(even.Sum());
             }
-            for(int i =0; i<text.Length;i++){
-                if(array[i]%2 ==0){
-                    array[i]=array[i]/2;
-                }
+            catch (System.FormatException)
+            {
+                Console.WriteLine("*** Input string was not in a correct format.");
             }
-            int[] q = array.Distinct().ToArray();
-
-            for(int i =0; i<q.Length;i++){
-                total+=q[i];
+            catch(System.OverflowException)
+            {
+                Console.WriteLine("*** Value was either too large or too small for an Int32.");
             }
-            Console.WriteLine(total);
         }
     }
 }
