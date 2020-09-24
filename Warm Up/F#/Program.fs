@@ -1,25 +1,15 @@
 ﻿//module Program
 
-//open System
+open System
 open System.IO
 
-// ...
 
-//[<EntryPoint>]
-//let main argv =
-    // ...
-    //0
-        
+    
+let value = (stdin.ReadToEnd().Split ' ');
+//let value = (Array.filter (fun elem -> elem % 2 = 0) [| 1 .. 10|])
+let s  = value |> Array.toList
+let newList = List.map (fun x -> (x.replace("", "")) |> int) s
+let finalList = (Seq.distinct ((List.map (fun x -> x/2) (List.filter (fun x -> x % 2 = 0) newList))@List.filter (fun x -> x % 2 = 1) newList))
 
+printfn "%d " (Seq.sum finalList)
 
-
-
-
-// Learn more about F# at http://fsharp.org
-
-open System
-[<EntryPoint>]
-let readLines filePath = System.IO.File.ReadLines(filePath);;
-let main argv =
-    printfn "Hello World from F#!"
-    0 // return an integer exit code

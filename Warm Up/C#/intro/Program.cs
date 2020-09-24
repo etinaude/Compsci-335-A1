@@ -19,14 +19,11 @@ namespace intro
                 even = even.Union(odd);
                 Console.WriteLine(even.Sum());
             }
-            catch (System.FormatException)
+            catch (Exception e)
             {
-                Console.WriteLine("*** Input string was not in a correct format.");
+                Console.WriteLine($"*** {e.Message}" );
             }
-            catch(System.OverflowException)
-            {
-                Console.WriteLine("*** Value was either too large or too small for an Int32.");
-            }
+
         }
     }
 }
