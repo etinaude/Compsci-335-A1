@@ -5,7 +5,7 @@ var stdin = process.openStdin();
 stdin.addListener("data", function (d) {
   var arr = d.toString().split(/[\r|\n|\t| ]+/);
   arr = arr.map((x) => {
-    if (isNaN(x)) {
+    if (isNaN(x) || x != Math.round(x)) {
       console.log("*** NaN");
       exit(0);
     }
