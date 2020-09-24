@@ -3,13 +3,9 @@ const { exit } = require("process");
 var stdin = process.openStdin();
 
 stdin.addListener("data", function (d) {
-  var arr = d.toString().replace("\n", "").split(/\n| /);
-  arr = arr.filter((i) => {
-    return i != "";
-  });
-  //console.log(arr);
+  var arr = d.toString().split(/[\r|\n|\t| ]+/);
   arr = arr.map((x) => {
-    if (isNaN(x)) {
+    if (isNaN(x) || x != Math.round(x)) {
       console.log("*** NaN");
       exit(0);
     }
@@ -22,6 +18,7 @@ stdin.addListener("data", function (d) {
     }
     return parseInt(x);
   });
+  //console.log(arr);
   arr = arr.filter((x, i) => {
     return arr.indexOf(x) == i;
   });
