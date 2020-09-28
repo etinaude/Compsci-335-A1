@@ -1,0 +1,10 @@
+get http://localhost:8081
+
+get https://localhost:8082
+
+set base http://localhost:8081
+get
+
+set base https://localhost:8082
+get
+
