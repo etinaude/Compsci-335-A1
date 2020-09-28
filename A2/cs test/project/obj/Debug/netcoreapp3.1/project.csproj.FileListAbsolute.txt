@@ -1,0 +1,13 @@
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\bin\Debug\netcoreapp3.1\project.exe
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\bin\Debug\netcoreapp3.1\project.deps.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\bin\Debug\netcoreapp3.1\project.runtimeconfig.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\bin\Debug\netcoreapp3.1\project.runtimeconfig.dev.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\bin\Debug\netcoreapp3.1\project.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\bin\Debug\netcoreapp3.1\project.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.csprojAssemblyReference.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.AssemblyInfoInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.AssemblyInfo.cs
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.csproj.CoreCompileInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\cs test\project\obj\Debug\netcoreapp3.1\project.genruntimeconfig.cache
