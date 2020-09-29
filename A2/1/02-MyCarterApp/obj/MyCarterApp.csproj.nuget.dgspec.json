@@ -13,6 +13,9 @@
         "packagesPath": "C:\\Users\\etina\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\1\\02-MyCarterApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\etina\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

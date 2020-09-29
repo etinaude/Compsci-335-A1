@@ -1,6 +1,7 @@
 ﻿namespace MyCarterApp {
     using Carter;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.App;
 
     public class HomeModule : CarterModule {
         public HomeModule () {
@@ -11,7 +12,7 @@
             Post("/post", async (req, res) => 
             {
                 var body = req.Bind<X>();
-                await res.WriteAsync (body);
+                await res.WriteAsync ("body");
             
             });
         }
