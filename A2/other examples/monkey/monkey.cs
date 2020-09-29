@@ -31,14 +31,14 @@ namespace MyCarterApp {
                     //comp[i] = chars[random.Next(chars.Length)];
                 
                 //post comp localhost:8081/genome
-
+                var v = comp.ToString();
 
                 var values = new Dictionary<string, string>
                 {
-                    { "thing1", "hello" },
-                    { "thing2", "world" }
+                    {"a","abc"},
+                    {"b", "cbd"}
                 };
-
+                //WriteLine(values["val"]);
                 var content = new FormUrlEncodedContent(values);
                 var response = await client.PostAsync("http://localhost:8081/genome", content);
                 var ress = await response.Content.ReadAsStringAsync();

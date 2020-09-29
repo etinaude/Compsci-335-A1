@@ -9,7 +9,11 @@ namespace MyCarterApp {
     using static System.Console;
     
     public class HomeModule : CarterModule {
-        string Sbase="hi";
+        public string Sbase = "hi";
+        public void meth(string comp) 
+        {
+          Sbase = comp;
+        }
         public HomeModule () {
             Get ("/", async (req, res) => {
                 WriteLine (" GET /");
@@ -17,7 +21,7 @@ namespace MyCarterApp {
             });
             
             Post ("/target", async (req, res) => {
-                Sbase = await req.Bind<string> ();
+                meth(await req.Bind<string> ());
                 WriteLine ($" POST /Base -- {Sbase}");
                 await res.AsJson (Sbase);
                 return;
@@ -26,8 +30,16 @@ namespace MyCarterApp {
 
 
             Post ("/genome", async (req, res) => {
+                WriteLine(Sbase);
                 //var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -=+\"';:.,<>/\\?!@#$%^&*()_`~[]{}|";
-                var comp = await req.Bind<string> ();
+                var raw = await req.Bind<Dictionary<string,string>> ();
+                var comp = "asd";
+                //WriteLine(raw["a"].Length);
+
+                foreach(KeyValuePair<string, string> kvp in raw)
+                                WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+
+                //comp = "hie";
                 WriteLine ($" POST /one {comp}");
                 int count = 0;
                 for (int i = 0; i < Sbase.Length; i++)
