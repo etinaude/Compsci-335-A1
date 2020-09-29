@@ -5,12 +5,16 @@ namespace MyCarterApp {
     using Carter.Request;
     using Carter.Response;
     using System.Linq;
+    //using System;
     using System.Collections.Generic;
     using static System.Console;
+    using System.Net.Http;
     
     public class HomeModule : CarterModule {
         string Sbase="hi";
+        HttpClient client = new HttpClient();
         public HomeModule () {
+            //Random random = new Random();
             Get ("/", async (req, res) => {
                 WriteLine (" GET /");
                 await res.WriteAsync ("Hello from Carter!");
@@ -23,9 +27,24 @@ namespace MyCarterApp {
                 WriteLine ($" POST /one {size}");
                 int count = 0;
                 for (int i = 0; i < size; i++)
-                    comp[i] = chars[random.Next(chars.Length)];
+                    comp[i]=chars[i];
+                    //comp[i] = chars[random.Next(chars.Length)];
                 
                 //post comp localhost:8081/genome
+
+
+                var values = new Dictionary<string, string>
+                {
+                    { "thing1", "hello" },
+                    { "thing2", "world" }
+                };
+
+                var content = new FormUrlEncodedContent(values);
+                var response = await client.PostAsync("http://localhost:8081/genome", content);
+                var ress = await response.Content.ReadAsStringAsync();
+                WriteLine ($" POST /one {ress}");
+
+
                 
 
                 await res.AsJson (count);
