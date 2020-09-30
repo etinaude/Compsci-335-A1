@@ -9,7 +9,7 @@ namespace MyCarterApp {
     using static System.Console;
     
     public class HomeModule : CarterModule {
-        public string Sbase = "hi";
+        public string Sbase = "1234567890";
         public void meth(string comp) 
         {
           Sbase = comp;
@@ -33,13 +33,14 @@ namespace MyCarterApp {
                 WriteLine(Sbase);
                 //var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -=+\"';:.,<>/\\?!@#$%^&*()_`~[]{}|";
                 var raw = await req.Bind<Dictionary<string,string>> ();
-                var comp = "asd";
+                var comp = "";
                 //WriteLine(raw["a"].Length);
 
-                foreach(KeyValuePair<string, string> kvp in raw)
-                                WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
+                foreach(KeyValuePair<string, string> kvp in raw){
+                                WriteLine("Key: {0}, Value: {1}", kvp.Key[0], kvp.Value);
+                                comp = kvp.Key;
+                }
 
-                //comp = "hie";
                 WriteLine ($" POST /one {comp}");
                 int count = 0;
                 for (int i = 0; i < Sbase.Length; i++)

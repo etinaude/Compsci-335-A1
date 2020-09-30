@@ -29,14 +29,12 @@ namespace MyCarterApp {
                 for (int i = 0; i < size; i++)
                     comp[i]=chars[i];
                     //comp[i] = chars[random.Next(chars.Length)];
-                
                 //post comp localhost:8081/genome
-                var v = comp.ToString();
+                var v = new string(comp);
 
                 var values = new Dictionary<string, string>
                 {
-                    {"a","abc"},
-                    {"b", "cbd"}
+                    {v,""}
                 };
                 //WriteLine(values["val"]);
                 var content = new FormUrlEncodedContent(values);
