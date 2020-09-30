@@ -5,7 +5,7 @@ namespace MyCarterApp {
     using Carter.Request;
     using Carter.Response;
     using System.Linq;
-    //using System;
+    using System;
     using System.Collections.Generic;
     using static System.Console;
     using System.Net.Http;
@@ -14,40 +14,64 @@ namespace MyCarterApp {
         string Sbase="hi";
         HttpClient client = new HttpClient();
         public HomeModule () {
-            //Random random = new Random();
+            Random random = new Random();
             Get ("/", async (req, res) => {
                 WriteLine (" GET /");
                 await res.WriteAsync ("Hello from Carter!");
             });
             
-            Post ("/genome", async (req, res) => {
-                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -=+\"';:.,<>/\\?!@#$%^&*()_`~[]{}|";
-                var size = await req.Bind<int> ();
-                char[] comp =  new char[size];
-                WriteLine ($" POST /one {size}");
-                int count = 0;
-                for (int i = 0; i < size; i++)
-                    comp[i]=chars[i];
-                    //comp[i] = chars[random.Next(chars.Length)];
-                //post comp localhost:8081/genome
-                var v = new string(comp);
+
+
+
+             Post ("/genome", async (req, res) => {
+                var cli = await req.Bind<string> ();
+                WriteLine ($" POST req {cli}");
 
                 var values = new Dictionary<string, string>
                 {
-                    {v,""}
+                    {new string(cli),""}
                 };
                 //WriteLine(values["val"]);
                 var content = new FormUrlEncodedContent(values);
                 var response = await client.PostAsync("http://localhost:8081/genome", content);
                 var ress = await response.Content.ReadAsStringAsync();
-                WriteLine ($" POST /one {ress}");
+                WriteLine ($" POST res {ress}");
+
+
+                
+
+                await res.AsJson (ress);
+                return;
+            });
+
+
+
+            /*
+            Post ("/genome", async (req, res) => {
+                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -=+\"';:.,<>/\\?!@#$%^&*()_`~[]{}|";
+                var size = await req.Bind<int> ();
+                char[] comp =  new char[size];
+                WriteLine ($" POST req {size}");
+                int count = 0;
+                for (int i = 0; i < size; i++)
+                    comp[i] = chars[random.Next(chars.Length)];
+
+                var values = new Dictionary<string, string>
+                {
+                    {new string(comp),""}
+                };
+                //WriteLine(values["val"]);
+                var content = new FormUrlEncodedContent(values);
+                var response = await client.PostAsync("http://localhost:8081/genome", content);
+                var ress = await response.Content.ReadAsStringAsync();
+                WriteLine ($" POST res {ress}");
 
 
                 
 
                 await res.AsJson (count);
                 return;
-            });
+            });*/
         }
     }
     

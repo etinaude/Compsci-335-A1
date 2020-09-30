@@ -49,11 +49,12 @@ namespace MyCarterApp {
                     if(Sbase[i]==comp[i]){
                         WriteLine("match");
                     }else{
-                        WriteLine(comp[i]);
+                        Write(comp[i]);
                         count++;
                     }
                 }
                 //var fin = new String();
+                WriteLine("");
                 WriteLine(count);
                 await res.AsJson (count);
                 return;
