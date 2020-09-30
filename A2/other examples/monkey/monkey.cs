@@ -4,14 +4,18 @@ namespace MyCarterApp {
     using Carter.ModelBinding;
     using Carter.Request;
     using Carter.Response;
-    using System.Linq;
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using static System.Console;
+    using System.Net;
+    using System.Text;
     using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     
     public class HomeModule : CarterModule {
-        string Sbase="hi";
+        //string Sbase="hi";
         HttpClient client = new HttpClient();
         public HomeModule () {
             Random random = new Random();
@@ -23,17 +27,25 @@ namespace MyCarterApp {
 
 
 
-             Post ("/genome", async (req, res) => {
-                var cli = await req.Bind<string> ();
-                WriteLine ($" POST req {cli}");
-
-                var values = new Dictionary<string, string>
-                {
-                    {new string(cli),""}
-                };
+             Post ("/try", async (req, res) => {
+                var cli = await req.Bind<Dictionary<string,string>> ();
+                //WriteLine ($" POST req {cli}");
+                WriteLine ($" POST req {cli["text"]}");
+                //var client = new HttpClient();
+                /*client.BaseAddress = new Uri("http://localhost:8081");
+                client.DefaultRequestHeaders.Accept.Clear ();
+                client.DefaultRequestHeaders.Accept.Add (
+                new MediaTypeWithQualityHeaderValue ("application/json"));
+                Dictionary<string,string> content;
+                content["text"] ="123";
+            
                 //WriteLine(values["val"]);
-                var content = new FormUrlEncodedContent(values);
-                var response = await client.PostAsync("http://localhost:8081/genome", content);
+                var response = await PostAsync (client, "/assess", content);*/
+
+                var content = new StringContent($"{{\"text\":\"{cli["text"]}\"}}", Encoding.UTF8, "application/json");
+                WriteLine(content.ToString());
+                var response = await client.PostAsync("http://localhost:8081/assess", content);
+
                 var ress = await response.Content.ReadAsStringAsync();
                 WriteLine ($" POST res {ress}");
 
@@ -73,6 +85,17 @@ namespace MyCarterApp {
                 return;
             });*/
         }
+
+        /*
+        static async Task<HttpResponseMessage> PostAsync (HttpClient client, string url, object post) {
+            Console.WriteLine ();
+            var hrm = await client.PostAsJsonAsync (url, post);
+            hrm.EnsureSuccessStatusCode ();
+            Console.WriteLine (hrm);
+            return hrm;
+        }*/
+
+
     }
     
 

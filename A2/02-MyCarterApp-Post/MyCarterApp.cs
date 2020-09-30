@@ -9,67 +9,65 @@ namespace MyCarterApp {
     using static System.Console;
     
     public class HomeModule : CarterModule {
-        public string Sbase = "1234567890";
-        public void meth(string comp) 
-        {
-          Sbase = comp;
-        }
         public HomeModule () {
             Get ("/", async (req, res) => {
-                WriteLine (" GET /");
+                WriteLine ("..... GET /");
                 await res.WriteAsync ("Hello from Carter!");
             });
             
-            Post ("/target", async (req, res) => {
-                Sbase = await req.Bind<string> ();
-                WriteLine ($" POST /Base -- {Sbase}");
-                await res.AsJson (Sbase);
+            Post ("/one", async (req, res) => {
+                var point = await req.Bind<Point> ();
+                WriteLine ($"..... POST /one {point}");
+                var point2 = new Point {X = point.X + 1, Y = point.Y + 2, };
+                await res.AsJson (point2);
                 return;
             });
             
-
-
-            Post ("/assess", async (req, res) => {
-                WriteLine($"base - {Sbase}");
-                var raw = await req.Bind<Dictionary<string,string>> ();
-                WriteLine ($" POST req {raw}");
-                var comp = "";
-                var l = Sbase.Length;
-                int count = 0;
-                if(Sbase.Length>comp.Length){
-                    l = comp.Length;
-                    count = Sbase.Length-comp.Length;
-                }else{
-                    count = comp.Length-Sbase.Length;
-                }
-                foreach(KeyValuePair<string, string> kvp in raw){
-                                WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
-                                //comp = kvp.Key;
-                }
-                
-
-                WriteLine ($" POST /one {comp}");
-                for (int i = 0; i < l; i++)
-                {
-                    if(Sbase[i]==comp[i]){
-                        Write(".");
-                    }else{
-                        Write(comp[i]);
-                        count++;
-                    }
-                }
-                //var fin = new String();
-                WriteLine("");
-                WriteLine(count);
-                await res.AsJson (count);
+            Post ("/array", async (req, res) => {
+                var points = await req.Bind<Points> (); 
+                WriteLine ($"..... POST /array reg: {points}");
+                var xys = points.XYs.Select (p => new Point {X = p.X + 1, Y = p.Y + 2, });
+                var points2 = new Points {XYs = xys.ToList()};
+                WriteLine ($"..... POST /array res: {string.Join (", ", points2)}");
+                await res.AsJson (points2);
                 return;
             });
-
+            
+            Post ("/just-array", async (req, res) => {
+                var points = await req.Bind<List<Point>> (); 
+                WriteLine ($"..... POST /just-array req: {string.Join (", ", points)}");
+                var points2 = points.Select (p => new Point {X = p.X + 1, Y = p.Y + 2, }) .ToList ();
+                WriteLine ($"..... POST /just-array res: {string.Join (", ", points2)}");
+                await res.AsJson (points2);
+                return;
+            });
+            
+            Post ("/just-string", async (req, res) => {
+                var s = await new System.IO.StreamReader (req.Body) .ReadToEndAsync (); 
+                WriteLine ($"..... POST /just-string req: {s}");
+                var s2 = s + "\r\n???";
+                WriteLine ($"..... POST /just-string res: {s2}");
+                await res.AsJson (s2);
+                return;
+            });
         }
     }
     
-
+    public class Point {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public override string ToString () {
+            return $"({X}, {Y})";
+        }
+    }
     
+    public class Points {
+        public List<Point> XYs { get; set; }
+        public override string ToString () {
+            var xys = string.Join (", ", XYs);
+            return $"{xys}";
+        }
+    }
 }
 
 namespace MyCarterApp {
