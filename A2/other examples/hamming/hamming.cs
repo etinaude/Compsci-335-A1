@@ -9,7 +9,7 @@ namespace MyCarterApp {
     using static System.Console;
     
     public class HomeModule : CarterModule {
-        public string Sbase = "1234567890";
+        public static string Sbase;
         public void meth(string comp) 
         {
           Sbase = comp;
@@ -21,7 +21,8 @@ namespace MyCarterApp {
             });
             
             Post ("/target", async (req, res) => {
-                Sbase = await req.Bind<string> ();
+                var raw = await req.Bind<Dictionary<string,string>> ();
+                Sbase = raw["text"];
                 WriteLine ($" POST /Base -- {Sbase}");
                 await res.AsJson (Sbase);
                 return;
@@ -32,8 +33,8 @@ namespace MyCarterApp {
             Post ("/assess", async (req, res) => {
                 WriteLine($"base - {Sbase}");
                 var raw = await req.Bind<Dictionary<string,string>> ();
-                WriteLine ($" POST req {raw}");
-                var comp = "";
+                //WriteLine ($" POST req {raw}");
+                var comp = raw["text"];
                 var l = Sbase.Length;
                 int count = 0;
                 if(Sbase.Length>comp.Length){
@@ -41,12 +42,7 @@ namespace MyCarterApp {
                     count = Sbase.Length-comp.Length;
                 }else{
                     count = comp.Length-Sbase.Length;
-                }
-                foreach(KeyValuePair<string, string> kvp in raw){
-                                WriteLine("Key: {0}, Value: {1}", kvp.Key, kvp.Value);
-                                //comp = kvp.Key;
-                }
-                
+                }                
 
                 WriteLine ($" POST /one {comp}");
                 for (int i = 0; i < l; i++)

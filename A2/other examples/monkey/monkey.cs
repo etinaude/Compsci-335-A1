@@ -32,26 +32,11 @@ namespace MyCarterApp {
                 //WriteLine ($" POST req {cli}");
                 WriteLine ($" POST req {cli["text"]}");
                 //var client = new HttpClient();
-                /*client.BaseAddress = new Uri("http://localhost:8081");
-                client.DefaultRequestHeaders.Accept.Clear ();
-                client.DefaultRequestHeaders.Accept.Add (
-                new MediaTypeWithQualityHeaderValue ("application/json"));
-                Dictionary<string,string> content;
-                content["text"] ="123";
-            
-                //WriteLine(values["val"]);
-                var response = await PostAsync (client, "/assess", content);*/
-
                 var content = new StringContent($"{{\"text\":\"{cli["text"]}\"}}", Encoding.UTF8, "application/json");
-                WriteLine(content.ToString());
                 var response = await client.PostAsync("http://localhost:8081/assess", content);
 
                 var ress = await response.Content.ReadAsStringAsync();
                 WriteLine ($" POST res {ress}");
-
-
-                
-
                 await res.AsJson (ress);
                 return;
             });
