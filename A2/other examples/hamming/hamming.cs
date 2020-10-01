@@ -7,6 +7,11 @@ namespace MyCarterApp {
     using System.Linq;
     using System.Collections.Generic;
     using static System.Console;
+    using System.Net;
+    using System.Text;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     
     public class HomeModule : CarterModule {
         public static string Sbase;
@@ -36,6 +41,10 @@ namespace MyCarterApp {
                 //WriteLine ($" POST req {raw}");
                 var comp = raw["text"];
                 var l = Sbase.Length;
+                if(l==0){
+                    await res.AsJson ($"{{\"number\":{l}}}");
+                    return;
+                }
                 int count = 0;
                 if(Sbase.Length>comp.Length){
                     l = comp.Length;
@@ -57,6 +66,7 @@ namespace MyCarterApp {
                 //var fin = new String();
                 WriteLine("");
                 WriteLine(count);
+                //var finres = new StringContent($"{{\"number\":{count}}}", Encoding.UTF8, "application/json");
                 await res.AsJson (count);
                 return;
             });

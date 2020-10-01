@@ -37,7 +37,9 @@ namespace MyCarterApp {
 
                 var ress = await response.Content.ReadAsStringAsync();
                 WriteLine ($" POST res {ress}");
-                await res.AsJson (ress);
+                var finres = $"{{\"number\":{ress}}}";
+                //var ff = new StringContent(finres, Encoding.UTF8, "application/json");
+                await res.AsJson (finres);
                 return;
             });
 
