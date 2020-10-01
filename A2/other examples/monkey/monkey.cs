@@ -37,56 +37,23 @@ namespace MyCarterApp {
 
                 var ress = await response.Content.ReadAsStringAsync();
                 WriteLine ($" POST res {ress}");
-                var finres = $"{{\"number\":{ress}}}";
+                //var finres = ress["number"];
+                //var pts = new jso {number = ress };
                 //var ff = new StringContent(finres, Encoding.UTF8, "application/json");
-                await res.AsJson (finres);
+                await res.AsJson (ress);
                 return;
             });
 
-
-
-            /*
-            Post ("/genome", async (req, res) => {
-                var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 -=+\"';:.,<>/\\?!@#$%^&*()_`~[]{}|";
-                var size = await req.Bind<int> ();
-                char[] comp =  new char[size];
-                WriteLine ($" POST req {size}");
-                int count = 0;
-                for (int i = 0; i < size; i++)
-                    comp[i] = chars[random.Next(chars.Length)];
-
-                var values = new Dictionary<string, string>
-                {
-                    {new string(comp),""}
-                };
-                //WriteLine(values["val"]);
-                var content = new FormUrlEncodedContent(values);
-                var response = await client.PostAsync("http://localhost:8081/genome", content);
-                var ress = await response.Content.ReadAsStringAsync();
-                WriteLine ($" POST res {ress}");
-
-
-                
-
-                await res.AsJson (count);
-                return;
-            });*/
         }
 
-        /*
-        static async Task<HttpResponseMessage> PostAsync (HttpClient client, string url, object post) {
-            Console.WriteLine ();
-            var hrm = await client.PostAsJsonAsync (url, post);
-            hrm.EnsureSuccessStatusCode ();
-            Console.WriteLine (hrm);
-            return hrm;
-        }*/
-
-
     }
-    
 
-    
+    public class jso {
+        public int number { get; set; }
+        public override string ToString () {
+            return $"({number})";
+        }
+    }
 }
 
 namespace MyCarterApp {
@@ -113,9 +80,6 @@ namespace MyCarterApp {
 
     public class Program {
         public static void Main (string[] args) {
-//          var host = Host.CreateDefaultBuilder (args)
-//              .ConfigureWebHostDefaults (webBuilder => webBuilder.UseStartup<Startup>())
-
             var urls = new[] {"http://localhost:8091", "https://localhost:8092"};
             
             var host = Host.CreateDefaultBuilder (args)

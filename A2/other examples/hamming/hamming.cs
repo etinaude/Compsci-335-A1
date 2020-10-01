@@ -14,7 +14,7 @@ namespace MyCarterApp {
     using System.Threading.Tasks;
     
     public class HomeModule : CarterModule {
-        public static string Sbase;
+        public static string Sbase = " ";
         public void meth(string comp) 
         {
           Sbase = comp;
@@ -40,11 +40,11 @@ namespace MyCarterApp {
                 var raw = await req.Bind<Dictionary<string,string>> ();
                 //WriteLine ($" POST req {raw}");
                 var comp = raw["text"];
-                var l = Sbase.Length;
-                if(l==0){
-                    await res.AsJson ($"{{\"number\":{l}}}");
+                if(Sbase ==" "){
+                    await res.AsJson (new jso {number = comp.Length });
                     return;
                 }
+                var l = Sbase.Length;
                 int count = 0;
                 if(Sbase.Length>comp.Length){
                     l = comp.Length;
@@ -53,7 +53,6 @@ namespace MyCarterApp {
                     count = comp.Length-Sbase.Length;
                 }                
 
-                WriteLine ($" POST /one {comp}");
                 for (int i = 0; i < l; i++)
                 {
                     if(Sbase[i]==comp[i]){
@@ -66,15 +65,21 @@ namespace MyCarterApp {
                 //var fin = new String();
                 WriteLine("");
                 WriteLine(count);
+                var pts = new jso {number = count };
                 //var finres = new StringContent($"{{\"number\":{count}}}", Encoding.UTF8, "application/json");
-                await res.AsJson (count);
+                await res.AsJson (pts);
                 return;
             });
 
         }
     }
     
-
+    public class jso {
+        public int number { get; set; }
+        public override string ToString () {
+            return $"({number})";
+        }
+    }
     
 }
 
