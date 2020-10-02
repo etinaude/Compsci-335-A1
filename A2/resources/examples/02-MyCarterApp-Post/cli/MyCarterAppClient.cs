@@ -1,6 +1,4 @@
-//<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
 namespace MyCarterAppClient {
-    
     using System;
     using System.Collections.Generic;
     using System.Linq;

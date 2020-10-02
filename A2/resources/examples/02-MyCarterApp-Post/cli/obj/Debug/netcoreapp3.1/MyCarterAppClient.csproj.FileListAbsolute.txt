@@ -1,0 +1,17 @@
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\MyCarterAppClient.exe
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\MyCarterAppClient.deps.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\MyCarterAppClient.runtimeconfig.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\MyCarterAppClient.runtimeconfig.dev.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\MyCarterAppClient.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\MyCarterAppClient.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.csprojAssemblyReference.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.AssemblyInfoInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.AssemblyInfo.cs
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.csproj.CoreCompileInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.csproj.CopyComplete
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\resources\examples\02-MyCarterApp-Post\cli\obj\Debug\netcoreapp3.1\MyCarterAppClient.genruntimeconfig.cache

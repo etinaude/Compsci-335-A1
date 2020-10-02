@@ -55,3 +55,5 @@ C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\other examples\monkey\obj\Debu
 C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\other examples\monkey\obj\Debug\netcoreapp3.1\MyCarterApp.dll
 C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\other examples\monkey\obj\Debug\netcoreapp3.1\MyCarterApp.pdb
 C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\other examples\monkey\obj\Debug\netcoreapp3.1\MyCarterApp.genruntimeconfig.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\other examples\monkey\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\A2\other examples\monkey\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

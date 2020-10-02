@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\monkey\\MyCarterApp.csproj": {}
+    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\resources\\examples\\02-MyCarterApp-Post\\cli\\MyCarterAppClient.csproj": {}
   },
   "projects": {
-    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\monkey\\MyCarterApp.csproj": {
+    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\resources\\examples\\02-MyCarterApp-Post\\cli\\MyCarterAppClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\monkey\\MyCarterApp.csproj",
-        "projectName": "MyCarterApp",
-        "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\monkey\\MyCarterApp.csproj",
+        "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\resources\\examples\\02-MyCarterApp-Post\\cli\\MyCarterAppClient.csproj",
+        "projectName": "MyCarterAppClient",
+        "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\resources\\examples\\02-MyCarterApp-Post\\cli\\MyCarterAppClient.csproj",
         "packagesPath": "C:\\Users\\etina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\monkey\\obj\\",
+        "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\resources\\examples\\02-MyCarterApp-Post\\cli\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,10 +41,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Carter": {
-              "target": "Package",
-              "version": "[5.2.0, )"
-            },
             "Microsoft.AspNet.WebApi.Client": {
               "target": "Package",
               "version": "[5.2.7, )"

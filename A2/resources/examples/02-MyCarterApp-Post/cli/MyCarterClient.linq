@@ -1,6 +1,13 @@
-//<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+<Query Kind="Program">
+  <NuGetReference>Microsoft.AspNet.WebApi.Client</NuGetReference>
+  <Namespace>System.Net</Namespace>
+  <Namespace>System.Net.Http</Namespace>
+  <Namespace>System.Net.Http.Headers</Namespace>
+  <Namespace>System.Threading.Tasks</Namespace>
+  <IncludeUncapsulator>false</IncludeUncapsulator>
+</Query>
+
 namespace MyCarterAppClient {
-    
     using System;
     using System.Collections.Generic;
     using System.Linq;
