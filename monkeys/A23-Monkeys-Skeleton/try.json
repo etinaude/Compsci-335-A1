@@ -1,2 +1,0 @@
-{"parallel": false, "monkeys": 10, "length": 3, 
- 	"crossover": 80, "mutation": 20 }
