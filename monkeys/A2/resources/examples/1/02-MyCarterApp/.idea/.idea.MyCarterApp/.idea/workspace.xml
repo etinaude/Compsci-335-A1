@@ -66,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602363587584</updated>
-      <workItem from="1602363607910" duration="4423000" />
+      <workItem from="1602363607910" duration="6591000" />
     </task>
     <servers />
   </component>
@@ -94,52 +94,52 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../../../../../monkey/monkey.cs</url>
-          <line>24</line>
+          <line>23</line>
           <properties documentPath="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\monkey\monkey.cs" initialLine="24">
             <startOffsets>
-              <option value="651" />
+              <option value="622" />
             </startOffsets>
             <endOffsets>
-              <option value="652" />
+              <option value="623" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../../../../../monkey/monkey.cs</url>
-          <line>57</line>
+          <line>65</line>
           <properties documentPath="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\monkey\monkey.cs" initialLine="51">
             <startOffsets>
-              <option value="1943" />
+              <option value="2118" />
             </startOffsets>
             <endOffsets>
-              <option value="1944" />
+              <option value="2119" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../../../../../monkey/monkey.cs</url>
-          <line>63</line>
+          <line>71</line>
           <properties documentPath="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\monkey\monkey.cs" initialLine="57">
             <startOffsets>
-              <option value="2093" />
+              <option value="2268" />
             </startOffsets>
             <endOffsets>
-              <option value="2094" />
+              <option value="2269" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../../../../../monkey/monkey.cs</url>
-          <line>71</line>
+          <line>79</line>
           <properties documentPath="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\monkey\monkey.cs" initialLine="65">
             <startOffsets>
-              <option value="2349" />
+              <option value="2524" />
             </startOffsets>
             <endOffsets>
-              <option value="2350" />
+              <option value="2525" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="6" />
