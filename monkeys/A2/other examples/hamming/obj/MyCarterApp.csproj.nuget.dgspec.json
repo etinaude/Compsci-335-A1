@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\hamming\\MyCarterApp.csproj": {}
+    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\other examples\\hamming\\MyCarterApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\hamming\\MyCarterApp.csproj": {
+    "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\other examples\\hamming\\MyCarterApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\hamming\\MyCarterApp.csproj",
+        "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\other examples\\hamming\\MyCarterApp.csproj",
         "projectName": "MyCarterApp",
-        "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\hamming\\MyCarterApp.csproj",
+        "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\other examples\\hamming\\MyCarterApp.csproj",
         "packagesPath": "C:\\Users\\etina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\A2\\other examples\\hamming\\obj\\",
+        "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\other examples\\hamming\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -44,6 +44,10 @@
             "Carter": {
               "target": "Package",
               "version": "[5.2.0, )"
+            },
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
             }
           },
           "imports": [
