@@ -149,15 +149,6 @@ namespace Monkeys {
          }
         
         async void GeneticAlgorithm (TryRequest treq) {
-            //WriteLine ($"..... GeneticAlgorithm {treq}");
-            //await Task.Delay (0);
-            
-            // just an ad-hoc PR test - you will remove this
-            // await ProportionalRandomTest ();
-            
-            // YOU CODE GOES HERE
-            // FOLLOW THE GIVEN PSEUDOCODE
-
             var length = treq.length;
             var parallel = treq.parallel;
             var monkeys = treq.monkeys;
@@ -170,7 +161,7 @@ namespace Monkeys {
             char[] chars = new char[length];
             List<string> post = new List<string>();
             string bestStr = "";
-            
+            var count = 0;
             //create start genome
             for (int i = 0; i < monkeys; i++)
             {
@@ -185,20 +176,16 @@ namespace Monkeys {
 
             WriteLine ($"..... POST length {length}");
 
-            for (var a = 0; a < 200; a++)
+            while(true)
             {
+                count++;
                 //reset postPost
                 List<string> PostPost = new List<string>();
                 //debugging
                 /*
-                if (a % 10 == 0)
-                {
-                    WriteLine(a);
-                    for (int n = 0; n < post.Count; n++)
-                    {
-                        WriteLine($"Str - {post[n]}");
-                    }
-                }//*/
+                 * 
+                 
+                //*/
                 
                 //Send content
                 var content = new StringContent(JsonSerializer.Serialize(post), System.Text.Encoding.UTF8,
@@ -219,6 +206,11 @@ namespace Monkeys {
                         best = ress[i];
                         bestStr = post[i];
                         WriteLine($" BEST {post[i]}");
+                        var top = new TopRequest(8081,count,best, bestStr);
+                        var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
+                            "application/json");
+                        var resp = await client.PostAsync("http://localhost:8101/top", topcont);
+
 
                     }
                 }
@@ -227,14 +219,12 @@ namespace Monkeys {
                 //EVOLVE!
                 for (var i = 0; i < monkeys / 2; i++)
                 {
-                    //WriteLine(post[ProportionalRandom(ress.ToArray(), ress.Sum())]);
-                    //var w = ress.Select(a => length-a+1).ToArray();
                     var w = ress.ToArray();
                     var p1 = post[ProportionalRandom(w, ress.Sum())];
                     var p2 = post[ProportionalRandom(w, ress.Sum())];
                     var c1 = "";
                     var c2 = "";
-                    if (NextInt(99, 100) < crossover)
+                    if (NextInt(0, 100) < crossover)
                     {
                         //WriteLine("C1");
                         var Index = NextInt(0, p1.Length - 1);
@@ -243,25 +233,20 @@ namespace Monkeys {
                     }
                     else
                     {
-                        //WriteLine("C2");
                         c1 = p1;
                         c2 = p2;
                     }
 
                     if (NextInt(0, 100) < mutation)
                     {
-                        //WriteLine($"C start {c1}");
                         var item = NextInt(0, c1.Length - 1);
                         StringBuilder strBuilder = new System.Text.StringBuilder(c1);
                         strBuilder[item] = Convert.ToChar(NextInt(32, 126));;
                         c1=strBuilder.ToString();
-                        //WriteLine($"C   end {c1}");
                     }
 
                     if (NextInt(0, 100) < mutation)
                     {
-                        //WriteLine("B2");
-                        
                         var item = NextInt(0, c2.Length - 1);
                         StringBuilder strBuilder = new System.Text.StringBuilder(c2);
                         strBuilder[item] = Convert.ToChar(NextInt(32, 126));;
@@ -286,23 +271,6 @@ namespace Monkeys {
             
             
             return;
-            /*
-            var id = treq.id;
-            var monkeys = treq.monkeys;
-            if (monkeys % 2 != 0) monkeys += 1;
-            var length = treq.length;
-            var crossover = treq.crossover / 100.0 ;
-            var mutation = treq.mutation / 100.0;
-            var limit = treq.limit;
-            if (limit == 0) limit = 1000;
-
-            var topscore = int.MaxValue;
-            
-            // ...
-                        
-            for (int loop = 0; loop < limit; loop ++) {
-                // ...
-            }*/
         }
         async Task ReceiveClientTarget (TargetRequest t) {  // Simulate the POST /target function -- Fitness stuff, shouldn't remain here
             WriteLine ($"..... receive target {t}");
@@ -367,6 +335,13 @@ namespace Monkeys {
         }
     }
     public class TopRequest {
+        public TopRequest(int ID, int Loop, int Score, string Genome)
+        {
+            id = ID;
+            loop = Loop;
+            score = Score;
+            genome = Genome;
+        }
         public int id { get; set; }
         public int loop { get; set; }
         public int score { get; set; }
@@ -388,12 +363,6 @@ namespace Monkeys {
         public override string ToString () {
             return $"{{{id}, {scores.Count}}}";
         }  
-    }
-    public class jso {
-        public int number { get; set; }
-        public override string ToString () {
-            return $"({number})";
-        }
     }
 }
 
