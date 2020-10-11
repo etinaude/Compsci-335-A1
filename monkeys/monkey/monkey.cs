@@ -197,6 +197,12 @@ namespace Monkeys {
                 {
                     if (0 == ress[i])
                     {
+                        best = ress[i];
+                        bestStr = post[i];
+                        var top = new TopRequest(8081,count,best, bestStr);
+                        var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
+                            "application/json");
+                        var resp = await client.PostAsync("http://localhost:8101/top", topcont);
                         WriteLine($" DONE {post[i]}");
                         return;
                     }

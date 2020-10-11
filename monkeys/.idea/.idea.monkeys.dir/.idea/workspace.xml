@@ -39,6 +39,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/fitness/Fitness.cs" />
         <option value="$PROJECT_DIR$/monkey/monkey.cs" />
       </list>
     </option>
@@ -63,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602407961431</updated>
-      <workItem from="1602407972420" duration="12964000" />
+      <workItem from="1602407972420" duration="14415000" />
     </task>
     <servers />
   </component>
@@ -85,5 +86,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Client/Client.cs</url>
+          <line>26</line>
+          <properties documentPath="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\Client\Client.cs" initialLine="26">
+            <startOffsets>
+              <option value="807" />
+            </startOffsets>
+            <endOffsets>
+              <option value="808" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
