@@ -35,7 +35,7 @@ namespace Fitness {
                 }) .ToList ();
                 
                 var min = scores .Min ();
-                WriteLine ($"..... min={min}");
+                //WriteLine ($"..... min={min}");
                 
                 await res.AsJson (scores);
                 return;
