@@ -18,7 +18,6 @@ namespace Monkeys {
     public class HomeModule : CarterModule {
         
         HttpClient client = new HttpClient();
-        
         private static Random _random = new Random (1);
         public static int best { get; set; } = 999999;
         public HomeModule () {
@@ -28,7 +27,6 @@ namespace Monkeys {
                 await res.WriteAsync ("Hello from Carter!");
             });
             
-
              Post ("/try", async (req, res) => { 
                 var client = new HttpClient();
                 var re = await req.Bind<TryRequest> ();
@@ -47,51 +45,7 @@ namespace Monkeys {
                 return _random.Next (a, b);
             }
         }
-        string target = ""; 
-        async Task<AssessResponse> PostFitnessAssess (AssessRequest areq) {
-            // fake Fitness post request&response
-            // replace this code by actual POST /assess request&response
-            // var client = new HttpClient (); 
-            // ...
-            
-            await Task .Delay (0);
-            
-            var scores = areq .genomes .Select ( g => {
-                var len = Math.Min (target.Length, g.Length);
-                var h = Enumerable .Range (0, len)  
-                    .Sum (i => Convert.ToInt32 (target[i] != g[i]));
-                h = h + Math.Max (target.Length, g.Length) - len;
-                return h;
-            }) .ToList ();
-            
-            return new AssessResponse { id = areq.id, scores = scores };
-        }
-        async Task PostClientTop (TopRequest top) {
-            // replace this by actual POST /top request
-            // var client = new HttpClient (); 
-            // ...
-            Post ("/top", async (req, res) => { 
-                var client = new HttpClient();
-                var re = await req.Bind<TopRequest> ();
-
-                var id = re.id;
-                var loop = re.loop;
-                var score = re.score;
-                var genome = re.genome;
-
-
-                WriteLine ($"..... POST top ");
-                
-                //WriteLine ($" POST res {ress[0]}");
-                
-                await res.AsJson ("WORKING!");
-                return;
-            });
-            
-            await Task .Delay (0);
-            
-            WriteLine ($"===== {top.loop} {top.score}\r\n{top.genome}");
-        }
+        string target = "";         
         int ProportionalRandom (int[] weights, int sum) {
             var max = 0;
             foreach (var e in weights)
@@ -116,7 +70,6 @@ namespace Monkeys {
         async void GeneticAlgorithm (TryRequest treq) {
             var length = treq.length;
             var monkeys = treq.monkeys;
-            var count = 0;
             List<string> post = new List<string>();
             string bestStr = "";
             if (monkeys % 2 != 0) {monkeys += 1;}
@@ -130,7 +83,6 @@ namespace Monkeys {
                 var response = await client.PostAsync("http://localhost:8091/assess", content);
                 var l = await response.Content.ReadAsAsync<List<int>>();
                 length = l[0];
-                //length = ress[0];
             }
             
             //create start genome
@@ -146,10 +98,8 @@ namespace Monkeys {
             }
             WriteLine ($"..... POST length {length}");
 
-            while(true)
+            for(var count =0; count<treq.limit;count++)
             {
-                count++;
-                if(count>treq.limit){break;}
                 //Send content
                 var content = new StringContent(JsonSerializer.Serialize(post), System.Text.Encoding.UTF8,
                     "application/json");
@@ -157,33 +107,37 @@ namespace Monkeys {
 
                 var ress = await response.Content.ReadAsAsync<List<int>>();
                 
-                for (var i = 0; i < ress.Count; i++)
+               //find best
+                var min = ress.Min();
+                var tempBestString = post[ress.IndexOf(min)];
+                var tempBest = min;
+
+
+                if (0 == tempBest)
                 {
-                    if (0 == ress[i])
-                    {
-                        best = ress[i];
-                        bestStr = post[i];
-                        var top = new TopRequest(8081,count,best, bestStr);
-                        var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
-                            "application/json");
-                        var resp = await client.PostAsync($"http://localhost:{treq.id}/top", topcont);
-                        WriteLine($" DONE {post[i]}");
-                        return;
-                    }
-
-                    if (ress[i] < best)
-                    {
-                        best = ress[i];
-                        bestStr = post[i];
-                        WriteLine($" BEST {post[i]}");
-                        var top = new TopRequest(8081,count,best, bestStr);
-                        var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
-                            "application/json");
-                        var resp = await client.PostAsync("http://localhost:8101/top", topcont);
-
-
-                    }
+                    best = tempBest;
+                    bestStr = tempBestString;
+                    var top = new TopRequest(8081,count,best, bestStr);
+                    var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
+                        "application/json");
+                    var resp = await client.PostAsync($"http://localhost:{treq.id}/top", topcont);
+                    WriteLine($" DONE {tempBestString}");
+                    return;
                 }
+                if (tempBest < best)
+                {
+                    best = tempBest;
+                    bestStr = tempBestString;
+                    WriteLine($" BEST {tempBestString}");
+                    var top = new TopRequest(8081,count,best, bestStr);
+                    var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
+                        "application/json");
+                    var resp = await client.PostAsync("http://localhost:8101/top", topcont);
+
+
+                }
+
+
 
                 //if its parallel
                 if (treq.parallel)
