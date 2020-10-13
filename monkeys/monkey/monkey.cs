@@ -115,12 +115,7 @@ namespace Monkeys {
         }
         async void GeneticAlgorithm (TryRequest treq) {
             var length = treq.length;
-            var parallel = treq.parallel;
             var monkeys = treq.monkeys;
-            var crossover = treq.crossover;
-            var limit = treq.limit;
-            var id = treq.id;
-            var mutation = treq.mutation;
             var count = 0;
             List<string> post = new List<string>();
             string bestStr = "";
@@ -154,6 +149,7 @@ namespace Monkeys {
             while(true)
             {
                 count++;
+                if(count>treq.limit){break;}
                 //Send content
                 var content = new StringContent(JsonSerializer.Serialize(post), System.Text.Encoding.UTF8,
                     "application/json");
@@ -170,7 +166,7 @@ namespace Monkeys {
                         var top = new TopRequest(8081,count,best, bestStr);
                         var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
                             "application/json");
-                        var resp = await client.PostAsync($"http://localhost:{id}/top", topcont);
+                        var resp = await client.PostAsync($"http://localhost:{treq.id}/top", topcont);
                         WriteLine($" DONE {post[i]}");
                         return;
                     }
@@ -189,7 +185,8 @@ namespace Monkeys {
                     }
                 }
 
-                if (parallel)
+                //if its parallel
+                if (treq.parallel)
                 {
                     post = ParallelEnumerable.Range(1, monkeys / 2)
                         .SelectMany<int, string>(i =>
@@ -200,7 +197,7 @@ namespace Monkeys {
                             var c1 = "";
                             var c2 = "";
                             //cross over chance
-                            if (NextInt(0, 100) < crossover)
+                            if (NextInt(0, 100) < treq.crossover)
                             {
                                 var Index = NextInt(0, p1.Length - 1);
                                 c1 = p1.Substring(0, Index) + p2.Substring(Index, p2.Length - Index);
@@ -212,7 +209,7 @@ namespace Monkeys {
                                 c2 = p2;
                             }
 
-                            if (NextInt(0, 100) < mutation)
+                            if (NextInt(0, 100) < treq.mutation)
                             {
                                 var item = NextInt(0, c1.Length);
                                 StringBuilder strBuilder = new System.Text.StringBuilder(c1);
@@ -221,7 +218,7 @@ namespace Monkeys {
                                 c1 = strBuilder.ToString();
                             }
 
-                            if (NextInt(0, 100) < mutation)
+                            if (NextInt(0, 100) < treq.mutation)
                             {
                                 var item = NextInt(0, c2.Length);
                                 StringBuilder strBuilder = new System.Text.StringBuilder(c2);
@@ -244,7 +241,7 @@ namespace Monkeys {
                             var c1 = "";
                             var c2 = "";
                             //cross over chance
-                            if (NextInt(0, 100) < crossover)
+                            if (NextInt(0, 100) < treq.crossover)
                             {
                                 var Index = NextInt(0, p1.Length - 1);
                                 c1 = p1.Substring(0, Index) + p2.Substring(Index, p2.Length - Index);
@@ -256,7 +253,7 @@ namespace Monkeys {
                                 c2 = p2;
                             }
 
-                            if (NextInt(0, 100) < mutation)
+                            if (NextInt(0, 100) < treq.mutation)
                             {
                                 var item = NextInt(0, c1.Length);
                                 StringBuilder strBuilder = new System.Text.StringBuilder(c1);
@@ -265,7 +262,7 @@ namespace Monkeys {
                                 c1 = strBuilder.ToString();
                             }
 
-                            if (NextInt(0, 100) < mutation)
+                            if (NextInt(0, 100) < treq.mutation)
                             {
                                 var item = NextInt(0, c2.Length);
                                 StringBuilder strBuilder = new System.Text.StringBuilder(c2);
