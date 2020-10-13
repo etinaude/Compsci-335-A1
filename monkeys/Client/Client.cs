@@ -1,30 +1,35 @@
 namespace Client {
     using Carter;
-    using Microsoft.AspNetCore.Http;
     using Carter.ModelBinding;
     using Carter.Request;
     using Carter.Response;
-    using System.Linq;
-    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Http;
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Text.Json;
+    using System.Threading.Tasks;
     using static System.Console;
     
     public class HomeModule : CarterModule {
+        static async void Exit () {
+            await Task.Delay (1000);
+            Environment.Exit (0);
+        }
+        
         public HomeModule () {
             Post ("/top", async (req, res) => {
-                var t = await req.Bind<Top> ();
-                WriteLine ($"..... POST /top {t.score}");
-                WriteLine ($"{t.genome}");
-                WriteLine ($"");
+                var top = await req.Bind<TopRequest> ();
+                WriteLine ($"===== {top.loop} {top.score}\r\n{top.genome}");
+                if (top.score == 0) Exit ();
                 return;
             });
         }
         
-        public static async void PostTarget (Target t) {
+        public static async void PostTarget (TargetRequest t) {
             var client = new HttpClient ();
             
             client.BaseAddress = new Uri ("http://localhost:8091/");
@@ -32,12 +37,13 @@ namespace Client {
             client.DefaultRequestHeaders.Accept.Add (
                 new MediaTypeWithQualityHeaderValue ("application/json"));
                 
+            WriteLine ($"..... POST /target send {t}");
             var hrm = await client.PostAsJsonAsync ("/target", t);
             hrm.EnsureSuccessStatusCode ();
             return;
         }
 
-        public static async void PostTry (Try t) {
+        public static async void PostTry (TryRequest t) {
             var client = new HttpClient ();
             
             client.BaseAddress = new Uri ("http://localhost:8081/");
@@ -45,20 +51,30 @@ namespace Client {
             client.DefaultRequestHeaders.Accept.Add (
                 new MediaTypeWithQualityHeaderValue ("application/json"));
                 
+            WriteLine ($"..... POST /try send {t}");
             var hrm = await client.PostAsJsonAsync ("/try", t);
             hrm.EnsureSuccessStatusCode ();
             return;
         }
 
-        static HomeModule () {
-            var line1 = Console.ReadLine();
-            var line2 = Console.ReadLine();
+        //static HomeModule () {
+            //Start ();
+        //}
+        
+        public static async void Start (int port) {
+            await Task.Delay (1000);
             
-            var targetjson = string.IsNullOrEmpty (line1?.Trim())? "{\"parallel\":true, \"target\": \"abc\"}": line1;
-            var tryjson = string.IsNullOrEmpty (line2?.Trim())? "{\"parallel\": true, \"monkeys\": 10, \"length\": 3, \"crossover\": 80, \"mutation\": 20 }": line2;
+            var line1 = Console.ReadLine() ?.Trim();
+            var line2 = Console.ReadLine() ?.Trim();
+            
+            var targetjson = string.IsNullOrEmpty (line1)? "{\"id\":0, \"target\": \"abc\"}": line1;
+            var tryjson = string.IsNullOrEmpty (line2)? "{\"id\": 0, \"parallel\": true, \"monkeys\": 10, \"length\": 3, \"crossover\": 80, \"mutation\": 20 }": line2;
                             
-            var target = JsonSerializer.Deserialize<Target> (targetjson);
-            var trie = JsonSerializer.Deserialize<Try> (tryjson);
+            var target = JsonSerializer.Deserialize<TargetRequest> (targetjson);
+            var trie = JsonSerializer.Deserialize<TryRequest> (tryjson);
+            
+            target.id = port;
+            trie.id = port;
             
             Console.WriteLine ($"..... target: {target}");
             Console.WriteLine ($"..... try: {trie}");
@@ -68,32 +84,53 @@ namespace Client {
         }    
     }
     
-    public class Target {
+    public class TargetRequest {
+        public int id { get; set; }
         public bool parallel { get; set; }
         public string target { get; set; }
         public override string ToString () {
-            return $"{{{parallel}, {target}}}";
+            return $"{{{id}, {parallel}, \"{target}\"}}";
         }  
     }    
-    
-    public class Try {
+
+    public class TryRequest {
+        public int id { get; set; }
         public bool parallel { get; set; }
         public int monkeys { get; set; }
         public int length { get; set; }
         public int crossover { get; set; }
         public int mutation { get; set; }
+        public int limit { get; set; }
         public override string ToString () {
-            return $"{{{parallel}, {monkeys}, {length}, {crossover}, {mutation}}}";
+            return $"{{{id}, {parallel}, {monkeys}, {length}, {crossover}, {mutation}, {limit}}}";
         }
     }
     
-    public class Top {
+    public class TopRequest {
+        public int id { get; set; }
+        public int loop { get; set; }
         public int score { get; set; }
         public string genome { get; set; }
         public override string ToString () {
-            return $"{{{score}, {genome}}}";
+            return $"{{{id}, {loop}, {score}, {genome}}}";
         }  
     }    
+    
+    // public class AssessRequest {
+        // public int id { get; set; }
+        // public List<string> genomes { get; set; }
+        // public override string ToString () {
+            // return $"{{{id}, {genomes.Count}}}";
+        // }  
+    // }
+    
+    // public class AssessResponse {
+        // public int id { get; set; }
+        // public List<int> scores { get; set; }
+        // public override string ToString () {
+            // return $"{{{id}, {scores.Count}}}";
+        // }  
+    // }
 }
 
 namespace Client {
@@ -122,8 +159,12 @@ namespace Client {
         public static void Main (string[] args) {
 //          var host = Host.CreateDefaultBuilder (args)
 //              .ConfigureWebHostDefaults (webBuilder => webBuilder.UseStartup<Startup>())
-
-            var urls = new[] {"http://localhost:8101"};
+            
+            var port = 0;
+            if (args.Length > 0 && int.TryParse (args[0], out port)) { ; }
+            else { port = 8101; }
+            
+            var urls = new[] {$"http://localhost:{port}"};
             
             var host = Host.CreateDefaultBuilder (args)
             
@@ -142,7 +183,9 @@ namespace Client {
                 .Build ();
             
             
-            System.Console.WriteLine ($"..... starting on {string.Join (", ", urls)}");            
+            System.Console.WriteLine ($"..... starting on {string.Join (", ", urls)}");
+
+            HomeModule.Start (port);
             host.Run ();
         }
     }
