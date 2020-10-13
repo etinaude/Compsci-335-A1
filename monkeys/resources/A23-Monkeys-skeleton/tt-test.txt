@@ -1,2 +1,2 @@
-{"id":8101, "parallel":false, "target": "qwertyuiopasdfghjklzxcvbnm"}
+{"id":8101, "parallel":false, "target": "qwertyuiopas"}
 {"id":8101, "parallel": true, "monkeys": 200, "length": 0, "crossover": 90, "mutation": 2, "limit": 100000 }
