@@ -21,8 +21,6 @@ namespace Monkeys {
         
         private static Random _random = new Random (1);
         public static int best { get; set; } = 999999;
-
-
         public HomeModule () {
             Random random = new Random();
             Get ("/", async (req, res) => {
@@ -35,25 +33,21 @@ namespace Monkeys {
                 var client = new HttpClient();
                 var re = await req.Bind<TryRequest> ();
                 GeneticAlgorithm(re);
-                await res.AsJson ("WORKING!");
+                //await res.AsJson ("WORKING!");
                 return;
             });
         }
-        
         private double NextDouble () {
             lock (this) {
                 return _random.NextDouble ();
             }
         }
-        
         private int NextInt (int a, int b) {
             lock (this) {
                 return _random.Next (a, b);
             }
         }
-
-        string target = "";  // simplified Fitness stuff, shouldn't be here
-        
+        string target = ""; 
         async Task<AssessResponse> PostFitnessAssess (AssessRequest areq) {
             // fake Fitness post request&response
             // replace this code by actual POST /assess request&response
@@ -72,7 +66,6 @@ namespace Monkeys {
             
             return new AssessResponse { id = areq.id, scores = scores };
         }
-        
         async Task PostClientTop (TopRequest top) {
             // replace this by actual POST /top request
             // var client = new HttpClient (); 
@@ -99,7 +92,6 @@ namespace Monkeys {
             
             WriteLine ($"===== {top.loop} {top.score}\r\n{top.genome}");
         }
-        
         int ProportionalRandom (int[] weights, int sum) {
             var max = 0;
             foreach (var e in weights)
@@ -121,78 +113,54 @@ namespace Monkeys {
             WriteLine ($"***** Unexpected ProportionalRandom Error");
             return 0;
         }
-        
-        async Task ProportionalRandomTest () {
-            WriteLine ($"..... ProportionalRandomTest");
-            await Task.Delay (0);
-            
-            var weights = new[] { 1, 6, 1, 3, };
-            var histo = new int[weights.Length];
-            var sum = weights .Sum ();
-            
-            var n = 10000;
-            for (var k = 0; k < n; k ++) {
-                var p = ProportionalRandom (weights, sum);
-                histo[p] += 1;
-            }                
-            
-            var sum2 = (double) sum;
-            var n2 = (double) n;
-            
-            var weights2 = weights.Select (w => (w/sum2).ToString("F2"));
-            var histo2 = histo.Select (h => (h/n2).ToString("F2"));
-            
-            WriteLine ($"..... w: {string.Join(", ", weights)}");
-            WriteLine ($"..... h: {string.Join(", ", histo)}");
-            WriteLine ($"..... w: {string.Join(", ", weights2)}");
-            WriteLine ($"..... w: {string.Join(", ", histo2)}");
-         }
-        
         async void GeneticAlgorithm (TryRequest treq) {
             var length = treq.length;
             var parallel = treq.parallel;
             var monkeys = treq.monkeys;
-            if (monkeys % 2 != 0) monkeys += 1;
             var crossover = treq.crossover;
             var limit = treq.limit;
             var id = treq.id;
-            var target = treq.target;
             var mutation = treq.mutation;
-            char[] chars = new char[length];
+            var count = 0;
             List<string> post = new List<string>();
             string bestStr = "";
-            var count = 0;
+            if (monkeys % 2 != 0) {monkeys += 1;}
+            
+            //discover length
+            if (length == 0)
+            {
+                List<string> test = new List<string>() {""};
+                var content = new StringContent(JsonSerializer.Serialize(test), System.Text.Encoding.UTF8,
+                    "application/json");
+                var response = await client.PostAsync("http://localhost:8091/assess", content);
+                var l = await response.Content.ReadAsAsync<List<int>>();
+                length = l[0];
+                //length = ress[0];
+            }
+            
             //create start genome
             for (int i = 0; i < monkeys; i++)
             {
+                char[] chars = new char[length];
                 for (int j = 0; j < length; j++)
                 {
                     chars[j] = Convert.ToChar(NextInt(32, 126));
                 }
                 string charsStr = new string(chars);
-                //WriteLine(charsStr);
                 post.Add(charsStr);
             }
-
             WriteLine ($"..... POST length {length}");
 
             while(true)
             {
                 count++;
-                //reset postPost
-                List<string> PostPost = new List<string>();
-                //debugging
-                /*
-                 * 
-                 
-                //*/
-                
                 //Send content
                 var content = new StringContent(JsonSerializer.Serialize(post), System.Text.Encoding.UTF8,
                     "application/json");
                 var response = await client.PostAsync("http://localhost:8091/assess", content);
 
                 var ress = await response.Content.ReadAsAsync<List<int>>();
+                
                 for (var i = 0; i < ress.Count; i++)
                 {
                     if (0 == ress[i])
@@ -202,7 +170,7 @@ namespace Monkeys {
                         var top = new TopRequest(8081,count,best, bestStr);
                         var topcont = new StringContent(JsonSerializer.Serialize(top), System.Text.Encoding.UTF8,
                             "application/json");
-                        var resp = await client.PostAsync("http://localhost:8101/top", topcont);
+                        var resp = await client.PostAsync($"http://localhost:{id}/top", topcont);
                         WriteLine($" DONE {post[i]}");
                         return;
                     }
@@ -221,62 +189,95 @@ namespace Monkeys {
                     }
                 }
 
-                //*********************************************************************
-                //EVOLVE!
-                for (var i = 0; i < monkeys / 2; i++)
+                if (parallel)
                 {
-                    var w = ress.ToArray();
-                    var p1 = post[ProportionalRandom(w, ress.Sum())];
-                    var p2 = post[ProportionalRandom(w, ress.Sum())];
-                    var c1 = "";
-                    var c2 = "";
-                    if (NextInt(0, 100) < crossover)
-                    {
-                        //WriteLine("C1");
-                        var Index = NextInt(0, p1.Length - 1);
-                        c1 = p1.Substring(0, Index) + p2.Substring(Index, p2.Length - Index);
-                        c2 = p2.Substring(0, Index) + p1.Substring(Index, p1.Length - Index);
-                    }
-                    else
-                    {
-                        c1 = p1;
-                        c2 = p2;
-                    }
+                    post = ParallelEnumerable.Range(1, monkeys / 2)
+                        .SelectMany<int, string>(i =>
+                        {
 
-                    if (NextInt(0, 100) < mutation)
-                    {
-                        var item = NextInt(0, c1.Length - 1);
-                        StringBuilder strBuilder = new System.Text.StringBuilder(c1);
-                        strBuilder[item] = Convert.ToChar(NextInt(32, 126));;
-                        c1=strBuilder.ToString();
-                    }
+                            var p1 = post[ProportionalRandom(ress.ToArray(), ress.Sum())];
+                            var p2 = post[ProportionalRandom(ress.ToArray(), ress.Sum())];
+                            var c1 = "";
+                            var c2 = "";
+                            //cross over chance
+                            if (NextInt(0, 100) < crossover)
+                            {
+                                var Index = NextInt(0, p1.Length - 1);
+                                c1 = p1.Substring(0, Index) + p2.Substring(Index, p2.Length - Index);
+                                c2 = p2.Substring(0, Index) + p1.Substring(Index, p1.Length - Index);
+                            }
+                            else
+                            {
+                                c1 = p1;
+                                c2 = p2;
+                            }
 
-                    if (NextInt(0, 100) < mutation)
-                    {
-                        var item = NextInt(0, c2.Length - 1);
-                        StringBuilder strBuilder = new System.Text.StringBuilder(c2);
-                        strBuilder[item] = Convert.ToChar(NextInt(32, 126));;
-                        c2=strBuilder.ToString();
-                    }
+                            if (NextInt(0, 100) < mutation)
+                            {
+                                var item = NextInt(0, c1.Length);
+                                StringBuilder strBuilder = new System.Text.StringBuilder(c1);
+                                strBuilder[item] = Convert.ToChar(NextInt(32, 126));
+                                ;
+                                c1 = strBuilder.ToString();
+                            }
 
-                    PostPost.Add(c1);
-                    PostPost.Add(c2);
+                            if (NextInt(0, 100) < mutation)
+                            {
+                                var item = NextInt(0, c2.Length);
+                                StringBuilder strBuilder = new System.Text.StringBuilder(c2);
+                                strBuilder[item] = Convert.ToChar(NextInt(32, 126));
+                                ;
+                                c2 = strBuilder.ToString();
+                            }
+
+                            return new[] {c1, c2};
+                        }).ToList();
                 }
+                else
+                {
+                    post = Enumerable.Range(1, monkeys / 2)
+                        .SelectMany<int, string>(i =>
+                        {
 
-                post = PostPost;
+                            var p1 = post[ProportionalRandom(ress.ToArray(), ress.Sum())];
+                            var p2 = post[ProportionalRandom(ress.ToArray(), ress.Sum())];
+                            var c1 = "";
+                            var c2 = "";
+                            //cross over chance
+                            if (NextInt(0, 100) < crossover)
+                            {
+                                var Index = NextInt(0, p1.Length - 1);
+                                c1 = p1.Substring(0, Index) + p2.Substring(Index, p2.Length - Index);
+                                c2 = p2.Substring(0, Index) + p1.Substring(Index, p1.Length - Index);
+                            }
+                            else
+                            {
+                                c1 = p1;
+                                c2 = p2;
+                            }
+
+                            if (NextInt(0, 100) < mutation)
+                            {
+                                var item = NextInt(0, c1.Length);
+                                StringBuilder strBuilder = new System.Text.StringBuilder(c1);
+                                strBuilder[item] = Convert.ToChar(NextInt(32, 126));
+                                ;
+                                c1 = strBuilder.ToString();
+                            }
+
+                            if (NextInt(0, 100) < mutation)
+                            {
+                                var item = NextInt(0, c2.Length);
+                                StringBuilder strBuilder = new System.Text.StringBuilder(c2);
+                                strBuilder[item] = Convert.ToChar(NextInt(32, 126));
+                                ;
+                                c2 = strBuilder.ToString();
+                            }
+
+                            return new[] {c1, c2};
+                        }).ToList();
+                }
             }
-            //************************************************************************
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            return;
         }
         async Task ReceiveClientTarget (TargetRequest t) {  // Simulate the POST /target function -- Fitness stuff, shouldn't remain here
             WriteLine ($"..... receive target {t}");
@@ -333,9 +334,7 @@ namespace Monkeys {
         public int crossover { get; set; }
         public int mutation { get; set; }
         public int limit { get; set; }
-
-        public string target { get; set; }
-
+        
         public override string ToString () {
             return $"{{{id}, {parallel}, {monkeys}, {length}, {crossover}, {mutation}, {limit}}}";
         }
