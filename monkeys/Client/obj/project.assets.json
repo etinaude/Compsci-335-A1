@@ -4648,11 +4648,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\Client\\Client.csproj",
+      "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\A23-Monkeys-skeleton\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\Client\\Client.csproj",
+      "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\A23-Monkeys-skeleton\\Client.csproj",
       "packagesPath": "C:\\Users\\etina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\Client\\obj\\",
+      "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\A23-Monkeys-skeleton\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

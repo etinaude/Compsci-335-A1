@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UEKM/S8cYTgmwWNS2AcuD92q+gbx1V6GxI2vQbNfHsI6PCFMb7efrhrbV+IW44TuNfQR/FP2yV9WbNrCGrnTMg==",
+  "dgSpecHash": "1H2c6MTr+IPDygNxsVgc0nHgFVMBNlMI6GZeLlK8Bu7aaT4mO2Mgb2F2Yd5hbJ1zZJy12ugm0i4uU4XnKzX1fQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\Client\\Client.csproj",
+  "projectFilePath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\A23-Monkeys-skeleton\\Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\etina\\.nuget\\packages\\carter\\5.2.0\\carter.5.2.0.nupkg.sha512",
     "C:\\Users\\etina\\.nuget\\packages\\fluentvalidation\\9.0.1\\fluentvalidation.9.0.1.nupkg.sha512",
