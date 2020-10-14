@@ -40,6 +40,12 @@ namespace Monkeys {
                 return _random.NextDouble ();
             }
         }
+         private string Nextstr (int length) {
+            lock (this) {
+                IEnumerable<char> chars = Enumerable.Range(0, length).Select(x => Convert.ToChar(NextInt(32, 126)));
+                return new string(chars.ToArray());
+            }
+        }
         private int NextInt (int a, int b) {
             lock (this) {
                 return _random.Next (a, b);
@@ -86,19 +92,17 @@ namespace Monkeys {
             }
             
             //create start genome
-            for (int i = 0; i < monkeys; i++)
-            {
-                char[] chars = new char[length];
-                for (int j = 0; j < length; j++)
-                {
-                    chars[j] = Convert.ToChar(NextInt(32, 126));
-                }
-                string charsStr = new string(chars);
-                post.Add(charsStr);
-            }
-            WriteLine ($"..... POST length {length}");
 
-            for(var count =0; count<treq.limit;count++)
+            IEnumerable<string> strings =
+                Enumerable.Repeat(
+                   Nextstr(length) , monkeys);
+
+            post = strings.ToList();
+
+            
+            
+            WriteLine ($"..... POST length {length}");
+            for(var count =0; count < treq.limit; count++)
             {
                 //Send content
                 var content = new StringContent(JsonSerializer.Serialize(post), System.Text.Encoding.UTF8,
