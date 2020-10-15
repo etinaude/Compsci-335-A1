@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Client\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Client\bin\Debug\netstandard2.1\wwwroot\" />
+</StaticWebAssets>

@@ -203,11 +203,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\resources\\examples\\1\\02-MyCarterApp\\MyCarterApp.csproj",
+      "projectUniqueName": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\old\\A2\\resources\\examples\\1\\02-MyCarterApp\\MyCarterApp.csproj",
       "projectName": "MyCarterApp",
-      "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\resources\\examples\\1\\02-MyCarterApp\\MyCarterApp.csproj",
+      "projectPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\old\\A2\\resources\\examples\\1\\02-MyCarterApp\\MyCarterApp.csproj",
       "packagesPath": "C:\\Users\\etina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\A2\\resources\\examples\\1\\02-MyCarterApp\\obj\\",
+      "outputPath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\old\\A2\\resources\\examples\\1\\02-MyCarterApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -253,9 +253,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
