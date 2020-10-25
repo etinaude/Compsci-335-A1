@@ -1,0 +1,3 @@
+Albums
+Take 3
+Select new (Title, Tracks.Count() as TracksCount)
