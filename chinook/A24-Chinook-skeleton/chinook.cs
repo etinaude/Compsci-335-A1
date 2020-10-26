@@ -55,7 +55,6 @@ namespace chinook {
                     default:
                         return seq.Select(st2);
                 }
-
             }  
             public IQueryable first(IQueryable seq, string st, int st2){
                 switch (st)
@@ -67,7 +66,6 @@ namespace chinook {
                     default:
                         return seq.Skip(st2);
                 }
-
             }  
        
         public string Main2 (ChinookContext db, TextReader inp) {
@@ -76,39 +74,32 @@ namespace chinook {
             
             data = inp.ReadLine();
             var strings = data.Split(new[] { ' ' }, 2);
+            IQueryable seq2;
             if(strings[0].Contains("Take") || strings[0].Contains("Skip")){
-                var seq2 = first(seq, strings[0], int.Parse(strings[1]));
-                while((data = inp.ReadLine()) != null)  
-                {   
-                    var strings2 = data.Split(new[] { ' ' }, 2);
-                    if(strings2[0].Contains("Take") || strings2[0].Contains("Skip")){
-                        seq2 = first(seq2, strings[0], int.Parse(strings[1]));
-                    }else{
-                        seq2 = first(seq2, strings[0], strings[1]);
-                    }
-                }
-                return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
+                seq2 = first(seq, strings[0], int.Parse(strings[1]));
             }else{
-                var seq2 = first(seq, strings[0], strings[1]);
-                while((data = inp.ReadLine()) != null)  
-                {   
-                    var strings2 = data.Split(new[] { ' ' }, 2);
-                    if(strings2[0].Contains("Take") || strings2[0].Contains("Skip")){
-                        seq2 = first(seq2, strings[0], int.Parse(strings[1]));
-                    }else{
-                        seq2 = first(seq2, strings[0], strings[1]);
-                    }
-                }
-                return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
+                seq2 = first(seq, strings[0], strings[1]);
             }
+            while((data = inp.ReadLine()) != null)  
+            {   
+                strings = data.Split(new[] { ' ' }, 2);
+                if(strings[0].Contains("Take") || strings[0].Contains("Skip")){
+                    seq2 = first(seq2, strings[0], int.Parse(strings[1]));
+                }else{
+                    seq2 = first(seq2, strings[0], strings[1]);
+                }
+            }
+            return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
+            
 
 
+            /*
             var seq3 = db.Artists
                 .OrderBy ("Name DESC")
                 .Where ("ArtistId % 10 == 0")
                 .Take (3)
                 .Select ("new (ArtistId, Name)");
-            
+            */
             //return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
         }        
 
