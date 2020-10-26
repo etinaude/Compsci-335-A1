@@ -43,30 +43,30 @@ namespace chinook {
 
         }  
        
-            public IQueryable first(IQueryable seq, string st, string st2){
-                switch (st)
-                {
-                    case "Select":
-                        return seq.Select(st2);
-                    case "Where":
-                        return seq.Where(st2);
-                    case "OrderBy":
-                        return seq.OrderBy(st2);
-                    default:
-                        return seq.Select(st2);
-                }
-            }  
-            public IQueryable first(IQueryable seq, string st, int st2){
-                switch (st)
-                {
-                    case "Skip":
-                        return seq.Skip(st2);
-                    case "Take":
-                        return seq.Take(st2);
-                    default:
-                        return seq.Skip(st2);
-                }
-            }  
+        public IQueryable first(IQueryable seq, string st, string st2){
+            switch (st)
+            {
+                case "Select":
+                    return seq.Select(st2);
+                case "Where":
+                    return seq.Where(st2);
+                case "OrderBy":
+                    return seq.OrderBy(st2);
+                default:
+                    return seq.Select(st2);
+            }
+        }  
+        public IQueryable first(IQueryable seq, string st, int st2){
+            switch (st)
+            {
+                case "Skip":
+                    return seq.Skip(st2);
+                case "Take":
+                    return seq.Take(st2);
+                default:
+                    return seq.Skip(st2);
+            }
+        }  
        
         public string Main2 (ChinookContext db, TextReader inp) {
             string data = inp.ReadLine();
