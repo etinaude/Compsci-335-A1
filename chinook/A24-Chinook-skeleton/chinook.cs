@@ -9,15 +9,107 @@ namespace chinook {
     using System .Threading .Tasks;
     using Microsoft .EntityFrameworkCore;
     using chinook .Models;
+    //using System.CodeDom.Compiler;
     
-    class Chinook {       
+    class Chinook {     
+        public IQueryable Type(ChinookContext db,string st){
+            switch (st)
+            {
+                case "Albums":
+                    return db.Albums;
+                case "Artists":
+                    return db.Artists;
+                case "Customers":
+                    return db.Customers;
+                case "Employees":
+                    return db.Employees;
+                case "Genres":
+                    return db.Genres;
+                case "InvoiceItems":
+                    return db.InvoiceItems;
+                case "Invoices":
+                    return db.Invoices;
+                case "MediaTypes":
+                    return db.MediaTypes;
+                case "PlaylistTrack":
+                    return db.PlaylistTrack;
+                case "Playlists":
+                    return db.Playlists;
+                case "Tracks":
+                    return db.Tracks;
+                default:
+                    return db.Albums;
+            }
+
+        }  
+       
+            public IQueryable first(IQueryable seq, string st, string st2){
+                switch (st)
+                {
+                    case "Select":
+                        return seq.Select(st2);
+                    case "Where":
+                        return seq.Where(st2);
+                    case "OrderBy":
+                        return seq.OrderBy(st2);
+                    default:
+                        return seq.Select(st2);
+                }
+
+            }  
+            public IQueryable first(IQueryable seq, string st, int st2){
+                switch (st)
+                {
+                    case "Skip":
+                        return seq.Skip(st2);
+                    case "Take":
+                        return seq.Take(st2);
+                    default:
+                        return seq.Skip(st2);
+                }
+
+            }  
+       
         public string Main2 (ChinookContext db, TextReader inp) {
-            var seq2 = db.Artists
+            string data = inp.ReadLine();
+            var seq = Type(db, data);
+            
+            data = inp.ReadLine();
+            var strings = data.Split(new[] { ' ' }, 2);
+            if(strings[0].Contains("Take") || strings[0].Contains("Skip")){
+                var seq2 = first(seq, strings[0], int.Parse(strings[1]));
+                while((data = inp.ReadLine()) != null)  
+                {   
+                    var strings2 = data.Split(new[] { ' ' }, 2);
+                    if(strings2[0].Contains("Take") || strings2[0].Contains("Skip")){
+                        seq2 = first(seq2, strings[0], int.Parse(strings[1]));
+                    }else{
+                        seq2 = first(seq2, strings[0], strings[1]);
+                    }
+                }
+                return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
+            }else{
+                var seq2 = first(seq, strings[0], strings[1]);
+                while((data = inp.ReadLine()) != null)  
+                {   
+                    var strings2 = data.Split(new[] { ' ' }, 2);
+                    if(strings2[0].Contains("Take") || strings2[0].Contains("Skip")){
+                        seq2 = first(seq2, strings[0], int.Parse(strings[1]));
+                    }else{
+                        seq2 = first(seq2, strings[0], strings[1]);
+                    }
+                }
+                return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
+            }
+
+
+            var seq3 = db.Artists
                 .OrderBy ("Name DESC")
                 .Where ("ArtistId % 10 == 0")
                 .Take (3)
                 .Select ("new (ArtistId, Name)");
-            return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
+            
+            //return JsonSerializer.Serialize (seq2 .AsEnumerable () .ToList ());
         }        
 
 
