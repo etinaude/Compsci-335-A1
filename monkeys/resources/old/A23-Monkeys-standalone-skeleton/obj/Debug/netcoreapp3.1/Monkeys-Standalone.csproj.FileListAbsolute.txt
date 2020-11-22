@@ -1,0 +1,13 @@
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\bin\Debug\netcoreapp3.1\Monkeys-Standalone.exe
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\bin\Debug\netcoreapp3.1\Monkeys-Standalone.deps.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\bin\Debug\netcoreapp3.1\Monkeys-Standalone.runtimeconfig.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\bin\Debug\netcoreapp3.1\Monkeys-Standalone.runtimeconfig.dev.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\bin\Debug\netcoreapp3.1\Monkeys-Standalone.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\bin\Debug\netcoreapp3.1\Monkeys-Standalone.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.csprojAssemblyReference.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.AssemblyInfoInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.AssemblyInfo.cs
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.csproj.CoreCompileInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\A23-Monkeys-standalone-skeleton\obj\Debug\netcoreapp3.1\Monkeys-Standalone.genruntimeconfig.cache

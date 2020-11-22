@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="08f9eb70-b859-43ba-b06b-28e65cdda715" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/../.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/obj/Client.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/obj/Client.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/obj/Debug/netcoreapp3.1/Client.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/obj/Debug/netcoreapp3.1/Client.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/obj/Debug/netcoreapp3.1/Client.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/obj/Debug/netcoreapp3.1/Client.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/obj/Debug/netcoreapp3.1/Client.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/obj/Debug/netcoreapp3.1/Client.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/MyCarterApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/MyCarterApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/MyCarterApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/MyCarterApp.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/MyCarterApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp3.1/MyCarterApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp3.1/MyCarterApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/MyCarterApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/MyCarterApp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/bin/Debug/netcoreapp3.1/MyCarterApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/bin/Debug/netcoreapp3.1/MyCarterApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/bin/Debug/netcoreapp3.1/MyCarterApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/bin/Debug/netcoreapp3.1/MyCarterApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/Debug/netcoreapp3.1/MyCarterApp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/MyCarterApp.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/MyCarterApp.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/MyCarterApp.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/MyCarterApp.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/old/A2/resources/examples/1/02-MyCarterApp/obj/project.nuget.cache" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1it3bqJTtgLjHezs2jQpiavKrNZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <created>1602713138883</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602713138883</updated>
+      <workItem from="1602713144714" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

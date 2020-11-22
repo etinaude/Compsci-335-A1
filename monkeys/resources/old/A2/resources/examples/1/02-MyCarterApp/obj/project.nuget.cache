@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "vCvoHVzGrx0o0F7SGpIrxYqLuk2k/WP7p01zHLyIpAVSGxxFcmGJOZ/VCMtX8gfBNcu52hetM/tqApUZnDsT2w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\etina\\Documents\\GitHub\\Compsci-335-A1\\monkeys\\resources\\old\\A2\\resources\\examples\\1\\02-MyCarterApp\\MyCarterApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\etina\\.nuget\\packages\\carter\\5.2.0\\carter.5.2.0.nupkg.sha512",
+    "C:\\Users\\etina\\.nuget\\packages\\fluentvalidation\\9.0.1\\fluentvalidation.9.0.1.nupkg.sha512",
+    "C:\\Users\\etina\\.nuget\\packages\\microsoft.extensions.dependencymodel\\3.1.0\\microsoft.extensions.dependencymodel.3.1.0.nupkg.sha512",
+    "C:\\Users\\etina\\.nuget\\packages\\microsoft.openapi\\1.1.4\\microsoft.openapi.1.1.4.nupkg.sha512",
+    "C:\\Users\\etina\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\etina\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}

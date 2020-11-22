@@ -1,0 +1,9 @@
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\bin\Debug\netstandard2.1\BlazorSignalRApp.Shared.deps.json
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\bin\Debug\netstandard2.1\BlazorSignalRApp.Shared.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\bin\Debug\netstandard2.1\BlazorSignalRApp.Shared.pdb
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\obj\Debug\netstandard2.1\BlazorSignalRApp.Shared.csprojAssemblyReference.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\obj\Debug\netstandard2.1\BlazorSignalRApp.Shared.AssemblyInfoInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\obj\Debug\netstandard2.1\BlazorSignalRApp.Shared.AssemblyInfo.cs
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\obj\Debug\netstandard2.1\BlazorSignalRApp.Shared.csproj.CoreCompileInputs.cache
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\obj\Debug\netstandard2.1\BlazorSignalRApp.Shared.dll
+C:\Users\etina\Documents\GitHub\Compsci-335-A1\monkeys\bonus\BlazorSignalRApp\Shared\obj\Debug\netstandard2.1\BlazorSignalRApp.Shared.pdb
