@@ -1,0 +1,3 @@
+Tracks
+Take 3
+Select new (Name, Album.Title as AlbumTitle)

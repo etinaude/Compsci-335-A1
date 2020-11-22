@@ -1,0 +1,3 @@
+Employees
+Where ReportsTo == null
+Select new (LastName, FirstName, Title)

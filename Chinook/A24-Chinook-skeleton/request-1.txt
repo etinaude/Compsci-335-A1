@@ -1,0 +1,5 @@
+Artists
+OrderBy Name DESC
+Where ArtistId % 10 == 0
+Take 3
+Select new (ArtistId, Name)
